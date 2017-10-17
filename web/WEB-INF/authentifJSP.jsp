@@ -5,8 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<link rel="stylesheet" type="text/css" title="Bootstrap" href="Web Pages/css/bootstrap.css"/>
-<link rel="stylesheet" type="text/css" href="Web Pages/css/style.css"
+<link rel="stylesheet" type="text/css" title="Bootstrap" href="css/bootstrap.css"/>
+<link rel="stylesheet" type="text/css" href="css/style.css"/>
 <!DOCTYPE html>
 <html>
     <head>

@@ -5,6 +5,8 @@
  */
 package com.test.servlets;
 
+import com.test.bdd.UtilisateurMYSQL;
+import com.test.form.AuthentifForm;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -14,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author aurelien.thazet
+ * @author fabien.ladouce
  */
 public class authentifServlet extends HttpServlet {
 
@@ -56,7 +58,8 @@ public class authentifServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        //processRequest(request, response);
+        getServletContext().getRequestDispatcher("/WEB-INF/authentifJSP.jsp").forward(request, response);
     }
 
     /**
@@ -70,17 +73,13 @@ public class authentifServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        //processRequest(request, response);
+        getServletContext().getRequestDispatcher("/WEB-INF/authentifJSP.jsp").forward(request, response);
+        AuthentifForm leControle = new AuthentifForm();
+        
+        
+        
+        
     }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
-
 }
+
