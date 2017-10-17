@@ -16,17 +16,21 @@
     <body class="fond-authentif">
         <div class="container">
             <div class="row">
-                <div class="text-center">
+                <div class="col-md-push-4 col-md-4 ">
                     <div class="marge-logo"><img src="images/logo-sdis.png"></div>
-                    <form action="authentification" method="POST">
-                        <div>
-                            <label for="login" class="bordure-authentif-titre">Nom d'utilisateur </label>
-                            <input type="text" name="ztLogin" id="login" class="bordure-authentif-champ"/>
-                        </div><br>
-                        <div>
-                            <label for="mdp" class="bordure-authentif-titre">Mot de passe </label>
-                            <input type="password" name="ztMDP" id="mdp" class="bordure-authentif-champ"/>
-                        </div><br>
+                        <div class="align-right">
+                            <form action="authentification" method="POST">
+                                <div>
+                                    <label for="login" class="bordure-authentif-titre">Nom d'utilisateur </label>
+                                    <input type="text" name="ztLogin" id="login" class="bordure-authentif-champ"/>
+                                </div><br>
+                                <div>
+                                    <label for="mdp" class="bordure-authentif-titre">Mot de passe </label>
+                                    <input type="password" name="ztMDP" id="mdp" class="bordure-authentif-champ"/>
+                                </div><br>
+                                
+                            </form>
+                        </div>
                         <div>
                             <label for="btConnexion"></label>
                             <input type="submit" value="Se connecter" id="btConnexion" class="btn bordure-authentif-titre"/>
@@ -34,7 +38,6 @@
                         <div>
                             <p href=""> J'ai oublié mon mot de passe </p>
                         </div>
-                    </form>
                 </div>
             </div>
         </div>
