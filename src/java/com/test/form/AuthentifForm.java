@@ -31,19 +31,16 @@ public class AuthentifForm {
         
         boolean authentif = false;
         String nom = request.getParameter("ztLogin");
-        String mdp = Md5.encode(request.getParameter("ztMDP"));
+        String mdp = Md5.getMD5(request.getParameter("ztMDP"));
         System.out.println(mdp);
         
-        //UtilisateurMYSQL unUtilisateurMYSQL = new UtilisateurMYSQL();
-        //Utilisateur unUtilisateur = unUtilisateurMYSQL.read(nom, mdp);
+        UtilisateurMYSQL unUtilisateurMYSQL = new UtilisateurMYSQL();
+        Utilisateur unUtilisateur = unUtilisateurMYSQL.read(nom, mdp);
         
-        if(Md5.encode("123").equals(mdp)){
-            System.out.println("test");
+        if(unUtilisateur != null){
+            resultat = "Authentification réussi";
+            authentif = true;
         }
-//        if(unUtilisateur != null){
-//            resultat = "Authentification réussi";
-//            authentif = true;
-//        }
         
         return authentif;
     }

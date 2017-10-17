@@ -21,7 +21,7 @@
                         <div class="align-right">
                             <form action="authentification" method="POST">
                                 <div>
-                                    <label for="login" class="bordure-authentif-titre">Nom d'utilisateur </label>
+                                    <label for="login" class="bordure-authentif-titre">Nom d'utilisateur-- </label>
                                     <input type="text" name="ztLogin" id="login" class="bordure-authentif-champ"/>
                                 </div><br>
                                 <div>
@@ -29,12 +29,14 @@
                                     <input type="password" name="ztMDP" id="mdp" class="bordure-authentif-champ"/>
                                 </div><br>
                                 
-                            </form>
-                        </div>
+                            
+                        
                         <div>
                             <label for="btConnexion"></label>
                             <input type="submit" value="Se connecter" id="btConnexion" class="btn bordure-authentif-titre"/>
-                        </div><br>
+                        </div>
+                    </form>
+                            </div><br>
                         <div>
                             <p href=""> J'ai oublié mon mot de passe </p>
                         </div>

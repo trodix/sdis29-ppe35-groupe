@@ -60,6 +60,7 @@ public class Connexion {
         if (connect == null) {
             new Connexion(serveur, bdd, nomUtil, mdp);
         }
+        System.out.println("getConnectOk");
         return connect;
     }
     

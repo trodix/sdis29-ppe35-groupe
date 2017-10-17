@@ -77,7 +77,7 @@ public class authentifServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //processRequest(request, response);
-        
+        System.out.println("doposte");
         AuthentifForm leControle = new AuthentifForm();
         request.setAttribute("controleForm",leControle);
         try {
