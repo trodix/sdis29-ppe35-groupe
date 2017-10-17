@@ -4,6 +4,7 @@
     Author     : fabien.ladouce
 --%>
 
+<%@page import="com.test.form.AuthentifForm"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -13,7 +14,10 @@
     </head>
     <body>
         <%
-        
+            AuthentifForm leControle = (AuthentifForm) request.getAttribute("controleForm");
+            if(leControle != null){
+                out.println(leControle.getResultat());
+            }
         %>
     </body>
 </html>
