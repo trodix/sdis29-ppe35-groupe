@@ -13,21 +13,30 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Authentification</title>
     </head>
-    <body>
-        <div><img src="images/logo-sdis.png"></div>
-        <form action="authentification" method="POST">
-            <p><label for="login" style="bordure-authentif-titre">Nom d'utilisateur </label><br>
-                <input type="text" name="ztLogin" id="login" />
-            </p><br>
-            <p><label for="mdp" style="bordure-authentif-titre">Mot de passe </label><br>
-                <input type="password" name="ztMDP" id="mdp" />
-            </p><br>
-            <p><label for="btConnexion"></label>
-                <input type="submit" value="Se connecter" id="btConnexion"/>
-            </p><br>
-            <div>
-                <p href=""> J'ai oublié mon mot de passe </p>
+    <body class="fond-authentif">
+        <div class="container">
+            <div class="row">
+                <div class="text-center">
+                    <div class="marge-logo"><img src="images/logo-sdis.png"></div>
+                    <form action="authentification" method="POST">
+                        <div>
+                            <label for="login" class="bordure-authentif-titre">Nom d'utilisateur </label>
+                            <input type="text" name="ztLogin" id="login" class="bordure-authentif-champ"/>
+                        </div><br>
+                        <div>
+                            <label for="mdp" class="bordure-authentif-titre">Mot de passe </label>
+                            <input type="password" name="ztMDP" id="mdp" class="bordure-authentif-champ"/>
+                        </div><br>
+                        <div>
+                            <label for="btConnexion"></label>
+                            <input type="submit" value="Se connecter" id="btConnexion" class="bordure-authentif-titre"/>
+                        </div><br>
+                        <div>
+                            <p href=""> J'ai oublié mon mot de passe </p>
+                        </div>
+                    </form>
+                </div>
             </div>
-        </form> 
+        </div>
     </body>
 </html>
