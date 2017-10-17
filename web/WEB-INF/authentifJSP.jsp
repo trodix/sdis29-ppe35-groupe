@@ -21,7 +21,7 @@
                         <div class="align-right">
                             <form action="authentification" method="POST">
                                 <div>
-                                    <label for="login" class="bordure-authentif-titre">Nom d'utilisateur-- </label>
+                                    <label for="login" class="bordure-authentif-titre">Nom d'utilisateur </label>
                                     <input type="text" name="ztLogin" id="login" class="bordure-authentif-champ"/>
                                 </div><br>
                                 <div>
