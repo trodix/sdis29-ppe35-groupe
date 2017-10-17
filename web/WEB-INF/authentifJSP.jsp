@@ -29,7 +29,7 @@
                         </div><br>
                         <div>
                             <label for="btConnexion"></label>
-                            <input type="submit" value="Se connecter" id="btConnexion" class="bordure-authentif-titre"/>
+                            <input type="submit" value="Se connecter" id="btConnexion" class="btn bordure-authentif-titre"/>
                         </div><br>
                         <div>
                             <p href=""> J'ai oublié mon mot de passe </p>
