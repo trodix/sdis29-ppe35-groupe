@@ -25,19 +25,21 @@ public class AuthentifForm {
         this.resultat = resultat;
     }
     
-    public String controlerAuthentif(HttpServletRequest request){
+    public boolean controlerAuthentif(HttpServletRequest request){
         
-        UtilisateurMYSQL unUtilisateurMYSQL = new UtilisateurMYSQL("Aurelien","123");
+        boolean authentif = false; 
+        Utilisateur unUtilisateurM = new Utilisateur("Aurelien","123");
         String nom = request.getParameter("ztLogin");
         String mdp = request.getParameter("ztMDP");
         
         Utilisateur unUtilisateur = new Utilisateur(nom, mdp);
         
-        if(unUtilisateurMYSQL.equals(unUtilisateur)){
-            resultat = "ok";
+        if(unUtilisateur.equals(unUtilisateurM)){
+            resultat = "Authentification réussi";
+            authentif = true;
         }
         
-        return resultat;
+        return authentif;
     }
     
     

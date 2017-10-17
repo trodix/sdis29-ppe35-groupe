@@ -76,18 +76,13 @@ public class authentifServlet extends HttpServlet {
         //processRequest(request, response);
         
         AuthentifForm leControle = new AuthentifForm();
-        leControle.controlerAuthentif(request);
         request.setAttribute("controleForm",leControle);
-        
-        String leNom = (String) request.getParameter("nom");
-        String leMDP = (String) request.getParameter("mdp");
-        
-        boolean existId = false;
-        
-        if(leNom != null && leMDP != null){
-            existId = true;
+        if(leControle.controlerAuthentif(request)){
+            getServletContext().getRequestDispatcher("/WEB-INF/testJSP.jsp").forward(request, response);     
+        }else{
+            getServletContext().getRequestDispatcher("/WEB-INF/authentifJSP.jsp").forward(request, response); 
         }
-        getServletContext().getRequestDispatcher("/WEB-INF/testJSP.jsp").forward(request, response);
+        
         
         
         
