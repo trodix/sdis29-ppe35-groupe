@@ -74,8 +74,21 @@ public class authentifServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //processRequest(request, response);
-        getServletContext().getRequestDispatcher("/WEB-INF/authentifJSP.jsp").forward(request, response);
+        
         AuthentifForm leControle = new AuthentifForm();
+        leControle.controlerAuthentif(request);
+        request.setAttribute("controleForm",leControle);
+        
+        String leNom = (String) request.getParameter("nom");
+        String leMDP = (String) request.getParameter("mdp");
+        
+        boolean existId = false;
+        
+        if(leNom != null && leMDP != null){
+            existId = true;
+        }
+        getServletContext().getRequestDispatcher("/WEB-INF/testJSP.jsp").forward(request, response);
+        
         
         
         

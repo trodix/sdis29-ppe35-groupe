@@ -34,7 +34,7 @@ public class AuthentifForm {
         Utilisateur unUtilisateur = new Utilisateur(nom, mdp);
         
         if(unUtilisateurMYSQL.equals(unUtilisateur)){
-            System.out.println("test");
+            resultat = "ok";
         }
         
         return resultat;

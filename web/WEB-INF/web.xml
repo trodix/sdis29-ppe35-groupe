@@ -6,7 +6,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>authentifServlet</servlet-name>
-        <url-pattern>/authentif</url-pattern>
+        <url-pattern>/authentification</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
