@@ -5,7 +5,11 @@
  */
 package com.test.bdd;
 
+import com.test.beans.Utilisateur;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Objects;
 
 
@@ -16,60 +20,30 @@ import java.util.Objects;
  */
 public class UtilisateurMYSQL {
         
-    //Connection laConnection = Connexion.getConnect(serveur, bdd, nomUtil, mdp);
+    Connection laConnection = Connexion.getConnect("ppe35","sdis29", "adminBDsdis", "mdpBDsdis");
     
-    private String nomUtilisateur;
-    private String mdp;
-
-    public UtilisateurMYSQL(String nomUtilisateur, String mdp) {
-        this.nomUtilisateur = nomUtilisateur;
-        this.mdp = mdp;
-    }
-
-    public String getNomUtilisateur() {
-        return nomUtilisateur;
-    }
-
-    public String getMdp() {
-        return mdp;
-    }
-
-    public void setNomUtilisateur(String nomUtilisateur) {
-        this.nomUtilisateur = nomUtilisateur;
-    }
-
-    public void setMdp(String mdp) {
-        this.mdp = mdp;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 3;
-        hash = 19 * hash + Objects.hashCode(this.nomUtilisateur);
-        hash = 19 * hash + Objects.hashCode(this.mdp);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
+    
+    public Utilisateur read(String nom, String password) throws SQLException{
+        Utilisateur unUtilisateur = null;
+        
+        try{
+            PreparedStatement prepStmt = null;
+            String sql = "SELECT * FROM pompier WHERE pLogin = ? AND pMdp = ?";
+            prepStmt = laConnection.prepareStatement(sql);
+            prepStmt.setString(1, nom);
+            prepStmt.setString(2, password);
+            ResultSet resultat = prepStmt.executeQuery();
+            if(resultat.first()){
+                unUtilisateur = new Utilisateur(resultat.getString("pLogin"), resultat.getString("pMdp"));
+            }
+        }catch (SQLException ex){
+            System.out.println("SQLException : " + ex.getMessage());
+            System.out.println("SQLException : " + ex.getSQLState());
+            System.out.println("SQLException : " + ex.getErrorCode());
         }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final UtilisateurMYSQL other = (UtilisateurMYSQL) obj;
-        if (!Objects.equals(this.nomUtilisateur, other.nomUtilisateur)) {
-            return false;
-        }
-        if (!Objects.equals(this.mdp, other.mdp)) {
-            return false;
-        }
-        return true;
+        return unUtilisateur;
     }
+
     
     
 }

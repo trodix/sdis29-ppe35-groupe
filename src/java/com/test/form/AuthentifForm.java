@@ -7,6 +7,8 @@ package com.test.form;
 
 import com.test.bdd.UtilisateurMYSQL;
 import com.test.beans.Utilisateur;
+import com.test.md5.Md5;
+import java.sql.SQLException;
 import javax.servlet.http.HttpServletRequest;
 
 /**
@@ -25,19 +27,23 @@ public class AuthentifForm {
         this.resultat = resultat;
     }
     
-    public boolean controlerAuthentif(HttpServletRequest request){
+    public boolean controlerAuthentif(HttpServletRequest request) throws SQLException{
         
-        boolean authentif = false; 
-        Utilisateur unUtilisateurM = new Utilisateur("Aurelien","123");
+        boolean authentif = false;
         String nom = request.getParameter("ztLogin");
-        String mdp = request.getParameter("ztMDP");
+        String mdp = Md5.encode(request.getParameter("ztMDP"));
+        System.out.println(mdp);
         
-        Utilisateur unUtilisateur = new Utilisateur(nom, mdp);
+        //UtilisateurMYSQL unUtilisateurMYSQL = new UtilisateurMYSQL();
+        //Utilisateur unUtilisateur = unUtilisateurMYSQL.read(nom, mdp);
         
-        if(unUtilisateur.equals(unUtilisateurM)){
-            resultat = "Authentification réussi";
-            authentif = true;
+        if(Md5.encode("123").equals(mdp)){
+            System.out.println("test");
         }
+//        if(unUtilisateur != null){
+//            resultat = "Authentification réussi";
+//            authentif = true;
+//        }
         
         return authentif;
     }

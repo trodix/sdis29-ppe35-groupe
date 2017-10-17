@@ -5,13 +5,8 @@
  */
 package com.test.servlets;
 
-import com.test.bdd.UtilisateurMYSQL;
-import com.test.form.AuthentifForm;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -21,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author fabien.ladouce
  */
-public class authentifServlet extends HttpServlet {
+public class pompierServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,10 +35,10 @@ public class authentifServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet authentifServlet</title>");            
+            out.println("<title>Servlet pompierServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet authentifServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet pompierServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -61,8 +56,7 @@ public class authentifServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //processRequest(request, response);
-        getServletContext().getRequestDispatcher("/WEB-INF/authentifJSP.jsp").forward(request, response);
+        processRequest(request, response);
     }
 
     /**
@@ -76,25 +70,17 @@ public class authentifServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //processRequest(request, response);
-        
-        AuthentifForm leControle = new AuthentifForm();
-        request.setAttribute("controleForm",leControle);
-        try {
-            if(leControle.controlerAuthentif(request)){
-                getServletContext().getRequestDispatcher("/WEB-INF/pompierJSP.jsp").forward(request, response);
-            }else{ 
-                getServletContext().getRequestDispatcher("/WEB-INF/authentifJSP.jsp").forward(request, response);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(authentifServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        
-        
-        
-        
-        
+        processRequest(request, response);
     }
-}
 
+    /**
+     * Returns a short description of the servlet.
+     *
+     * @return a String containing servlet description
+     */
+    @Override
+    public String getServletInfo() {
+        return "Short description";
+    }// </editor-fold>
+
+}

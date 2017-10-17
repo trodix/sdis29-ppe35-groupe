@@ -13,11 +13,6 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <%
-            AuthentifForm leControle = (AuthentifForm) request.getAttribute("controleForm");
-            if(leControle != null){
-                out.println(leControle.getResultat());
-            }
-        %>
+        
     </body>
 </html>
