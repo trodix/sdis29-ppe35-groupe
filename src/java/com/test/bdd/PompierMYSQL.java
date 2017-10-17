@@ -21,15 +21,43 @@ public class PompierMYSQL {
     
     Connection laConnection = Connexion.getConnect("ppe35test","sdis29", "adminBDsdis", "mdpBDsdis");
     
-    public Pompier read(String nom, String password) throws SQLException{
+    public Pompier read(String login, String mdp) throws SQLException{
         Pompier unPompier = null;
         
         try{
             PreparedStatement prepStmt = null;
-            String sql = "SELECT cId, pId, pNom, pPrenom, pAdresse, pVille, pCp, pMail, pBip, pUrlPhoto, pCommentaire, cNom FROM pompier INNER JOIN caserne ON pCis = cId WHERE pCis = 2901 AND pId = 1";
+            String sql = "";
             prepStmt = laConnection.prepareStatement(sql);
-            prepStmt.setString(1, nom);
-            prepStmt.setString(2, password);
+            prepStmt.setString(1, login);
+            prepStmt.setString(2, mdp);
+            ResultSet resultat = prepStmt.executeQuery();
+            if(resultat.first()){
+                unPompier = new Pompier(
+                        resultat.getInt("cId"), resultat.getInt("pId"), resultat.getString("pNom"),
+                        resultat.getString("pPrenom"), resultat.getString("pAdresse"), 
+                        resultat.getString("pVille"), resultat.getString("pCp"),
+                        resultat.getString("pMail"), resultat.getString("pBip"),
+                        resultat.getString("pUrlPhoto"), resultat.getString("pCommentaire"),
+                        resultat.getString("cNom")
+                );
+            }
+        }catch (SQLException ex){
+            System.out.println("SQLException : " + ex.getMessage());
+            System.out.println("SQLException : " + ex.getSQLState());
+            System.out.println("SQLException : " + ex.getErrorCode());
+        }
+        return unPompier;
+    }
+    
+    public Pompier update(int cId, int pId) throws SQLException{
+        Pompier unPompier = null;
+        
+        try{
+            PreparedStatement prepStmt = null;
+            String sql = "";
+            prepStmt = laConnection.prepareStatement(sql);
+//            prepStmt.setString(1, login);
+//            prepStmt.setString(2, mdp);
             ResultSet resultat = prepStmt.executeQuery();
             if(resultat.first()){
                 unPompier = new Pompier(
