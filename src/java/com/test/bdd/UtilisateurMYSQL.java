@@ -42,7 +42,6 @@ public class UtilisateurMYSQL {
         }
         return unUtilisateur;
     }
-
-    
+   
     
 }
