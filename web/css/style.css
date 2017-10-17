@@ -1,5 +1,22 @@
 /*Feuille de style*/
 
-bordure-authentif{
-    
+/* Bordures et style pour les élements "Nom d'utilisateur" et "Mot de passe" */
+bordure-authentif-titre{
+    border: 3px #888888 solid;
+    color : white ;
+    background-color: red;
+    text-align: center;
+}
+
+/* Bordures et style pour les champs de l'utilisateur et du mdp */
+bordure-authentif-champ{
+    border: 3px #888888 solid;
+    color : white ;
+    background-color: #999999;
+    text-align: center;
+}
+
+/* Fond d'écran pour la page d'authentification */
+fond-authentif{
+    background-color: #666666;
 }
