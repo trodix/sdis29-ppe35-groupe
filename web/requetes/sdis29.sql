@@ -294,7 +294,6 @@ commit;
 -- --##################
 
 ALTER TABLE pompier ADD pUrlPhoto varchar(100);
-ALTER TABLE pompier ADD pCommentaire text;
 
 ALTER TABLE pompier ADD EmpRaisonSoc varchar(30);
 ALTER TABLE pompier ADD EmpAdresse varchar(30);
