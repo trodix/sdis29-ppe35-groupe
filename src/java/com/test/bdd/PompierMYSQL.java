@@ -20,6 +20,7 @@ import java.sql.SQLException;
 public class PompierMYSQL {
     
     Connection laConnection = Connexion.getConnect("10.121.38.193","sdis29", "adminBDsdis", "mdpBDsdis");
+    int idStatut = 0;
     
     public Pompier read(int nCaserne, int pId) throws SQLException{
         Pompier unPompier = null;
@@ -41,6 +42,7 @@ public class PompierMYSQL {
                         resultat.getString("pUrlPhoto"), resultat.getString("pCommentaire"),
                         resultat.getString("cNom"),resultat.getString("EmpRaisonSoc"), resultat.getString("EmpAdresse")
                 );
+                idStatut = Integer.parseInt(resultat.getString("pStatut"));
             }
         }catch (SQLException ex){
             System.out.println("SQLException : " + ex.getMessage());
@@ -109,6 +111,25 @@ public class PompierMYSQL {
             System.out.println("SQLException : " + ex.getErrorCode());
         }
         return statut;
+    }
+    
+    public int getIsResponsable(){
+        
+        int responsable = 0;
+        try{
+            PreparedStatement prepStmt = null;
+            String sql = "SELECT pIndice FROM parametre WHERE pType ='statAgt'";
+            prepStmt = laConnection.prepareStatement(sql);
+            ResultSet resultat = prepStmt.executeQuery();
+            if(resultat.first()){
+                responsable = resultat.getInt("pIndice");
+            }
+        }catch (SQLException ex){
+            System.out.println("SQLException : " + ex.getMessage());
+            System.out.println("SQLException : " + ex.getSQLState());
+            System.out.println("SQLException : " + ex.getErrorCode());
+        }
+        return responsable;
     }
     
 }

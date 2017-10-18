@@ -23,6 +23,10 @@
     <%
         int nCaserne = 0;
         int pId = 0;
+        boolean pompier = false;
+        boolean chefDeCentre = false;
+        boolean responsableDesAlertes = false;
+        
         HttpSession maSession = request.getSession();
         if(maSession.getAttribute("nCaserne") != null){
             nCaserne = (int)maSession.getAttribute("nCaserne");        
@@ -31,7 +35,32 @@
             pId = (int)maSession.getAttribute("pId");
         }
         PompierMYSQL unPompierMYSQL = new PompierMYSQL();
+        
         Pompier unPompier = unPompierMYSQL.read(nCaserne, pId);
+        int responsable = unPompierMYSQL.getIsResponsable();
+        System.out.print("test eee" + responsable);
+        switch(responsable){
+            case 1:
+                pompier = true;
+                break;
+            case 2:
+                chefDeCentre = true;
+                break;
+            case 3:
+                responsableDesAlertes = true;
+                break;
+        }
+        //if(isResponsable.equals("chef de centre")){
+        //    System.out.println("test");
+        //}else {
+        //    if(isResponsable.equals("pompier")){
+        //        System.out.print("test2");
+        //    }else{
+        //        if(isResponsable.equals("responsable des alertes")){
+        //           System.out.println("test3");
+                //}
+            //}
+        //}
         
     %>
     <body class="fond-pompier">
