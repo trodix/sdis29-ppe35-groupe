@@ -22,13 +22,15 @@ public class Pompier {
     private String pCp;
     private String pMail;
     private String pBip;
+    private String pGrade;
+    private String pStatut;
     private String pUrlPhoto;
     private String pCommentaire;
     private String cNom;
     private String EmpRaisonSoc;
     private String EmpAdresse;
 
-    public Pompier(int cId, int pId, String pNom, String pPrenom, String pAdresse, String pVille, String pCp, String pMail, String pBip, String pUrlPhoto, String pCommentaire, String cNom, String EmpRaisonSoc, String EmpAdresse) {
+    public Pompier(int cId, int pId, String pNom, String pPrenom, String pAdresse, String pVille, String pCp, String pMail, String pBip, String pGrade,String pStatut ,String pUrlPhoto, String pCommentaire, String cNom, String EmpRaisonSoc, String EmpAdresse) {
         this.cId = cId;
         this.pId = pId;
         this.pNom = pNom;
@@ -37,6 +39,8 @@ public class Pompier {
         this.pVille = pVille;
         this.pCp = pCp;
         this.pMail = pMail;
+        this.pGrade = pGrade;
+        this.pStatut = pStatut;
         this.pBip = pBip;
         this.pUrlPhoto = pUrlPhoto;
         this.pCommentaire = pCommentaire;
@@ -48,6 +52,25 @@ public class Pompier {
     public String getEmpRaisonSoc() {
         return EmpRaisonSoc;
     }
+
+    public String getpStatut() {
+        return pStatut;
+    }
+
+    public void setpStatut(String pStatut) {
+        this.pStatut = pStatut;
+    }
+    
+
+    public String getpGrade() {
+        return pGrade;
+    }
+
+    public void setpGrade(String pGrade) {
+        this.pGrade = pGrade;
+    }
+    
+    
 
     public String getEmpAdresse() {
         return EmpAdresse;

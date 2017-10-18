@@ -37,6 +37,7 @@ public class PompierMYSQL {
                         resultat.getString("pPrenom"), resultat.getString("pAdresse"), 
                         resultat.getString("pVille"), resultat.getString("pCp"),
                         resultat.getString("pMail"), resultat.getString("pBip"),
+                        getGrade(resultat.getString("pGrade")),getStatut(resultat.getString("pStatut")),
                         resultat.getString("pUrlPhoto"), resultat.getString("pCommentaire"),
                         resultat.getString("cNom"),resultat.getString("EmpRaisonSoc"), resultat.getString("EmpAdresse")
                 );
@@ -68,6 +69,46 @@ public class PompierMYSQL {
             System.out.println("SQLException : " + ex.getErrorCode());
         }
         return unPompier;
+    }
+    
+    public String getGrade(String pGrade){
+        
+        String grade = "";
+        try{
+            PreparedStatement prepStmt = null;
+            String sql = "SELECT pLibelle FROM parametre WHERE pType ='grade' AND pIndice = ?";
+            prepStmt = laConnection.prepareStatement(sql);
+            prepStmt.setInt(1, Integer.parseInt(pGrade));
+            ResultSet resultat = prepStmt.executeQuery();
+            if(resultat.first()){
+                grade = resultat.getString("pLibelle");
+            }
+        }catch (SQLException ex){
+            System.out.println("SQLException : " + ex.getMessage());
+            System.out.println("SQLException : " + ex.getSQLState());
+            System.out.println("SQLException : " + ex.getErrorCode());
+        }
+        return grade;
+    }
+    
+    public String getStatut(String pStatut){
+        
+        String statut = "";
+        try{
+            PreparedStatement prepStmt = null;
+            String sql = "SELECT pLibelle FROM parametre WHERE pType ='typePer' AND pIndice = ?";
+            prepStmt = laConnection.prepareStatement(sql);
+            prepStmt.setInt(1, Integer.parseInt(pStatut));
+            ResultSet resultat = prepStmt.executeQuery();
+            if(resultat.first()){
+                statut = resultat.getString("pLibelle");
+            }
+        }catch (SQLException ex){
+            System.out.println("SQLException : " + ex.getMessage());
+            System.out.println("SQLException : " + ex.getSQLState());
+            System.out.println("SQLException : " + ex.getErrorCode());
+        }
+        return statut;
     }
     
 }

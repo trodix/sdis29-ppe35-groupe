@@ -134,10 +134,10 @@
                                 <input name="caserneAppartenance" id="caserneAppartenance" class="taille-case-pompierVolontaire" value=<% out.println(unPompier.getcNom()); %>>
                             </div><br>
                             <div>
-                                <input name="statut" id="statut" class="taille-case-pompierVolontaire" value=<% out.println(unPompier.getpId()); %>>
+                                <input name="statut" id="statut" class="taille-case-pompierVolontaire" value=<% out.println(unPompier.getpStatut()); %>>
                             </div><br>
                             <div>
-                                <input name="grade" id="grade" class="taille-case-pompierVolontaire" value=<% out.println(unPompier.getpId()); %>>
+                                <input name="grade" id="grade" class="taille-case-pompierVolontaire" value=<% out.println(unPompier.getpGrade()); %>>
                             </div><br>
                             <div>
                                 <input type="text" name="noBip" id="noBip" class="taille-case-pompierVolontaire" value=<% out.println(unPompier.getpBip()); %>/>
