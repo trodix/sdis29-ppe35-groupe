@@ -52,19 +52,25 @@ public class PompierMYSQL {
         return unPompier;
     }
     
-    public Pompier update(int cId, int pId) throws SQLException{
+    public Pompier update(int cId, int pId, String pNom, String pPrenom, String pAdresse, 
+            String pVille, String pCp, String pMail, String pCommentaire ) throws SQLException{
+        
         Pompier unPompier = null;
         
         try{
             PreparedStatement prepStmt = null;
-            String sql = "";
+            String sql = "UPDATE pompier SET pNom = ?, pPrenom = ?, pAdresse = ?, pVille = ?, pCp = ?, pMail = ?, pCommentaire = ? WHERE cId = ? AND pId = ?";
             prepStmt = laConnection.prepareStatement(sql);
-//            prepStmt.setString(1, login);
-//            prepStmt.setString(2, mdp);
-            ResultSet resultat = prepStmt.executeQuery();
-            if(resultat.first()){
-                
-            }
+            prepStmt.setString(1, pNom);
+            prepStmt.setString(2, pPrenom);
+            prepStmt.setString(3, pAdresse);
+            prepStmt.setString(4, pVille);
+            prepStmt.setString(5, pCp);
+            prepStmt.setString(6, pMail);
+            prepStmt.setString(7, pCommentaire);
+            prepStmt.setInt(8, cId);
+            prepStmt.setInt(9, pId);
+            int Status = prepStmt.executeUpdate();
         }catch (SQLException ex){
             System.out.println("SQLException : " + ex.getMessage());
             System.out.println("SQLException : " + ex.getSQLState());
