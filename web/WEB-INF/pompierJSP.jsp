@@ -44,7 +44,7 @@
                     <div class="col-md-4">
                         <h1 class="text-left">
                             <% 
-                                out.println(unPompier.getpNom() + " " + unPompier.getpPrenom()); 
+                                out.println("Caserne : " + unPompier.getcNom() + " " + unPompier.getpNom() + " " + unPompier.getpPrenom()); 
                             %>
                         </h1>
                     </div>
