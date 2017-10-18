@@ -27,13 +27,13 @@ public class UtilisateurMYSQL {
         
         try{
             PreparedStatement prepStmt = null;
-            String sql = "SELECT * FROM pompier WHERE pLogin = ? AND pMdp = ?";
+            String sql = "SELECT pLogin,pMdp,pId,pCis FROM pompier WHERE pLogin = ? AND pMdp = ?";
             prepStmt = laConnection.prepareStatement(sql);
             prepStmt.setString(1, nom);
             prepStmt.setString(2, password);
             ResultSet resultat = prepStmt.executeQuery();
             if(resultat.first()){
-                unUtilisateur = new Utilisateur(resultat.getString("pLogin"), resultat.getString("pMdp"));
+                unUtilisateur = new Utilisateur(resultat.getString("pLogin"), resultat.getString("pMdp"), resultat.getInt("pId"),resultat.getInt("pCis"));
             }
         }catch (SQLException ex){
             System.out.println("SQLException : " + ex.getMessage());

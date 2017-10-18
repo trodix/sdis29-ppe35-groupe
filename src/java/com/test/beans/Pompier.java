@@ -25,8 +25,10 @@ public class Pompier {
     private String pUrlPhoto;
     private String pCommentaire;
     private String cNom;
+    private String EmpRaisonSoc;
+    private String EmpAdresse;
 
-    public Pompier(int cId, int pId, String pNom, String pPrenom, String pAdresse, String pVille, String pCp, String pMail, String pBip, String pUrlPhoto, String pCommentaire, String cNom) {
+    public Pompier(int cId, int pId, String pNom, String pPrenom, String pAdresse, String pVille, String pCp, String pMail, String pBip, String pUrlPhoto, String pCommentaire, String cNom, String EmpRaisonSoc, String EmpAdresse) {
         this.cId = cId;
         this.pId = pId;
         this.pNom = pNom;
@@ -39,7 +41,27 @@ public class Pompier {
         this.pUrlPhoto = pUrlPhoto;
         this.pCommentaire = pCommentaire;
         this.cNom = cNom;
+        this.EmpRaisonSoc = EmpRaisonSoc;
+        this.EmpAdresse = EmpAdresse;
     }
+
+    public String getEmpRaisonSoc() {
+        return EmpRaisonSoc;
+    }
+
+    public String getEmpAdresse() {
+        return EmpAdresse;
+    }
+
+    public void setEmpRaisonSoc(String EmpRaisonSoc) {
+        this.EmpRaisonSoc = EmpRaisonSoc;
+    }
+
+    public void setEmpAdresse(String EmpAdresse) {
+        this.EmpAdresse = EmpAdresse;
+    }
+    
+    
 
     public int getcId() {
         return cId;

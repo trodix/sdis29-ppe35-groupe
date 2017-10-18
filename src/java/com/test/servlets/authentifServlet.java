@@ -16,6 +16,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -77,11 +78,15 @@ public class authentifServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //processRequest(request, response);
-        System.out.println("doposte");
+        System.out.println("dopost");
         AuthentifForm leControle = new AuthentifForm();
         request.setAttribute("controleForm",leControle);
         try {
             if(leControle.controlerAuthentif(request)){
+                HttpSession maSession = request.getSession();
+                maSession.setAttribute("nCaserne",leControle.getnCaserne());
+                maSession.setAttribute("pId", leControle.getpId());
+                
                 getServletContext().getRequestDispatcher("/WEB-INF/pompierJSP.jsp").forward(request, response);
             }else{ 
                 getServletContext().getRequestDispatcher("/WEB-INF/authentifJSP.jsp").forward(request, response);

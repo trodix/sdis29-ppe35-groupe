@@ -4,18 +4,36 @@
     Author     : fabien.ladouce
 --%>
 
+<%@page import="com.test.beans.Pompier"%>
+<%@page import="com.test.bdd.PompierMYSQL"%>
+<%@page import="javax.servlet.http.HttpSession"%>
 <%@page import="com.test.form.AuthentifForm"%>
 <%@page import="com.test.form.AuthentifForm"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <link rel="stylesheet" type="text/css" title="Bootstrap" href="css/bootstrap.css"/>
 <link rel="stylesheet" type="text/css" title="Font Awesome" href="css/font-awesome.css"/>
 <link rel="stylesheet" type="text/css" href="css/style.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Page Pompier Volontaire</title>
     </head>
+    <%
+        int nCaserne = 0;
+        int pId = 0;
+        HttpSession maSession = request.getSession();
+        if(maSession.getAttribute("nCaserne") != null){
+            nCaserne = (int)maSession.getAttribute("nCaserne");        
+        }
+        if(maSession.getAttribute("pId") != null){
+            pId = (int)maSession.getAttribute("pId");
+        }
+        PompierMYSQL unPompierMYSQL = new PompierMYSQL();
+        Pompier unPompier = unPompierMYSQL.read(nCaserne, pId);
+        
+    %>
     <body class="fond-pompier">
         <div class="container">
             <div class="row">
@@ -24,7 +42,11 @@
                         <div class="marge-logo"><img src="images/logo-sdis.png"></div>
                     </div>
                     <div class="col-md-4">
-                        <h1 class="text-left"> Nom Prénom Pompier</h1>
+                        <h1 class="text-left">
+                            <% 
+                                out.println(unPompier.getpNom() + " " + unPompier.getpPrenom()); 
+                            %>
+                        </h1>
                     </div>
                     <div class="col-md-4">
                          <div><img src="images/test.jpg" class="img-responsive img-rounded" width="150" height="150"></div>
@@ -55,19 +77,19 @@
                         </div>
                         <div class="col-md-3">
                             <div>
-                                <input type="text" name="ztNom" id="nom" class="taille-case-pompierVolontaire"/>
+                                <input type="text" name="ztNom" id="nom" class="taille-case-pompierVolontaire" value=<% out.println(unPompier.getpNom()); %>/>
                             </div><br>
                             <div>
-                                <input type="text" name="ztPrenom" id="prenom" class="taille-case-pompierVolontaire"/>
+                                <input type="text" name="ztPrenom" id="prenom" class="taille-case-pompierVolontaire" value=<% out.println(unPompier.getpPrenom()); %>/>
                             </div><br>
                             <div>
-                                <input type="text" name="ztAdresse" id="adresse" class="taille-case-pompierVolontaire"/>
+                                <input type="text" name="ztAdresse" id="adresse" class="taille-case-pompierVolontaire" value=<% out.println(unPompier.getpAdresse()); %>/>
                             </div><br>
                             <div>
-                                <input type="text" name="ztVille" id="ville" class="taille-case-pompierVolontaire"/>
+                                <input type="text" name="ztVille" id="ville" class="taille-case-pompierVolontaire" value=<% out.println(unPompier.getpVille()); %>/>
                             </div><br>
                             <div>
-                                <input type="text" name="ztCP" id="cp" class="taille-case-pompierVolontaire"/>
+                                <input type="text" name="ztCP" id="cp" class="taille-case-pompierVolontaire" value=<% out.println(unPompier.getpCp()); %>/>
                             </div><br>
                         </div>
                         <div class="col-md-1">
@@ -106,31 +128,19 @@
                         </div>
                         <div class="col-md-3">
                             <div>
-                                <input type="email" name="emailAdresse" id="adresseMail" class="taille-case-pompierVolontaire"/>
+                                <input type="email" name="emailAdresse" id="adresseMail" class="taille-case-pompierVolontaire" value=<% out.println(unPompier.getpMail()); %>/>
                             </div><br>
                             <div>
-                                <select name="caserneAppartenance" id="caserneAppartenance" class="taille-case-pompierVolontaire">
-                                    <option value="Benodet">Benodet</option>
-                                    <option value="Bannalec">Bannalec</option>
-                                    <option value="Brasparts">Brasparts</option>
-                                </select>
+                                <input name="caserneAppartenance" id="caserneAppartenance" class="taille-case-pompierVolontaire" value=<% out.println(unPompier.getcNom()); %>>
                             </div><br>
                             <div>
-                                <select name="statut" id="statut" class="taille-case-pompierVolontaire">
-                                    <option value="Volontaire">Pompier Volontaire</option>
-                                    <option value="Pro">Pompier Professionel</option>
-                                    <option value="Medical">Personnel Médical</option>
-                                </select>
+                                <input name="statut" id="statut" class="taille-case-pompierVolontaire" value=<% out.println(unPompier.getpId()); %>>
                             </div><br>
                             <div>
-                                <select name="grade" id="grade" class="taille-case-pompierVolontaire">
-                                    <option value="Adjudant">Adjudant</option>
-                                    <option value="AdjudantChef">Adjudant-Chef</option>
-                                    <option value="Capitaine">Capitaine</option>
-                                </select>
+                                <input name="grade" id="grade" class="taille-case-pompierVolontaire" value=<% out.println(unPompier.getpId()); %>>
                             </div><br>
                             <div>
-                                <input type="text" name="noBip" id="noBip" class="taille-case-pompierVolontaire"/>
+                                <input type="text" name="noBip" id="noBip" class="taille-case-pompierVolontaire" value=<% out.println(unPompier.getpBip()); %>/>
                             </div><br>
                         </div>
                         <div class="col-md-1">
@@ -151,10 +161,10 @@
                         </div><br>
                         <div class="col-md-2">
                             <div>
-                                <input type="text" name="ztDenomination" id="denomination" class="taille-case-pompierVolontaire"/>
+                                <input type="text" name="ztDenomination" id="denomination" class="taille-case-pompierVolontaire" value=<% out.println(unPompier.getEmpRaisonSoc()); %>/>
                             </div><br>
                             <div>
-                                <input type="text" name="ztAdresseEmployeur" id="adresseEmployeur" class="taille-case-pompierVolontaire"/>
+                                <input type="text" name="ztAdresseEmployeur" id="adresseEmployeur" class="taille-case-pompierVolontaire" value=<% out.println(unPompier.getEmpAdresse()); %>/>
                             </div><br>
                         </div><br>
                     </div>

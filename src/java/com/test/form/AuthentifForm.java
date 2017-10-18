@@ -18,6 +18,8 @@ import javax.servlet.http.HttpServletRequest;
 public class AuthentifForm {
     
     private String resultat;
+    private int nCaserne;
+    private int pId;
 
     public String getResultat() {
         return resultat;
@@ -26,6 +28,16 @@ public class AuthentifForm {
     public void setResultat(String resultat) {
         this.resultat = resultat;
     }
+
+    public int getnCaserne() {
+        return nCaserne;
+    }
+
+    public int getpId() {
+        return pId;
+    }
+    
+    
     
     public boolean controlerAuthentif(HttpServletRequest request) throws SQLException{
         
@@ -38,6 +50,8 @@ public class AuthentifForm {
         Utilisateur unUtilisateur = unUtilisateurMYSQL.read(nom, mdp);
         
         if(unUtilisateur != null){
+            pId = unUtilisateur.getId();
+            nCaserne = unUtilisateur.getnCaserne();
             resultat = "Authentification réussi";
             authentif = true;
         }

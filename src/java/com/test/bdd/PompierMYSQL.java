@@ -21,24 +21,24 @@ public class PompierMYSQL {
     
     Connection laConnection = Connexion.getConnect("ppe35test","sdis29", "adminBDsdis", "mdpBDsdis");
     
-    public Pompier read(String login, String mdp) throws SQLException{
+    public Pompier read(int nCaserne, int pId) throws SQLException{
         Pompier unPompier = null;
         
         try{
             PreparedStatement prepStmt = null;
-            String sql = "";
+            String sql = "SELECT * FROM pompier INNER JOIN caserne ON caserne.cId = pCis WHERE pCis = ? AND pId = ?";
             prepStmt = laConnection.prepareStatement(sql);
-            prepStmt.setString(1, login);
-            prepStmt.setString(2, mdp);
+            prepStmt.setInt(1, nCaserne);
+            prepStmt.setInt(2, pId);
             ResultSet resultat = prepStmt.executeQuery();
             if(resultat.first()){
                 unPompier = new Pompier(
-                        resultat.getInt("cId"), resultat.getInt("pId"), resultat.getString("pNom"),
+                        resultat.getInt("pCis"), resultat.getInt("pId"), resultat.getString("pNom"),
                         resultat.getString("pPrenom"), resultat.getString("pAdresse"), 
                         resultat.getString("pVille"), resultat.getString("pCp"),
                         resultat.getString("pMail"), resultat.getString("pBip"),
                         resultat.getString("pUrlPhoto"), resultat.getString("pCommentaire"),
-                        resultat.getString("cNom")
+                        resultat.getString("cNom"),resultat.getString("EmpRaisonSoc"), resultat.getString("EmpAdresse")
                 );
             }
         }catch (SQLException ex){
@@ -60,14 +60,7 @@ public class PompierMYSQL {
 //            prepStmt.setString(2, mdp);
             ResultSet resultat = prepStmt.executeQuery();
             if(resultat.first()){
-                unPompier = new Pompier(
-                        resultat.getInt("cId"), resultat.getInt("pId"), resultat.getString("pNom"),
-                        resultat.getString("pPrenom"), resultat.getString("pAdresse"), 
-                        resultat.getString("pVille"), resultat.getString("pCp"),
-                        resultat.getString("pMail"), resultat.getString("pBip"),
-                        resultat.getString("pUrlPhoto"), resultat.getString("pCommentaire"),
-                        resultat.getString("cNom")
-                );
+                
             }
         }catch (SQLException ex){
             System.out.println("SQLException : " + ex.getMessage());

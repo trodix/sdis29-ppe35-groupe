@@ -15,11 +15,25 @@ public class Utilisateur {
     
     private String nom;
     private String mdp;
+    private int id;
+    private int nCaserne;
 
-    public Utilisateur(String nom, String mdp) {
+    public Utilisateur(String nom, String mdp,int id, int nCaserne) {
         this.nom = nom;
         this.mdp = mdp;
+        this.id = id;
+        this.nCaserne = nCaserne;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public int getnCaserne() {
+        return nCaserne;
+    }
+    
+    
 
     public String getNom() {
         return nom;
