@@ -26,3 +26,13 @@ label{
     padding-left: 5px;
     padding-right: 5px;
 }
+
+/*Style pour la vue Pompier Volontaire*/
+.taille-case-pompierVolontaire{
+    width: 175px;
+    height: 25px;
+}
+
+.fond-pompier{
+    background-color: #666666;
+}
