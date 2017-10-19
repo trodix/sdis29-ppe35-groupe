@@ -5,12 +5,19 @@
  */
 package com.test.servlets;
 
+import com.test.bdd.PompierMYSQL;
+import com.test.beans.Pompier;
+import com.test.md5.Md5;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -72,6 +79,45 @@ public class creerPompierServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //processRequest(request, response);
+        Pompier unPompier = null;
+        HttpSession maSession = request.getSession();
+        if(maSession.getAttribute("unPompier") != null){
+            unPompier = (Pompier)maSession.getAttribute("unPompier");
+        }
+        PompierMYSQL unPompierMYSQL = new PompierMYSQL();
+        String nom = request.getParameter("ztNom");
+        String prenom = request.getParameter("ztPrenom");
+        String statut = request.getParameter("statut");
+        int type = 2;
+        String mail = request.getParameter("emailAdresse");
+        String login = prenom.substring(0,1);
+        login.toUpperCase();
+        login += nom.substring(0,3);
+        System.out.println(login);
+        String mdp = Md5.getMD5(login);
+        int idStatut = 0;
+        String adresse = request.getParameter("ztVille");
+        String ville = request.getParameter("ztville");
+        int id = Integer.parseInt(request.getParameter("id"));
+        int bip = Integer.parseInt(request.getParameter("noBip"));
+        int cp = Integer.parseInt(request.getParameter("ztCP"));
+        String urlPhoto = request.getParameter("grdg");
+        String raisonSoc = request.getParameter("ztDenomination");
+        String emplAdresse = request.getParameter("ztAdresseEmployeur");
+        if(statut.equals("pompier")){
+            idStatut = 2;
+        }
+        String com = request.getParameter("ztCom");
+        
+        
+        try {
+            unPompierMYSQL.create(unPompier.getcId(),id, nom, prenom, idStatut, type,mail,login,mdp,adresse
+                    ,cp,ville,bip, com, urlPhoto,raisonSoc,emplAdresse, unPompier.getpId());
+            getServletContext().getRequestDispatcher("/WEB-INF/nouveauPompier.jsp").forward(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(creerPompierServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         
     }
 

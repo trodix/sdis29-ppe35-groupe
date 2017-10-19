@@ -46,7 +46,7 @@
         </div>
         <%@include file="navbar.jspf" %>
         <div class="container">
-                <form action="" method="POST">
+                <form action="creerPompier" method="POST">
                     <div class="tbale-responsive">
                         <table class="table tableau-infos-pompier">
                             <tbody>
@@ -59,14 +59,14 @@
                                 <tr>
                                     <td><label for="prenom" >Prénom : </label></td>
                                     <td><input type="text" name="ztPrenom" id="prenom" class="taille-case-pompierVolontaire"/></td>
-                                    <td><label for="caserneAppartenance" >Caserne : </label></td>
-                                    <td><input name="caserneAppartenance" id="caserneAppartenance" class="taille-case-pompierVolontaire"></td>
+                                    <td><label for="id" >Id du pompier : </label></td>
+                                    <td><input name="id" id="caserneAppartenance" class="taille-case-pompierVolontaire"></td>
                                 </tr>
                                 <tr>
                                     <td><label for="adresse" >Adresse : </label></td>
                                     <td><input type="text" name="ztAdresse" id="adresse" class="taille-case-pompierVolontaire"/></td>
                                     <td><label for="statut" >Statut : </label></td>
-                                    <td><input name="statut" id="statut" class="taille-case-pompierVolontaire"></td>
+                                    <td><input name="statut" id="statut" value="pompier" class="taille-case-pompierVolontaire"></td>
                                 </tr>
                                 <tr>
                                     <td><label for="ville" >Ville : </label></td>
@@ -107,11 +107,11 @@
                 </div>
                 <div>
                     <p>Commentaires : </p>
-                    <textarea class="taille-case-commentaire"></textarea>
+                    <textarea name="ztCom" class="taille-case-commentaire"></textarea>
                 </div>
                 <div>
                     <label for="btModification"></label>
-                    <input class="btn btn-lg bouton-validation" type="button submit" value="Créer" id="btModifications"/>
+                    <input class="btn btn-lg bouton-validation" type="submit" value="Créer" id="btModifications"/>
                 </div><br>
             </form>
         
