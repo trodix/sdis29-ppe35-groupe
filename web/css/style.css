@@ -38,7 +38,7 @@ label{
     background: "images/bg-casque.jpg";
 }
 
-.taille-cas-commentaire{
+.taille-case-commentaire{
     width: 950px;
     height: 200px;
 }
@@ -94,7 +94,7 @@ label{
 }
 
 .head{
-	padding-top: 100px;
+	padding-top: 10px;
 }
 
 #logo{
@@ -102,4 +102,16 @@ label{
 	bottom: 0px;
 	left: 10px;
 	margin-right: 25px;
+}
+
+.couleur-icones{
+    color: #ca0000;
+}
+
+.bouton-validation {
+    margin-top: 10px;
+}
+
+.tableau-infos-pompier{
+    border-bottom-color: #333333;
 }
