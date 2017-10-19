@@ -109,7 +109,7 @@
                 </div>
                 <div>
                     <h3 class="titre-profil">Commentaires : </h3>
-                    <textarea id="com" class="taille-case-commentaire"></textarea>
+                    <textarea name="ztCom" class="taille-case-commentaire"></textarea>
                 </div>
                 <div>
                     <label for="btModification"></label>
