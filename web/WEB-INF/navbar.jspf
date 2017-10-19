@@ -18,12 +18,18 @@
                         <li class="nav-item">
                             <a class="nav-link" href="/">Profil</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="listePompier">Liste des pompiers</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="">Créer pompier volontaire</a>
-                        </li>
+                        <%
+                            HttpSession maSession2 = request.getSession();
+                            if(maSession2.getAttribute("chefDeCentre") != null){
+                                if((boolean) maSession2.getAttribute("chefDeCentre") == true){
+                                    out.println("<li class='nav-item'>"+
+                                                "<a class='nav-link' href='listePompier'>Liste des pompiers</a></li>"+
+                                                "<li class='nav-item'><a class='nav-link' href=''>Créer pompier volontaire</a></li>");
+                                }
+                            }
+                        
+                        %>
+                        
                     </ul>
                 </div>
             </nav>
