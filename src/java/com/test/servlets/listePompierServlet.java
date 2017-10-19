@@ -70,7 +70,7 @@ public class listePompierServlet extends HttpServlet {
         
         if(maSession.getAttribute("pompier") != null || maSession.getAttribute("chefDeCentre") != null || maSession.getAttribute("pompier")  != null){
             
-            if((boolean) maSession.getAttribute("pompier") == true){
+            if((boolean) maSession.getAttribute("chefDeCentre") == true){
                 
                 PompierMYSQL unPompierMYSQL = new PompierMYSQL();
                 
