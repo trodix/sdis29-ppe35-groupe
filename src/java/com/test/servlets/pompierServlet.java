@@ -77,6 +77,7 @@ public class pompierServlet extends HttpServlet {
                 PompierMYSQL unPompierMYSQL = new PompierMYSQL();
                 String nom = request.getParameter("ztNom");
                 String prenom = request.getParameter("ztPrenom");
+                System.out.println(prenom);
                 String adresse = request.getParameter("ztAdresse");
                 String ville = request.getParameter("ztVille");
                 int cp = 0;
@@ -89,8 +90,7 @@ public class pompierServlet extends HttpServlet {
                 String mail = request.getParameter("ztAdresseMail");
                 String com = request.getParameter("ztCom");
                 try {
-                    test = unPompierMYSQL.update(unPompier.getcId() , unPompier.getpId(), nom,prenom,adresse, ville,cp,mail,com);
-                    System.out.println(test);
+                    unPompierMYSQL.update(unPompier.getcId() , unPompier.getpId(), nom,prenom,adresse, ville,cp,mail,com);
                 } catch (SQLException ex) {
                     Logger.getLogger(pompierServlet.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -124,8 +124,54 @@ public class pompierServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //processRequest(request, response);
+                Pompier unPompier = null;
+        HttpSession maSession = request.getSession();
         
         
+        if(maSession.getAttribute("unPompier") != null){
+            unPompier = (Pompier)maSession.getAttribute("unPompier");
+        }
+        
+        if(maSession.getAttribute("id") != null){
+            if((int)maSession.getAttribute("id") == 1){
+                PompierMYSQL unPompierMYSQL = new PompierMYSQL();
+                String nom = request.getParameter("ztNom");
+                String prenom = request.getParameter("ztPrenom");
+                System.out.println(prenom);
+                String adresse = request.getParameter("ztAdresse");
+                String ville = request.getParameter("ztVille");
+                int cp = 0;
+                Pompier test = null;
+                System.out.println(request.getParameter("ztCP"));
+                if(request.getParameter("ztCP") != null){
+                    cp = Integer.parseInt(request.getParameter("ztCP"));
+                }
+                
+                String mail = request.getParameter("ztAdresseMail");
+                String com = request.getParameter("ztCom");
+                try {
+                    unPompierMYSQL.update(unPompier.getcId() , unPompier.getpId(), nom,prenom,adresse, ville,cp,mail,com);
+                } catch (SQLException ex) {
+                    Logger.getLogger(pompierServlet.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                getServletContext().getRequestDispatcher("/WEB-INF/pompierJSP.jsp").forward(request, response); 
+            }
+            if(maSession.getAttribute("pompier") != null || maSession.getAttribute("chefDeCentre") != null || maSession.getAttribute("pompier")  != null){
+            
+                if((boolean) maSession.getAttribute("pompier") == true){
+                
+                    PompierMYSQL unPompierMYSQL = new PompierMYSQL();
+                
+                    ArrayList <Pompier> lesPompiers = new ArrayList();
+                
+                    lesPompiers = unPompierMYSQL.readAll(unPompier.getcId());
+                    maSession.setAttribute("lesPompiers",lesPompiers);
+                    getServletContext().getRequestDispatcher("/WEB-INF/listePompier.jsp").forward(request, response); 
+            }
+            
+        }
+        
+        }
     }
 
     /**
