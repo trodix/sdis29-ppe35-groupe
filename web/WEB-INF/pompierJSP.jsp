@@ -78,9 +78,11 @@
                         </table>
                     </div>
                     <div class="col-md-6">
-                        <div><img src="images/test.jpg" class="img-responsive img-rounded" width="150" height="150"></div>
-                        <div><img link="images/test.jpg" class="img-responsive img-rounded" width="150" height="150"></div>
-                        <div><input type="text" name="ztPUrlPhoto" id="pUrlPhoto" class="taille-case-pompierVolontaire" placeholder="URL de la photo"/><i<%maSession.setAttribute("id",1); %> class="fa fa-pencil couleur-icones" aria-hidden="true"></i></div>
+                        <%if(unPompier.getpUrlPhoto() != null) {%>
+                            <div><img src="<% out.println(unPompier.getpUrlPhoto()); %>" class="img-responsive img-rounded" width="150" height="150"></div>
+                        <% }else{ %>
+                            <div><img src="images/test.jpg" class="img-responsive img-rounded" width="150" height="150"></div>
+                        <% } %>
                     </div>
                 </div>
                 <div>
