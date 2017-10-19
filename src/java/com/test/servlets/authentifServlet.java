@@ -88,12 +88,14 @@ public class authentifServlet extends HttpServlet {
         PompierMYSQL unPompierMYSQL = new PompierMYSQL();
         Pompier unPompier = null;
         AuthentifForm leControle = new AuthentifForm();
+        boolean authentification = false; 
         request.setAttribute("controleForm",leControle);
         try {
-            if(leControle.controlerAuthentif(request)){
+            if(leControle.controlerAuthentif(request) || authentification){
                 
 //                maSession.setAttribute("nCaserne",leControle.getnCaserne());
-//                maSession.setAttribute("pId", leControle.getpId());        
+//                maSession.setAttribute("pId", leControle.getpId());
+                maSession.setAttribute("isAuthentified",true);
                 unPompier = unPompierMYSQL.read(leControle.getnCaserne(), leControle.getpId());
                 maSession.setAttribute("unPompier",unPompier);              
                 switch(unPompier.getiStatut()){
