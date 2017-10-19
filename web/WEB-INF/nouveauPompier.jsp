@@ -116,9 +116,9 @@
                     <p>Commentaires : </p>
                     <textarea class="taille-case-commentaire"></textarea>
                 </div>
-                <div class="bouton-validation">
+                <div>
                     <label for="btModification"></label>
-                    <input class="btn btn-lg" type="button submit" value="Valider modifications" id="btModifications"/>
+                    <input class="btn btn-lg bouton-validation" type="button submit" value="Valider modifications" id="btModifications"/>
                 </div><br>
             </form>
         
