@@ -34,14 +34,14 @@
         <div class="container">
             <div class="row">
                 <div>
-                    <div class="col-md-push-3 col-md-4">
-                        <h1 class="text-right titre-profil">
+                    <div class="col-md-8">
+                        <h1 class="text-right titre-profil marge-titre-profil">
                             <% 
                                 out.println("Caserne " + unPompier.getcNom() + " : " + unPompier.getpNom() + " " + unPompier.getpPrenom()); 
                             %>
                         </h1>
                     </div>
-                    <div class="col-md-push-7 col-md-4">
+                    <div class="col-md-push-3 col-md-4">
                          <div><img src="images/test.jpg" class="img-responsive img-rounded" width="150" height="150"></div>
                     </div>
                 </div>
@@ -50,42 +50,36 @@
         <%@include file="navbar.jspf" %>
         <div class="container">
                 <form action="" method="POST">
-                    <div class="tbale-responsive">
-                        <table class="table tableau-infos-pompier">
+                    <div class="table-responsive">
+                        <table class="table tableau-infos-pompier" border="0">
                             <tbody>
                                 <tr>
                                     <td><label for="nom" >Nom : </label></td>
-                                    <td><input type="text" name="ztNom" id="nom" class="taille-case-pompierVolontaire" value=<% out.println(unPompier.getpNom()); %>/></td>
-                                    <td><i class="fa fa-pencil couleur-icones" aria-hidden="true"></i></td>
+                                    <td><input type="text" name="ztNom" id="nom" class="taille-case-pompierVolontaire" value=<% out.println(unPompier.getpNom()); %>/><a href="Pompier"><i class="fa fa-pencil couleur-icones" aria-hidden="true"></i></a></td>
                                     <td><label for="adresseMail" >Adresse Mail : </label></td>
-                                    <td><input type="email" name="emailAdresse" id="adresseMail" class="taille-case-pompierVolontaire" value=<% out.println(unPompier.getpMail()); %>/></td>
-                                    <td><i class="fa fa-pencil couleur-icones" aria-hidden="true"></i></td>
+                                    <td><input type="email" name="emailAdresse" id="adresseMail" class="taille-case-pompierVolontaire" value=<% out.println(unPompier.getpMail()); %>/><a href="Pompier"><i class="fa fa-pencil couleur-icones" aria-hidden="true"></i></a></td>
                                 </tr>
                                 <tr>
                                     <td><label for="prenom" >Prénom : </label></td>
-                                    <td><input type="text" name="ztPrenom" id="prenom" class="taille-case-pompierVolontaire" value=<% out.println(unPompier.getpPrenom()); %>/></td>
-                                    <td><i class="fa fa-pencil couleur-icones" aria-hidden="true"></i></td>
+                                    <td><input type="text" name="ztPrenom" id="prenom" class="taille-case-pompierVolontaire" value=<% out.println(unPompier.getpPrenom()); %>/><a href="Pompier"><i class="fa fa-pencil couleur-icones" aria-hidden="true"></i></a></td>
                                     <td><label for="caserneAppartenance" >Caserne : </label></td>
                                     <td><input name="caserneAppartenance" id="caserneAppartenance" class="taille-case-pompierVolontaire" disabled="disabled" value=<% out.println(unPompier.getcNom()); %>></td>
                                 </tr>
                                 <tr>
                                     <td><label for="adresse" >Adresse : </label></td>
-                                    <td><input type="text" name="ztAdresse" id="adresse" class="taille-case-pompierVolontaire" value=<% out.println(unPompier.getpAdresse()); %>/></td>
-                                    <td><i class="fa fa-pencil couleur-icones" aria-hidden="true"></i></td>
+                                    <td><input type="text" name="ztAdresse" id="adresse" class="taille-case-pompierVolontaire" value=<% out.println(unPompier.getpAdresse()); %>/><a href="Pompier"><i class="fa fa-pencil couleur-icones" aria-hidden="true"></i></a></td>
                                     <td><label for="statut" >Statut : </label></td>
                                     <td><input name="statut" id="statut" class="taille-case-pompierVolontaire" disabled="disabled" value=<% out.println(unPompier.getpStatut()); %>></td>
                                 </tr>
                                 <tr>
                                     <td><label for="ville" >Ville : </label></td>
-                                    <td><input type="text" name="ztVille" id="ville" class="taille-case-pompierVolontaire" value=<% out.println(unPompier.getpVille()); %>/></td>
-                                    <td><i class="fa fa-pencil couleur-icones" aria-hidden="true"></i></td>
+                                    <td><input type="text" name="ztVille" id="ville" class="taille-case-pompierVolontaire" value=<% out.println(unPompier.getpVille()); %>/><a href="Pompier"><i class="fa fa-pencil couleur-icones" aria-hidden="true"></i></a></td>
                                     <td><label for="grade" >Grade : </label></td>
                                     <td><input name="grade" id="grade" class="taille-case-pompierVolontaire" disabled="disabled" value=<% out.println(unPompier.getpGrade()); %>></td>
                                 </tr>
                                 <tr>
                                    <td><label for="cp" >Code Postal : </label></td>
-                                   <td><input type="text" name="ztCP" id="cp" class="taille-case-pompierVolontaire" value=<% out.println(unPompier.getpCp()); %>/></td>
-                                   <td><i class="fa fa-pencil couleur-icones" aria-hidden="true"></i></td>
+                                   <td><input type="text" name="ztCP" id="cp" class="taille-case-pompierVolontaire" value=<% out.println(unPompier.getpCp()); %>/><a href="Pompier"><i class="fa fa-pencil couleur-icones" aria-hidden="true"></i></a></td>
                                    <td><label for="noBip" >Numéro Bip : </label></td>
                                    <td><input type="text" name="noBip" id="noBip" class="taille-case-pompierVolontaire" disabled="disabled" value=<% out.println(unPompier.getpBip()); %>/></td>
                                 </tr>
@@ -112,14 +106,15 @@
                     </div>
                 </div>
                 <div>
-                    <p>Commentaires : </p>
+                    <h3 class="titre-profil">Commentaires : </h3>
                     <textarea class="taille-case-commentaire"></textarea>
                 </div>
-                <div class="bouton-validation">
+                <div>
                     <label for="btModification"></label>
-                    <input class="btn btn-lg" type="button submit" value="Valider modifications" id="btModifications"/>
+                    <input class="btn btn-lg bouton-validation" type="button submit" value="Valider modifications" id="btModifications"/>
                 </div><br>
             </form>
+        </div>
         
         <!--<%
             AuthentifForm leControle = (AuthentifForm) request.getAttribute("controleForm");

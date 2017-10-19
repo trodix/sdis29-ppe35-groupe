@@ -47,6 +47,12 @@ label{
     color: white;
 }
 
+.marge-titre-profil{
+    margin-top: 90px;
+    margin-left: 50px;
+    text-align: left;
+}
+
 label{
     color: white;
     font-size: 23;
@@ -106,12 +112,17 @@ label{
 
 .couleur-icones{
     color: #ca0000;
+    font-size: 25px;
+    margin-left: 10px;
 }
 
 .bouton-validation {
     margin-top: 10px;
+    background-color: #ca0000;
+    color: white;
 }
 
-.tableau-infos-pompier{
-    border-bottom-color: #333333;
+.table th, .table td { 
+    border-top: none !important;
+    border-left: none !important;
 }
