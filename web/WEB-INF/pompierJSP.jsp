@@ -50,18 +50,6 @@
                 responsableDesAlertes = true;
                 break;
         }
-        //if(isResponsable.equals("chef de centre")){
-        //    System.out.println("test");
-        //}else {
-        //    if(isResponsable.equals("pompier")){
-        //        System.out.print("test2");
-        //    }else{
-        //        if(isResponsable.equals("responsable des alertes")){
-        //           System.out.println("test3");
-                //}
-            //}
-        //}
-        
     %>
     <body class="fond-pompier">
         <div class="container">
