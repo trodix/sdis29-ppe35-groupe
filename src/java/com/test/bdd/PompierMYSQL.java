@@ -12,6 +12,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -79,6 +80,40 @@ public class PompierMYSQL {
             System.out.println("SQLException : " + ex.getErrorCode());
         }
         return unPompier;
+    }
+    
+    public ArrayList <Pompier> readAll(int nCaserne){
+        ArrayList <Pompier> lesPompiers = new ArrayList();
+        Pompier unPompier = null;
+        
+        try{
+            PreparedStatement prepStmt = null;
+            String sql = "SELECT * FROM pompier INNER JOIN caserne ON caserne.cId = pCis WHERE pCis = ? AND pType = 2";
+            prepStmt.setInt(1, nCaserne);
+            prepStmt = laConnection.prepareStatement(sql);
+            
+            ResultSet resultat = prepStmt.executeQuery();
+            while(resultat.next()){
+                unPompier = new Pompier(
+                        resultat.getInt("pCis"), resultat.getInt("pId"), resultat.getString("pNom"),
+                        resultat.getString("pPrenom"), resultat.getString("pAdresse"), 
+                        resultat.getString("pVille"), resultat.getString("pCp"),
+                        resultat.getString("pMail"), resultat.getString("pBip"),
+                        getGrade(resultat.getString("pGrade")),
+                        getStatut(resultat.getString("pStatut")),
+                        resultat.getInt("pStatut"),
+                        resultat.getString("pUrlPhoto"), resultat.getString("pCommentaire"),
+                        resultat.getString("cNom"),resultat.getString("EmpRaisonSoc"), resultat.getString("EmpAdresse")
+                );
+                lesPompiers.add(unPompier);     
+                idStatut = Integer.parseInt(resultat.getString("pStatut"));
+            }
+        }catch (SQLException ex){
+            System.out.println("SQLException : " + ex.getMessage());
+            System.out.println("SQLException : " + ex.getSQLState());
+            System.out.println("SQLException : " + ex.getErrorCode());
+        }
+        return lesPompiers;
     }
     
     public String getGrade(String pGrade){
