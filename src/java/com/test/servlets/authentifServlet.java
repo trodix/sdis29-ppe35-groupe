@@ -5,7 +5,9 @@
  */
 package com.test.servlets;
 
+import com.test.bdd.PompierMYSQL;
 import com.test.bdd.UtilisateurMYSQL;
+import com.test.beans.Pompier;
 import com.test.form.AuthentifForm;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -78,20 +80,48 @@ public class authentifServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //processRequest(request, response);
-        System.out.println("dopost");
+        int pId = 0;
+        HttpSession maSession = request.getSession();
+        boolean pompier = false;
+        boolean chefDeCentre = false;
+        boolean responsableDesAlertes = false;
+        PompierMYSQL unPompierMYSQL = new PompierMYSQL();
+        Pompier unPompier = null;
         AuthentifForm leControle = new AuthentifForm();
         request.setAttribute("controleForm",leControle);
         try {
             if(leControle.controlerAuthentif(request)){
-                HttpSession maSession = request.getSession();
-                maSession.setAttribute("nCaserne",leControle.getnCaserne());
-                maSession.setAttribute("pId", leControle.getpId());
+                
+//                maSession.setAttribute("nCaserne",leControle.getnCaserne());
+//                maSession.setAttribute("pId", leControle.getpId());        
+                unPompier = unPompierMYSQL.read(leControle.getnCaserne(), leControle.getpId());
+                maSession.setAttribute("unPompier",unPompier);              
+                if(maSession.getAttribute("pompier") != null){
+                    unPompier = (Pompier)maSession.getAttribute("pompier");        
+                }
+                System.out.print("test eee" + unPompier.getiStatut());
+                switch(unPompier.getiStatut()){
+                    case 1:
+                        pompier = true;
+                        maSession.setAttribute("pompier", pompier);
+                        break;
+                    case 2:
+                        chefDeCentre = true;
+                        maSession.setAttribute("chefDeCentre", chefDeCentre);
+                        break;
+                    case 3:
+                        responsableDesAlertes = true;
+                        maSession.setAttribute("pompier", responsableDesAlertes);
+                        break;
+        }
                 
                 getServletContext().getRequestDispatcher("/WEB-INF/pompierJSP.jsp").forward(request, response);
-            }else{ 
+            }else{
+                maSession.setAttribute("authentif", "Echec authentification");
                 getServletContext().getRequestDispatcher("/WEB-INF/authentifJSP.jsp").forward(request, response);
             }
-        } catch (SQLException ex) {
+        } catch (SQLException ex) { 
+            Logger.getLogger(authentifServlet.class.getName()).log(Level.SEVERE, null, ex);
             Logger.getLogger(authentifServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         
