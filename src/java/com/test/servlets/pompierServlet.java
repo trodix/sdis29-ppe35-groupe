@@ -81,8 +81,12 @@ public class pompierServlet extends HttpServlet {
                 maSession.setAttribute("lesPompiers",lesPompiers);
                 getServletContext().getRequestDispatcher("/WEB-INF/listePompier.jsp").forward(request, response); 
             }
+            if((boolean) maSession.getAttribute("pompier") == true){
+                getServletContext().getRequestDispatcher("/WEB-INF/Pompier.jsp").forward(request, response); 
+            }
             
         }
+        
     }
 
     /**
