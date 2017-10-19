@@ -105,7 +105,7 @@ public class authentifServlet extends HttpServlet {
         Pompier unPompier = null;
         AuthentifForm leControle = new AuthentifForm();
         boolean authentification = true; 
-        request.setAttribute("controleForm",leControle);
+        maSession.setAttribute("controleForm",leControle);
 
         
         try {
