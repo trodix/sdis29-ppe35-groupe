@@ -49,7 +49,7 @@
                 <table class="table">
                     <thead>
                         <caption>Liste des pompiers</caption>
-                        <a href="/Pompier">Créer un pompier volontaire</a>
+                        <a href="/creerPompier">Créer un pompier volontaire</a>
                         <tr>
                             <th>Nom</th> <th>Prénom</th> <th>Grade</th> <th>Modifier</th> <th>Visualiser</th>
                         </tr>
