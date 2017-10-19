@@ -128,5 +128,7 @@ label{
 }
 
 .tableau-liste-pompier{
-    color: white;
+    color: black;
+    border-color: #5B5B5B;
+    background-color: #ABABAB;
 }

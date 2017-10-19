@@ -51,7 +51,7 @@
         <%@include file="navbar.jspf"%>
         <div class="container">
             <div class="table-responsive">
-                <table class="table tableau-liste-pompier">
+                <table class="table tableau-liste-pompier table-bordered table-striped">
                     <thead>
                         <caption>Liste des pompiers</caption>
                         <a href="creerPompier">Créer un pompier volontaire</a>
