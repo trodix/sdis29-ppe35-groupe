@@ -76,19 +76,22 @@ public class pompierServlet extends HttpServlet {
             if((int)maSession.getAttribute("id") == 1){
                 PompierMYSQL unPompierMYSQL = new PompierMYSQL();
                 String nom = request.getParameter("nom");
+                System.out.println(nom);
                 String prenom = request.getParameter("prenom");
                 String adresse = request.getParameter("adresse");
                 String ville = request.getParameter("ville");
                 int cp = 0;
+                Pompier test = null;
                 System.out.println(request.getParameter("cp"));
-                if(request.getParameter("cp") == null){
+                if(request.getParameter("cp") != null){
                     cp = Integer.parseInt(request.getParameter("cp"));
                 }
                 
                 String mail = request.getParameter("adresseMail");
                 String com = request.getParameter("com");
                 try {
-                    unPompierMYSQL.update(unPompier.getcId() , unPompier.getpId(), nom,prenom,adresse, ville,cp,mail,com);
+                    test = unPompierMYSQL.update(unPompier.getcId() , unPompier.getpId(), nom,prenom,adresse, ville,cp,mail,com);
+                    System.out.println(test);
                 } catch (SQLException ex) {
                     Logger.getLogger(pompierServlet.class.getName()).log(Level.SEVERE, null, ex);
                 }

@@ -62,7 +62,7 @@ public class PompierMYSQL {
         
         try{
             PreparedStatement prepStmt = null;
-            String sql = "UPDATE pompier SET pNom = ?, pPrenom = ?, pAdresse = ?, pVille = ?, pCp = ?, pMail = ?, pCommentaire = ? WHERE cId = ? AND pId = ?";
+            String sql = "UPDATE pompier SET pNom = ?, pPrenom = ?, pAdresse = ?, pVille = ?, pCp = ?, pMail = ?, pCommentaire = ? WHERE pCis = ? AND pId = ?";
             prepStmt = laConnection.prepareStatement(sql);
             prepStmt.setString(1, pNom);
             prepStmt.setString(2, pPrenom);
