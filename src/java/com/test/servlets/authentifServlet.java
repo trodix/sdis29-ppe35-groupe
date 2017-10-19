@@ -65,6 +65,20 @@ public class authentifServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //processRequest(request, response);
+        HttpSession maSession = request.getSession();
+        String msg = "";
+        int co = 1;
+        if(request.getParameter("co") != null){
+           msg = request.getParameter("co");
+            System.out.println(msg);
+            co = Integer.parseInt(msg);
+            if(co == 0){
+                maSession.setAttribute("pompier", false);
+                maSession.setAttribute("chefDeCentre", false);
+                maSession.setAttribute("responsableDesAlertes", false);
+                //maSession.invalidate();
+            } 
+        }
         getServletContext().getRequestDispatcher("/WEB-INF/authentifJSP.jsp").forward(request, response);
     }
 
@@ -84,14 +98,18 @@ public class authentifServlet extends HttpServlet {
         HttpSession maSession = request.getSession();
         boolean pompier = false;
         boolean chefDeCentre = false;
+        String msg = "";
+        int co = 1;
         boolean responsableDesAlertes = false;
         PompierMYSQL unPompierMYSQL = new PompierMYSQL();
         Pompier unPompier = null;
         AuthentifForm leControle = new AuthentifForm();
-        boolean authentification = false; 
+        boolean authentification = true; 
         request.setAttribute("controleForm",leControle);
+
+        
         try {
-            if(leControle.controlerAuthentif(request) || authentification){
+            if(leControle.controlerAuthentif(request) && authentification){
                 
 //                maSession.setAttribute("nCaserne",leControle.getnCaserne());
 //                maSession.setAttribute("pId", leControle.getpId());
@@ -114,7 +132,7 @@ public class authentifServlet extends HttpServlet {
         }       
             getServletContext().getRequestDispatcher("/WEB-INF/pompierJSP.jsp").forward(request, response);
         }else{
-                getServletContext().getRequestDispatcher("/WEB-INF/authentif.jsp").forward(request, response);
+                getServletContext().getRequestDispatcher("/WEB-INF/authentifJSP.jsp").forward(request, response);
                 maSession.setAttribute("authentif","Echec authentification");
             }
 

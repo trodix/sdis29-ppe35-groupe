@@ -33,7 +33,7 @@
                             <a class="nav-link" href="charte">Charte d'utilisation</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="charte"><i class="fa fa-power-off"></i>Déconnexion</a>
+                            <a class="nav-link" href="authentification?co=0"><i class="fa fa-power-off"></i>Déconnexion</a>
                         </li>
                     </ul>
                 </div>

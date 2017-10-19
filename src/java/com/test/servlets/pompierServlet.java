@@ -70,20 +70,23 @@ public class pompierServlet extends HttpServlet {
         if(maSession.getAttribute("unPompier") != null){
             unPompier = (Pompier)maSession.getAttribute("unPompier");
         }
-        if(maSession.getAttribute("pompier") != null || maSession.getAttribute("chefDeCentre") != null || maSession.getAttribute("pompier")  != null){
-           
-            if((boolean) maSession.getAttribute("chefDeCentre") == true){
-                PompierMYSQL unPompierMYSQL = new PompierMYSQL();
-                
-                ArrayList <Pompier> lesPompiers = new ArrayList();
-                
-                lesPompiers = unPompierMYSQL.readAll(unPompier.getcId());
-                maSession.setAttribute("lesPompiers",lesPompiers);
-                getServletContext().getRequestDispatcher("/WEB-INF/listePompier.jsp").forward(request, response); 
+        if(maSession.getAttribute("pompier") != null){
+            if((boolean) maSession.getAttribute("pompier") == true){
+                getServletContext().getRequestDispatcher("/WEB-INF/pompierJSP.jsp").forward(request, response); 
             }
+        }else if(maSession.getAttribute("chefDeCentre") != null){
+            if((boolean) maSession.getAttribute("chefDeCentre") == true){
+                getServletContext().getRequestDispatcher("/WEB-INF/pompierJSP.jsp").forward(request, response);
+            }
+        }else if(maSession.getAttribute("pompier")  != null){
+            getServletContext().getRequestDispatcher("/WEB-INF/pompierJSP.jsp").forward(request, response); 
+                }
+           
+            
+            
             
         }
-    }
+
 
     /**
      * Handles the HTTP <code>POST</code> method.
