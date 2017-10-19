@@ -60,6 +60,47 @@
                     nature à engager sa responsabilité civile et / ou pénale ainsi que celle de SDIS29.
                 </p>
             </div>
+            <div>
+                <h4>PROTECTION DES DONNEES A CARACTERE PERSONNEL</h4>
+                <p>
+                    La loi n°78-17 du 6 janvier 1978 modifiée en 2004 relative à l’informatique, aux
+                    fichiers et aux libertés définit les conditions dans lesquelles des traitements de
+                    données à caractère personnel peuvent être effectués. Elle ouvre aux personnes
+                    concernées par les traitements un droit d’accès et de rectification des données
+                    enregistrées sur leur compte.
+                </p>
+                <p>
+                    SDIS29 a désigné un correspondant à la protection des données à
+                    caractère personnel. Ce dernier a pour mission de veiller au respect des
+                    dispositions de la loi n°78-17 du 6 janvier 1978 modifiée.
+                </p>
+                <p>
+                    Il est obligatoirement consulté par le responsable des traitements préalablement à
+                    leur création.
+                </p>
+                <p>
+                    Il recense dans un registre la liste de l’ensemble des traitements de données à
+                    caractère personnel de SDIS29 au fur et à mesure de leur mise en
+                    œuvre. Cette liste est tenue uniquement à disposition des responsables de caserne.
+                </p>
+                <p>
+                    Le correspondant veille au respect des droits des personnes (droit d’accès, de
+                    rectification et d’opposition). En cas de difficultés rencontrées lors de l’exercice de
+                    ces droits, les personnes concernées peuvent saisir le correspondant du CIL.     
+                </p>
+            </div>
+            <div>
+                <h4>DONNEES A CARACTERE PERSONNEL RECUPEREES</h4>
+                <p>
+                    Une photo est requise pour votre enregistrement au sein de la caserne.
+                </p>
+                <p>
+                    Afin de valider votre enregistrement, les informations suivantes vous seront demandées :
+                    nom, prénom ainsi que l'adresse, la ville et le code postal de votre domicile.
+                    Si vous êtes salarié d'une entreprise, les informations suivantes concernant cette dernoère 
+                    sont également demandées : dénomination sociale et adresse.
+                </p>
+            </div>
         </div>
         
         <!--<%
