@@ -20,30 +20,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Page Pompier Volontaire</title>
     </head>
-    <%
-        Pompier unPompier = null;
-        HttpSession maSession = request.getSession();
-        if(maSession.getAttribute("unPompier") != null){
-            unPompier = (Pompier)maSession.getAttribute("unPompier");
-        }
-        if(maSession.getAttribute("pompier") != null){
-            System.out.println(maSession.getAttribute("pompier"));
-        }
-    %>
-    <body class="fond-pompier">
-        <div class="container">
-            <div class="row">
-                <div>
-                    <div class="col-md-push-3 col-md-4">
-                        <h1 class="text-right titre-profil">
-                            <% 
-                                out.println("Caserne " + unPompier.getcNom() + " : " + unPompier.getpNom() + " " + unPompier.getpPrenom()); 
-                            %>
-                        </h1>
-                    </div>
-                </div>
-            </div>
-        </div>
+
         <%@include file="navbar.jspf" %>
         <div class="container">
                 <form action="creerPompier" method="POST">

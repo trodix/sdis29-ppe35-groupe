@@ -78,14 +78,13 @@ public class pompierServlet extends HttpServlet {
             if((boolean) maSession.getAttribute("chefDeCentre") == true){
                 getServletContext().getRequestDispatcher("/WEB-INF/pompierJSP.jsp").forward(request, response);
             }
-        }else if(maSession.getAttribute("pompier")  != null){
-            getServletContext().getRequestDispatcher("/WEB-INF/pompierJSP.jsp").forward(request, response); 
-                }
-           
-            
-            
-            
+        }else if(maSession.getAttribute("responsableDesAlertes")  != null){
+            if((boolean) maSession.getAttribute("responsableDesAlertes") == true){
+                processRequest(request, response);
+            }
         }
+   
+    }
 
 
     /**
@@ -125,8 +124,9 @@ public class pompierServlet extends HttpServlet {
                 
                 String mail = request.getParameter("ztAdresseMail");
                 String com = request.getParameter("ztCom");
+                int idCreateur = unPompier.getpId();
                 try {
-                    unPompierMYSQL.update(unPompier.getcId() , unPompier.getpId(), nom,prenom,adresse, ville,cp,mail,com);
+                    unPompierMYSQL.update(unPompier.getcId() , unPompier.getpId(), nom, prenom, adresse, ville, cp, mail, com, idCreateur);
                 } catch (SQLException ex) {
                     Logger.getLogger(pompierServlet.class.getName()).log(Level.SEVERE, null, ex);
                 }
