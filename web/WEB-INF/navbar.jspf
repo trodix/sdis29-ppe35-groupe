@@ -8,7 +8,7 @@
 <body>
     <div class="head">
         <div class="row">
-            <nav class="navbar col-xs-push-2 col-xs-8">
+            <nav class="navbar col-xs-push-1 col-xs-10">
                 <div>
                     <a class="navbar-brand" href="Pompier"><img id="logo" src="images/logo-sdis.png"></a>
                     <ul class="nav navbar-nav">
@@ -31,6 +31,9 @@
                         %>
                         <li class="nav-item">
                             <a class="nav-link" href="charte">Charte d'utilisation</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="charte"><i class="fa fa-power-off"></i>Déconnexion</a>
                         </li>
                     </ul>
                 </div>
