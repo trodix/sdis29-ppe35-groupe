@@ -34,7 +34,7 @@
         <div class="container">
             <div class="row">
                 <div>
-                    <div class="col-md-8">
+                    <div class="col-md-push-4 col-md-8">
                         <h1 class="text-right titre-profil marge-titre-profil">
                             <% 
                                 out.println("Caserne " + unPompier.getcNom() + " : " + unPompier.getpNom() + " " + unPompier.getpPrenom()); 
@@ -42,7 +42,7 @@
                         </h1>
                     </div>
         
-                    <div class="col-md-push-7 col-md-4">
+                    <div class="col-md-push-3 col-md-4">
                          <div><img src="images/test.jpg" class="img-responsive img-rounded" width="150" height="150"></div>
                     </div>
 
