@@ -296,7 +296,7 @@ commit;
 ALTER TABLE pompier ADD IF NOT EXISTS pUrlPhoto varchar(100);
 
 ALTER TABLE pompier ADD IF NOT EXISTS EmpRaisonSoc varchar(30);
-ALTER TABLE pompier ADD IF NOT EXISTS EXISTSEmpAdresse varchar(30);
+ALTER TABLE pompier ADD IF NOT EXISTS EmpAdresse varchar(30);
 
 ALTER TABLE pompier ADD IF NOT EXISTS pIdCreation int;
 ALTER TABLE pompier ADD IF NOT EXISTS pIdModif int;

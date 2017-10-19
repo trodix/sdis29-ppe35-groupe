@@ -24,12 +24,14 @@
                                 if((boolean) maSession2.getAttribute("chefDeCentre") == true){
                                     out.println("<li class='nav-item'>"+
                                                 "<a class='nav-link' href='listePompier'>Liste des pompiers</a></li>"+
-                                                "<li class='nav-item'><a class='nav-link' href=''>Créer pompier volontaire</a></li>");
+                                                "<li class='nav-item'><a class='nav-link' href='creerPompier'>Créer pompier volontaire</a></li>");
                                 }
                             }
                         
                         %>
-                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="charte">Charte d'utilisation</a>
+                        </li>
                     </ul>
                 </div>
             </nav>

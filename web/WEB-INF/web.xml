@@ -24,6 +24,10 @@
         <servlet-name>creerPompierServlet</servlet-name>
         <servlet-class>com.test.servlets.creerPompierServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>charteServlet</servlet-name>
+        <servlet-class>com.test.servlets.charteServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>authentifServlet</servlet-name>
         <url-pattern>/authentification</url-pattern>
@@ -39,6 +43,10 @@
     <servlet-mapping>
         <servlet-name>creerPompierServlet</servlet-name>
         <url-pattern>/creerPompier</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>charteServlet</servlet-name>
+        <url-pattern>/charte</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
