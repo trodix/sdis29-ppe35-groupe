@@ -109,23 +109,17 @@ public class authentifServlet extends HttpServlet {
                         responsableDesAlertes = true;
                         maSession.setAttribute("pompier", responsableDesAlertes);
                         break;
-        }
-                
-                getServletContext().getRequestDispatcher("/WEB-INF/pompierJSP.jsp").forward(request, response);
-            }else{
-                maSession.setAttribute("authentif", "Echec authentification");
-                getServletContext().getRequestDispatcher("/WEB-INF/authentifJSP.jsp").forward(request, response);
+        }       
+            getServletContext().getRequestDispatcher("/WEB-INF/pompierJSP.jsp").forward(request, response);
+        }else{
+                getServletContext().getRequestDispatcher("/WEB-INF/authentif.jsp").forward(request, response);
+                maSession.setAttribute("authentif","Echec authentification");
             }
-        } catch (SQLException ex) { 
+
+    }   catch (SQLException ex) {
             Logger.getLogger(authentifServlet.class.getName()).log(Level.SEVERE, null, ex);
             Logger.getLogger(authentifServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
-        
-        
-        
-        
-    }
+}
 }
 

@@ -57,7 +57,8 @@ public class pompierServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        //processRequest(request, response);
+        getServletContext().getRequestDispatcher("/WEB-INF/listePompier.jsp").forward(request, response);
     }
 
     /**
@@ -74,9 +75,12 @@ public class pompierServlet extends HttpServlet {
         //processRequest(request, response);
         HttpSession maSession = request.getSession();
         if(maSession.getAttribute("pompier") != null || maSession.getAttribute("chefDeCentre") != null || maSession.getAttribute("pompier")  != null){
+            if((boolean) maSession.getAttribute("pompier") == true){
+                getServletContext().getRequestDispatcher("/WEB-INF/listePompier.jsp").forward(request, response); 
+            }
             
         }
-        getServletContext().getRequestDispatcher("/WEB-INF/listePompier.jsp").forward(request, response);
+        
     }
 
     /**
