@@ -21,6 +21,16 @@
         <title>Page Pompier Volontaire</title>
     </head>
         <%@include file="navbar.jspf" %>
+        <%
+            AuthentifForm leControle = new AuthentifForm();
+            leControle = (AuthentifForm)maSession.getAttribute("controleForm");
+            PompierMYSQL unPompierMYSQL = new PompierMYSQL();
+            if(leControle != null){
+                unPompier = unPompierMYSQL.read(leControle.getnCaserne(), leControle.getpId());
+                maSession.setAttribute("unPompier",unPompier);
+            }
+            
+        %>
         <div class="container">
                 <form action="Pompier" method="POST">
                     <div class="table-responsive">
@@ -97,7 +107,6 @@
         </div>
         
         <!--<%
-            AuthentifForm leControle = (AuthentifForm) request.getAttribute("controleForm");
             if(leControle != null){
                 out.println(leControle.getResultat());
             }
