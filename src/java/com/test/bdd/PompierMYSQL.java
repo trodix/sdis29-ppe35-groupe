@@ -19,7 +19,7 @@ import java.sql.SQLException;
  */
 public class PompierMYSQL {
     
-    Connection laConnection = Connexion.getConnect("10.121.38.193","sdis29", "adminBDsdis", "mdpBDsdis");
+    Connection laConnection = Connexion.getConnect("localhost","sdis29", "adminBDsdis", "mdpBDsdis");
     int idStatut = 0;
     
     public Pompier read(int nCaserne, int pId) throws SQLException{
@@ -38,7 +38,9 @@ public class PompierMYSQL {
                         resultat.getString("pPrenom"), resultat.getString("pAdresse"), 
                         resultat.getString("pVille"), resultat.getString("pCp"),
                         resultat.getString("pMail"), resultat.getString("pBip"),
-                        getGrade(resultat.getString("pGrade")),getStatut(resultat.getString("pStatut")),
+                        getGrade(resultat.getString("pGrade")),
+                        getStatut(resultat.getString("pStatut")),
+                        resultat.getInt("pStatut"),
                         resultat.getString("pUrlPhoto"), resultat.getString("pCommentaire"),
                         resultat.getString("cNom"),resultat.getString("EmpRaisonSoc"), resultat.getString("EmpAdresse")
                 );
@@ -119,7 +121,7 @@ public class PompierMYSQL {
         return statut;
     }
     
-    public int getIsResponsable(){
+    public int getIsResponsable(String pStatut){
         
         int responsable = 0;
         try{
