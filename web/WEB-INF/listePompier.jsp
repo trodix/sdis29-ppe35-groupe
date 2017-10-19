@@ -56,9 +56,9 @@
                     </thead>
                     <tbody>
                         <%
-                            if(request.getAttribute("lesPompiers") != null){
-                                ArrayList <Pompier> lesPompiers = (ArrayList)request.getAttribute("lesPompiers");
-                                System.out.println(lesPompiers);
+                            if(maSession.getAttribute("lesPompiers") != null){
+                                ArrayList <Pompier> lesPompiers = (ArrayList)maSession.getAttribute("lesPompiers");
+                                
                                 for(Pompier unPompierListe : lesPompiers){
                                     out.println("<tr><td>" + unPompierListe.getpNom() + "</td><td>" + unPompierListe.getpPrenom()+ "</td><td>" + unPompierListe.getpGrade()+ "</td><td><i class='fa fa-pencil' aria-hidden='true'></i></td><td><i class='fa fa-eye' aria-hidden='true'></i></td></tr>");
                                 }

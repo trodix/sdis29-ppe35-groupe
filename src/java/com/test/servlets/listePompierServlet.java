@@ -5,12 +5,16 @@
  */
 package com.test.servlets;
 
+import com.test.bdd.PompierMYSQL;
+import com.test.beans.Pompier;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -57,7 +61,28 @@ public class listePompierServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //processRequest(request, response);
-        getServletContext().getRequestDispatcher("/WEB-INF/listePompier.jsp").forward(request, response);
+        Pompier unPompier = null;
+        HttpSession maSession = request.getSession();
+        
+        if(maSession.getAttribute("unPompier") != null){
+            unPompier = (Pompier)maSession.getAttribute("unPompier");
+        }
+        
+        if(maSession.getAttribute("pompier") != null || maSession.getAttribute("chefDeCentre") != null || maSession.getAttribute("pompier")  != null){
+            
+            if((boolean) maSession.getAttribute("pompier") == true){
+                
+                PompierMYSQL unPompierMYSQL = new PompierMYSQL();
+                
+                ArrayList <Pompier> lesPompiers = new ArrayList();
+                
+                lesPompiers = unPompierMYSQL.readAll(unPompier.getcId());
+                System.out.println(lesPompiers);
+                maSession.setAttribute("lesPompiers",lesPompiers);
+                getServletContext().getRequestDispatcher("/WEB-INF/listePompier.jsp").forward(request, response); 
+            }
+            
+        }
     }
 
     /**

@@ -89,9 +89,9 @@ public class PompierMYSQL {
         try{
             PreparedStatement prepStmt = null;
             String sql = "SELECT * FROM pompier INNER JOIN caserne ON caserne.cId = pCis WHERE pCis = ? AND pType = 2";
-            prepStmt.setInt(1, nCaserne);
-            prepStmt = laConnection.prepareStatement(sql);
             
+            prepStmt = laConnection.prepareStatement(sql);
+            prepStmt.setInt(1, nCaserne);
             ResultSet resultat = prepStmt.executeQuery();
             while(resultat.next()){
                 unPompier = new Pompier(
