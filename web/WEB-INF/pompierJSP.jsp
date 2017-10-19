@@ -35,9 +35,6 @@
             <div class="row">
                 <div>
                     <div class="col-md-4">
-                        <div class="marge-logo"><img src="images/logo-sdis.png"></div>
-                    </div>
-                    <div class="col-md-4">
                         <h1 class="text-left">
                             <% 
                                 out.println("Caserne : " + unPompier.getcNom() + " " + unPompier.getpNom() + " " + unPompier.getpPrenom()); 
@@ -49,11 +46,11 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <%@include file="navbar.jspf" %>
+        <div class="container">
                 <form action="" method="POST">
                     <div class="row">
-                        <div>
-                            <p>Votre profil</p>
-                        </div>
                         <div class="col-md-2">
                             <div>
                                 <label for="nom" >Nom : </label>
@@ -171,8 +168,7 @@
                     <div>
                         <label for="btModification"></label>
                         <input type="submit" value="Valider modifications" id="btModifications"/>
-                    </div><br>  
-                    
+                    </div><br>   
                 </form>
         </div>
         

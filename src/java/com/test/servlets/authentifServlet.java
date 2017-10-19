@@ -96,7 +96,6 @@ public class authentifServlet extends HttpServlet {
 //                maSession.setAttribute("pId", leControle.getpId());        
                 unPompier = unPompierMYSQL.read(leControle.getnCaserne(), leControle.getpId());
                 maSession.setAttribute("unPompier",unPompier);              
-                System.out.print("test eee" + unPompier.getiStatut());
                 switch(unPompier.getiStatut()){
                     case 1:
                         pompier = true;
