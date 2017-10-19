@@ -12,7 +12,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -174,6 +177,55 @@ public class PompierMYSQL {
             System.out.println("SQLException : " + ex.getErrorCode());
         }
         return responsable;
+    }
+    
+    public Pompier create(int nCaserne,int id,String nom, String prenom,int statut,int type,String mail,String login,
+            String mdp, String adresse,int cp,String ville, int bip,String com,String urlPhoto,String raisonSoc,String EmplAdresse,int idCreation) throws SQLException{
+        Pompier unPompier = null;
+        
+        try{
+            PreparedStatement prepStmt = null;
+            String sql = "INSERT INTO `pompier` (`pCis`,`pId`,`pNom`, `pPrenom`,"
+                    + " `pStatut`, `pType`, `pMail`, `pLogin`, `pMdp`, `pAdresse`,"
+                    + " `pCp`, `pVille`, `pBip`,`pCommentaire`,"
+                    + " `pDateEnreg`, `pDateModif`, `pUrlPhoto`, `EmpRaisonSoc`, `EmpAdresse`,"
+                    + " `pIdCreation`, `pIdModif`) "
+                    + "VALUES (?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            prepStmt = laConnection.prepareStatement(sql);
+            prepStmt.setInt(1, nCaserne);
+            prepStmt.setInt(2, id);
+            prepStmt.setString(3, nom);
+            prepStmt.setString(4 ,prenom);
+            prepStmt.setInt(5, statut);
+            prepStmt.setInt(6, type);
+            prepStmt.setString(7, mail);
+            prepStmt.setString(8, login);
+            prepStmt.setString(9, mdp);
+            prepStmt.setString(10, adresse);
+            prepStmt.setInt(11, cp);
+            prepStmt.setString(12, ville);
+            prepStmt.setInt(13, bip);
+            prepStmt.setString(14, com);
+            java.util.Date date_util = new java.util.Date();
+            java.sql.Date date_sql = new java.sql.Date(date_util.getTime());
+            prepStmt.setDate(15, date_sql);
+            prepStmt.setDate(16, date_sql);
+            prepStmt.setString(17, urlPhoto);
+            prepStmt.setString(18, raisonSoc);
+            prepStmt.setString(19, EmplAdresse);        
+            prepStmt.setInt(20, idCreation);
+            prepStmt.setInt(21, idCreation);
+
+            
+            
+            
+            int resultat = prepStmt.executeUpdate();
+        }catch (SQLException ex){
+            System.out.println("SQLException : " + ex.getMessage());
+            System.out.println("SQLException : " + ex.getSQLState());
+            System.out.println("SQLException : " + ex.getErrorCode());
+        }
+        return unPompier;
     }
     
 }
