@@ -11,13 +11,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author fabien.ladouce
  */
-public class pompierServlet extends HttpServlet {
+public class listePompierServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,10 +35,10 @@ public class pompierServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet pompierServlet</title>");            
+            out.println("<title>Servlet listePompierServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet pompierServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet listePompierServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -73,14 +72,8 @@ public class pompierServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //processRequest(request, response);
-        HttpSession maSession = request.getSession();
-        if(maSession.getAttribute("pompier") != null || maSession.getAttribute("chefDeCentre") != null || maSession.getAttribute("pompier")  != null){
-            if((boolean) maSession.getAttribute("pompier") == true){
-                getServletContext().getRequestDispatcher("/WEB-INF/listePompier.jsp").forward(request, response); 
-            }
-            
-        }
         
+        getServletContext().getRequestDispatcher("/WEB-INF/listePompier.jsp").forward(request, response);
     }
 
     /**
