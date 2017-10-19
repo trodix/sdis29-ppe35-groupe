@@ -53,36 +53,30 @@
                                 <tr>
                                     <td><label for="nom" >Nom : </label></td>
                                     <td><input type="text" name="ztNom" id="nom" class="taille-case-pompierVolontaire"/></td>
-                                    <td><i class="fa fa-pencil couleur-icones" aria-hidden="true"></i></td>
                                     <td><label for="adresseMail" >Adresse Mail : </label></td>
                                     <td><input type="email" name="emailAdresse" id="adresseMail" class="taille-case-pompierVolontaire"/></td>
-                                    <td><i class="fa fa-pencil couleur-icones" aria-hidden="true"></i></td>
                                 </tr>
                                 <tr>
                                     <td><label for="prenom" >Prénom : </label></td>
                                     <td><input type="text" name="ztPrenom" id="prenom" class="taille-case-pompierVolontaire"/></td>
-                                    <td><i class="fa fa-pencil couleur-icones" aria-hidden="true"></i></td>
                                     <td><label for="caserneAppartenance" >Caserne : </label></td>
                                     <td><input name="caserneAppartenance" id="caserneAppartenance" class="taille-case-pompierVolontaire"></td>
                                 </tr>
                                 <tr>
                                     <td><label for="adresse" >Adresse : </label></td>
                                     <td><input type="text" name="ztAdresse" id="adresse" class="taille-case-pompierVolontaire"/></td>
-                                    <td><i class="fa fa-pencil couleur-icones" aria-hidden="true"></i></td>
                                     <td><label for="statut" >Statut : </label></td>
                                     <td><input name="statut" id="statut" class="taille-case-pompierVolontaire"></td>
                                 </tr>
                                 <tr>
                                     <td><label for="ville" >Ville : </label></td>
                                     <td><input type="text" name="ztVille" id="ville" class="taille-case-pompierVolontaire"/></td>
-                                    <td><i class="fa fa-pencil couleur-icones" aria-hidden="true"></i></td>
                                     <td><label for="grade" >Grade : </label></td>
                                     <td><input name="grade" id="grade" class="taille-case-pompierVolontaire"></td>
                                 </tr>
                                 <tr>
                                    <td><label for="cp" >Code Postal : </label></td>
                                    <td><input type="text" name="ztCP" id="cp" class="taille-case-pompierVolontaire"/></td>
-                                   <td><i class="fa fa-pencil couleur-icones" aria-hidden="true"></i></td>
                                    <td><label for="noBip" >Numéro Bip : </label></td>
                                    <td><input type="text" name="noBip" id="noBip" class="taille-case-pompierVolontaire"/></td>
                                 </tr>
@@ -109,16 +103,15 @@
                     </div>
                     <div class="col-md-6">
                         <div><img src="images/test.jpg" class="img-responsive img-rounded" width="150" height="150"></div>
-                        <input type="text" name="input-url-profil" placeholder="Url Photo"><i class="fa fa-pencil couleur-icones" aria-hidden="true"></i>
                     </div>
                 </div>
                 <div>
                     <p>Commentaires : </p>
                     <textarea class="taille-case-commentaire"></textarea>
                 </div>
-                <div class="bouton-validation">
+                <div>
                     <label for="btModification"></label>
-                    <input class="btn btn-lg" type="button submit" value="Valider modifications" id="btModifications"/>
+                    <input class="btn btn-lg bouton-validation" type="button submit" value="Créer" id="btModifications"/>
                 </div><br>
             </form>
         

@@ -53,8 +53,7 @@
             <div class="table-responsive">
                 <table class="table tableau-liste-pompier table-bordered table-striped">
                     <thead>
-                        <caption>Liste des pompiers</caption>
-                        <a href="creerPompier">Créer un pompier volontaire</a>
+                    <h3 class="titre-profil">Liste des pompiers</h3>
                         <tr>
                             <th>Nom</th>
                             <th>Prénom</th>
