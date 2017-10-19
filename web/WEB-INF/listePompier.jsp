@@ -34,24 +34,32 @@
     <body class="fond-pompier">
         <div class="container">
             <div class="row">
-                <div class="col-md-4">
-                    <div class="marge-logo"><img src="images/logo-sdis.png"></div>
-                </div>
-                <div class="col-md-4">
-                    <h1 class="text-left">
-                        <% 
-                            out.println("Caserne : " + unPompier.getcNom() + " " + unPompier.getpNom() + " " + unPompier.getpPrenom()); 
-                        %>
-                    </h1>
+                <div>
+                    <div class="col-md-8">
+                        <h1 class="text-right titre-profil marge-titre-profil">
+                            <% 
+                                out.println("Caserne " + unPompier.getcNom() + " : " + unPompier.getpNom() + " " + unPompier.getpPrenom()); 
+                            %>
+                        </h1>
+                    </div>
+                    <div class="col-md-push-3 col-md-4">
+                         <div><img src="images/test.jpg" class="img-responsive img-rounded" width="150" height="150"></div>
+                    </div>
                 </div>
             </div>
-            <div class="row">
-                <table class="table">
+        </div>
+        <%@include file="navbar.jspf"%>
+        <div class="container">
+            <div class="table-responsive">
+                <table class="table tableau-liste-pompier">
                     <thead>
-                        <caption>Liste des pompiers</caption>
-                        <a href="/Pompier">Créer un pompier volontaire</a>
+                        <h3>Liste des pompiers</h3>
                         <tr>
-                            <th>Nom</th> <th>Prénom</th> <th>Grade</th> <th>Modifier</th> <th>Visualiser</th>
+                            <th>Nom</th>
+                            <th>Prénom</th>
+                            <th>Grade</th>
+                            <th>Modifier</th>
+                            <th>Visualiser</th>
                         </tr>
                     </thead>
                     <tbody>
