@@ -16,10 +16,6 @@
         <servlet-name>pompierServlet</servlet-name>
         <servlet-class>com.test.servlets.pompierServlet</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>responsableServlet</servlet-name>
-        <servlet-class>com.test.servlets.responsableServlet</servlet-class>
-    </servlet>
     <servlet-mapping>
         <servlet-name>authentifServlet</servlet-name>
         <url-pattern>/authentification</url-pattern>
@@ -27,10 +23,6 @@
     <servlet-mapping>
         <servlet-name>pompierServlet</servlet-name>
         <url-pattern>/Pompier</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>responsableServlet</servlet-name>
-        <url-pattern>/responsable</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
