@@ -1,7 +1,7 @@
 #Requête authentification#
 SELECT pId, pLogin, pMdp FROM pompier WHERE pLogin = ? AND pMdp = ?
 
-#Reqûete modification pompier volontaire#
+#Requête modification pompier volontaire#
 SELECT pNom, pPrenom, pAdresse, pVille, pCp, pMail, pBip, pUrlPhoto, pCommentaire, cNom 
 FROM pompier INNER JOIN caserne ON pCis = cId WHERE pCis = 2901 AND pId = 1
 

@@ -12,11 +12,8 @@
                 <div>
                     <a class="navbar-brand" href="Pompier"><img id="logo" src="images/logo-sdis.png"></a>
                     <ul class="nav navbar-nav">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="Pompier"><i class="fa fa-home"></i><span class="sr-only">(current)</span></a>
-                        </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="Pompier">Profil</a>
+                            <a class="nav-link" href="Pompier"><i class="fa fa-home margin-icone-navbar"></i>Profil</a>
                         </li>
                         <%
                             HttpSession maSession2 = request.getSession();
@@ -33,7 +30,7 @@
                             <a class="nav-link" href="charte">Charte d'utilisation</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="authentification?co=0"><i class="fa fa-power-off"></i>Déconnexion</a>
+                            <a class="nav-link" href="authentification?co=0"><i class="fa fa-power-off margin-icone-navbar"></i>Déconnexion</a>
                         </li>
                     </ul>
                 </div>
