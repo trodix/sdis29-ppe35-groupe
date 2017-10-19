@@ -41,11 +41,6 @@
                             %>
                         </h1>
                     </div>
-        
-                    <div class="col-md-push-3 col-md-4">
-                         <div><img src="images/test.jpg" class="img-responsive img-rounded" width="150" height="150"></div>
-                    </div>
-
                 </div>
             </div>
         </div>
@@ -105,6 +100,9 @@
                                 </tr>
                             </tbody>
                         </table>
+                    </div>
+                    <div class="col-md-6">
+                        <div><img src="images/test.jpg" class="img-responsive img-rounded" width="150" height="150"></div>
                     </div>
                 </div>
                 <div>
