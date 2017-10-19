@@ -20,8 +20,8 @@ import java.util.Objects;
  */
 public class UtilisateurMYSQL {
         
-    Connection laConnection = Connexion.getConnect("ppe35test","sdis29", "adminBDsdis", "mdpBDsdis");
-    //Connection laConnection = Connexion.getConnect("localhost","sdis29", "adminBDsdis", "mdpBDsdis");
+    //Connection laConnection = Connexion.getConnect("ppe35test","sdis29", "adminBDsdis", "mdpBDsdis");
+    Connection laConnection = Connexion.getConnect("localhost","sdis29", "adminBDsdis", "mdpBDsdis");
     //Connection laConnection = Connexion.getConnect("10.121.38.193","sdis29", "adminBDsdis", "mdpBDsdis");
     
     public Utilisateur read(String nom, String password) throws SQLException{
