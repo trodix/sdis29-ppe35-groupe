@@ -1,3 +1,4 @@
+<%@page import="com.test.beans.Pompier"%>
 <html>
 <head>
     <title>SDIS 29 navbar</title>
@@ -5,8 +6,30 @@
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-    <div class="head">
+    <%
+        Pompier unPompier = null;
+        HttpSession maSession = request.getSession();
+        if(maSession.getAttribute("unPompier") != null){
+            unPompier = (Pompier)maSession.getAttribute("unPompier");
+        }
+        if(maSession.getAttribute("pompier") != null){
+            System.out.println(maSession.getAttribute("pompier"));
+        }
+    %>
+    <body class="fond-pompier">
+        <div class="container">
+            <div class="row">
+                <div>
+                    <div class="col-xs-push-2 col-md-10">
+                        <h1 class="text-right titre-profil marge-titre-profil">
+                            <% 
+                                out.println("Caserne " + unPompier.getcNom() + " : " + unPompier.getpNom() + " " + unPompier.getpPrenom()); 
+                            %>
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="row">
             <nav class="navbar col-xs-push-1 col-xs-10">
                 <div>
