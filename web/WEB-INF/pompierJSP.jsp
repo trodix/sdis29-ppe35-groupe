@@ -21,47 +21,14 @@
         <title>Page Pompier Volontaire</title>
     </head>
     <%
-        int nCaserne = 0;
-        int pId = 0;
-        boolean pompier = false;
-        boolean chefDeCentre = false;
-        boolean responsableDesAlertes = false;
-        
+        Pompier unPompier = null;
         HttpSession maSession = request.getSession();
-        if(maSession.getAttribute("nCaserne") != null){
-            nCaserne = (int)maSession.getAttribute("nCaserne");        
+        if(maSession.getAttribute("unPompier") != null){
+            unPompier = (Pompier)maSession.getAttribute("unPompier");
         }
-        if(maSession.getAttribute("pId") != null){
-            pId = (int)maSession.getAttribute("pId");
+        if(maSession.getAttribute("pompier") != null){
+            System.out.println(maSession.getAttribute("pompier"));
         }
-        PompierMYSQL unPompierMYSQL = new PompierMYSQL();
-        
-        Pompier unPompier = unPompierMYSQL.read(nCaserne, pId);
-        int responsable = unPompierMYSQL.getIsResponsable();
-        System.out.print("test eee" + responsable);
-        switch(responsable){
-            case 1:
-                pompier = true;
-                break;
-            case 2:
-                chefDeCentre = true;
-                break;
-            case 3:
-                responsableDesAlertes = true;
-                break;
-        }
-        //if(isResponsable.equals("chef de centre")){
-        //    System.out.println("test");
-        //}else {
-        //    if(isResponsable.equals("pompier")){
-        //        System.out.print("test2");
-        //    }else{
-        //        if(isResponsable.equals("responsable des alertes")){
-        //           System.out.println("test3");
-                //}
-            //}
-        //}
-        
     %>
     <body class="fond-pompier">
         <div class="container">

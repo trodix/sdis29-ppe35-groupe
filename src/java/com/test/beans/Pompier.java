@@ -24,13 +24,14 @@ public class Pompier {
     private String pBip;
     private String pGrade;
     private String pStatut;
+    private int iStatut;
     private String pUrlPhoto;
     private String pCommentaire;
     private String cNom;
     private String EmpRaisonSoc;
     private String EmpAdresse;
 
-    public Pompier(int cId, int pId, String pNom, String pPrenom, String pAdresse, String pVille, String pCp, String pMail, String pBip, String pGrade,String pStatut ,String pUrlPhoto, String pCommentaire, String cNom, String EmpRaisonSoc, String EmpAdresse) {
+    public Pompier(int cId, int pId, String pNom, String pPrenom, String pAdresse, String pVille, String pCp, String pMail, String pBip, String pGrade,String pStatut, int iStatut ,String pUrlPhoto, String pCommentaire, String cNom, String EmpRaisonSoc, String EmpAdresse) {
         this.cId = cId;
         this.pId = pId;
         this.pNom = pNom;
@@ -41,6 +42,7 @@ public class Pompier {
         this.pMail = pMail;
         this.pGrade = pGrade;
         this.pStatut = pStatut;
+        this.iStatut = iStatut;
         this.pBip = pBip;
         this.pUrlPhoto = pUrlPhoto;
         this.pCommentaire = pCommentaire;
@@ -52,6 +54,16 @@ public class Pompier {
     public String getEmpRaisonSoc() {
         return EmpRaisonSoc;
     }
+
+    public int getiStatut() {
+        return iStatut;
+    }
+
+    public void setiStatut(int iStatut) {
+        this.iStatut = iStatut;
+    }
+    
+    
 
     public String getpStatut() {
         return pStatut;

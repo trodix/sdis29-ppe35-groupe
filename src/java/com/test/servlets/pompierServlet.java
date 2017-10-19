@@ -11,6 +11,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -71,8 +72,11 @@ public class pompierServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //processRequest(request, response);
-        
-        getServletContext().getRequestDispatcher("/WEB-INF/pompierJSP.jsp").forward(request, response);
+        HttpSession maSession = request.getSession();
+        if(maSession.getAttribute("pompier") != null || maSession.getAttribute("chefDeCentre") != null || maSession.getAttribute("pompier")  != null){
+            
+        }
+        getServletContext().getRequestDispatcher("/WEB-INF/listePompier.jsp").forward(request, response);
     }
 
     /**
