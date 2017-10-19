@@ -139,9 +139,13 @@ label{
 
 .margin-charte-titre{
     margin-top: 30px;
-    margin-right: 10px;
 }
 
 .margin-charte-article{
     margin-top: 15px;
+    margin-left: 20px;
+}
+
+.margin-charte-fin{
+    margin-bottom: 60px;
 }
