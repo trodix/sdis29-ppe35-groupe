@@ -19,7 +19,7 @@ import java.sql.SQLException;
  */
 public class PompierMYSQL {
     
-    Connection laConnection = Connexion.getConnect("10.121.38.193","sdis29", "adminBDsdis", "mdpBDsdis");
+    Connection laConnection = Connexion.getConnect("localhost","sdis29", "adminBDsdis", "mdpBDsdis");
     int idStatut = 0;
     
     public Pompier read(int nCaserne, int pId) throws SQLException{

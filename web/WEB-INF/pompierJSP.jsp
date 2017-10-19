@@ -26,6 +26,9 @@
         if(maSession.getAttribute("unPompier") != null){
             unPompier = (Pompier)maSession.getAttribute("unPompier");
         }
+        if(maSession.getAttribute("pompier") != null){
+            System.out.println(maSession.getAttribute("pompier"));
+        }
     %>
     <body class="fond-pompier">
         <div class="container">
