@@ -52,6 +52,8 @@
                         <li class="nav-item">
                             <a class="nav-link" href="charte">Charte d'utilisation</a>
                         </li>
+                    </ul>
+                    <ul class='nav navbar-nav navbar-right'>
                         <li class="nav-item">
                             <a class="nav-link" href="authentification?co=0"><i class="fa fa-power-off margin-icone-navbar"></i>Déconnexion</a>
                         </li>
