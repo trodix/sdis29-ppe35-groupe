@@ -20,6 +20,10 @@
         <servlet-name>listePompierServlet</servlet-name>
         <servlet-class>com.test.servlets.listePompierServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>creerPompierServlet</servlet-name>
+        <servlet-class>com.test.servlets.creerPompierServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>authentifServlet</servlet-name>
         <url-pattern>/authentification</url-pattern>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>listePompierServlet</servlet-name>
         <url-pattern>/listePompier</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>creerPompierServlet</servlet-name>
+        <url-pattern>/creerPompier</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
