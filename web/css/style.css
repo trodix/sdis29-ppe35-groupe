@@ -14,7 +14,7 @@
 
 /* Fond d'écran pour la page d'authentification */
 .fond-authentif{
-    background-color: #666666;
+    background-color: #333333;
 }
 
 /* Marge avec le logo */
@@ -34,5 +34,72 @@ label{
 }
 
 .fond-pompier{
-    background-color: #666666;
+    background-color: #333333;
+    background: "images/bg-casque.jpg";
+}
+
+.taille-cas-commentaire{
+    width: 950px;
+    height: 200px;
+}
+
+.titre-profil{
+    color: white;
+}
+
+label{
+    color: white;
+    font-size: 23;
+}
+
+.navbar, .navbar > li, .navbar > a .navbar > .fa{
+	color: white;
+	font-size: 1.4em;
+}
+
+.navbar-brand{
+	padding-right: 90px;
+}
+
+.navbar-brand:focus, .navbar-brand:hover {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.navbar > li:focus, li:hover{
+	background: #ca0000;
+}
+
+.navbar-brand, 
+.nav-link, 
+.navbar-brand:focus, 
+.nav-link:focus, 
+.navbar-brand:hover, 
+.nav-link:hover{
+	color: #ffffff;
+}
+
+.nav>li>a:focus, .nav>li>a:hover {
+    text-decoration: none;
+    background-color: #ca4444;
+}
+
+.separator{
+	font-style: bold;
+}
+
+.navbar{
+	background-color: #ca0000;
+	border-radius: 10px;
+}
+
+.head{
+	padding-top: 100px;
+}
+
+#logo{
+	position: absolute;
+	bottom: 0px;
+	left: 10px;
+	margin-right: 25px;
 }
