@@ -56,7 +56,7 @@ public class PompierMYSQL {
     }
     
     public Pompier update(int cId, int pId, String pNom, String pPrenom, String pAdresse, 
-            String pVille, String pCp, String pMail, String pCommentaire ) throws SQLException{
+            String pVille, int pCp, String pMail, String pCommentaire ) throws SQLException{
         
         Pompier unPompier = null;
         
@@ -68,7 +68,7 @@ public class PompierMYSQL {
             prepStmt.setString(2, pPrenom);
             prepStmt.setString(3, pAdresse);
             prepStmt.setString(4, pVille);
-            prepStmt.setString(5, pCp);
+            prepStmt.setInt(5, pCp);
             prepStmt.setString(6, pMail);
             prepStmt.setString(7, pCommentaire);
             prepStmt.setInt(8, cId);

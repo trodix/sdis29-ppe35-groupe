@@ -9,7 +9,10 @@ import com.test.bdd.PompierMYSQL;
 import com.test.beans.Pompier;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -64,26 +67,48 @@ public class pompierServlet extends HttpServlet {
         Pompier unPompier = null;
         HttpSession maSession = request.getSession();
         
+        
         if(maSession.getAttribute("unPompier") != null){
             unPompier = (Pompier)maSession.getAttribute("unPompier");
         }
         
-        if(maSession.getAttribute("pompier") != null || maSession.getAttribute("chefDeCentre") != null || maSession.getAttribute("pompier")  != null){
-            
-            if((boolean) maSession.getAttribute("pompier") == true){
-                
+        if(maSession.getAttribute("id") != null){
+            if((int)maSession.getAttribute("id") == 1){
                 PompierMYSQL unPompierMYSQL = new PompierMYSQL();
+                String nom = request.getParameter("nom");
+                String prenom = request.getParameter("prenom");
+                String adresse = request.getParameter("adresse");
+                String ville = request.getParameter("ville");
+                int cp = 0;
+                System.out.println(request.getParameter("cp"));
+                if(request.getParameter("cp") == null){
+                    cp = Integer.parseInt(request.getParameter("cp"));
+                }
                 
-                ArrayList <Pompier> lesPompiers = new ArrayList();
+                String mail = request.getParameter("adresseMail");
+                String com = request.getParameter("com");
+                try {
+                    unPompierMYSQL.update(unPompier.getcId() , unPompier.getpId(), nom,prenom,adresse, ville,cp,mail,com);
+                } catch (SQLException ex) {
+                    Logger.getLogger(pompierServlet.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                getServletContext().getRequestDispatcher("/WEB-INF/pompierJSP.jsp").forward(request, response); 
+            }
+            if(maSession.getAttribute("pompier") != null || maSession.getAttribute("chefDeCentre") != null || maSession.getAttribute("pompier")  != null){
+            
+                if((boolean) maSession.getAttribute("pompier") == true){
                 
-                lesPompiers = unPompierMYSQL.readAll(unPompier.getcId());
-                System.out.println(lesPompiers);
-                maSession.setAttribute("lesPompiers",lesPompiers);
-                getServletContext().getRequestDispatcher("/WEB-INF/listePompier.jsp").forward(request, response); 
+                    PompierMYSQL unPompierMYSQL = new PompierMYSQL();
+                
+                    ArrayList <Pompier> lesPompiers = new ArrayList();
+                
+                    lesPompiers = unPompierMYSQL.readAll(unPompier.getcId());
+                    maSession.setAttribute("lesPompiers",lesPompiers);
+                    getServletContext().getRequestDispatcher("/WEB-INF/listePompier.jsp").forward(request, response); 
             }
             
         }
-    }
+    }}
 
     /**
      * Handles the HTTP <code>POST</code> method.
