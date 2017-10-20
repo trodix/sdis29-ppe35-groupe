@@ -34,9 +34,9 @@
                                 <div>
                                     <label for="btConnexion"></label>
                                     <input type="submit" value="Se connecter" id="btConnexion" class="btn bordure-authentif-titre"/>
-                                </div>
+                                </div><br>
                                 <div>
-                                    <p href="" class="couleur-mdp"> J'ai oublié mon mot de passe </p>
+                                    <a href="" class="couleur-mdp"> J'ai oublié mon mot de passe </a>
                                 </div>
                             </div>
                         </div>
