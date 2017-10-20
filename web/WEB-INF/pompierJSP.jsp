@@ -23,11 +23,18 @@
         <%  String typeModif = "";
         if(request.getParameter("readonly")!= null){
             if(request.getParameter("readonly").equals("false")){
-                typeModif = "enabled";
+                typeModif = "";
             } else {
-                typeModif = "disabled";
+                typeModif = "disabled='disabled'";
             }
         }
+        if(request.getParameter("idCaserne") != null && request.getParameter("idPompier") != null){
+            PompierMYSQL unPompierMYSQL = new PompierMYSQL();
+                unPompier = unPompierMYSQL.read(Integer.parseInt(request.getParameter("idCaserne")),Integer.parseInt(request.getParameter("idPompier")));
+                maSession.setAttribute("unPompier",unPompier);
+            
+        }else{
+            
             AuthentifForm leControle = new AuthentifForm();
             leControle = (AuthentifForm)maSession.getAttribute("controleForm");
             PompierMYSQL unPompierMYSQL = new PompierMYSQL();
@@ -35,6 +42,7 @@
                 unPompier = unPompierMYSQL.read(leControle.getnCaserne(), leControle.getpId());
                 maSession.setAttribute("unPompier",unPompier);
             }
+        }
             
         %>
         <div class="container">
@@ -44,19 +52,19 @@
                             <tbody>
                                 <tr>
                                     <td><label for="nom" >Nom : </label></td>
-                                    <td><input type="text" name="ztNom" id="nom" class="taille-case-pompierVolontaire" disabled='<% typeModif.toString(); %>' value=<% out.println(unPompier.getpNom()); %>/><i  <%maSession.setAttribute("id",1); %> class="fa fa-pencil couleur-icones" aria-hidden="true"></i></td>
+                                    <td><input type="text" name="ztNom" id="nom" class="taille-case-pompierVolontaire" <% typeModif.toString(); %> value=<% out.println(unPompier.getpNom()); %>/><i  <%maSession.setAttribute("id",1); %> class="fa fa-pencil couleur-icones" aria-hidden="true"></i></td>
                                     <td><label for="adresseMail" >Adresse Mail : </label></td>
                                     <td><input type="email" name="emailAdresse" id="adresseMail" class="taille-case-pompierVolontaire" disabled='<% typeModif.toString(); %>' value=<% out.println(unPompier.getpMail()); %>/><i <%maSession.setAttribute("id",1); %> class="fa fa-pencil couleur-icones" aria-hidden="true"></i></td>
                                 </tr>
                                 <tr>
                                     <td><label for="prenom" >Prénom : </label></td>
-                                    <td><input type="text" name="ztPrenom" id="prenom" class="taille-case-pompierVolontaire" disabled='<% typeModif.toString(); %>' value=<% out.println(unPompier.getpPrenom()); %>/><%maSession.setAttribute("id",1); %><i class="fa fa-pencil couleur-icones" aria-hidden="true"></i></td>
+                                    <td><input type="text" name="ztPrenom" id="prenom" class="taille-case-pompierVolontaire" <% typeModif.toString(); %> value=<% out.println(unPompier.getpPrenom()); %>/><%maSession.setAttribute("id",1); %><i class="fa fa-pencil couleur-icones" aria-hidden="true"></i></td>
                                     <td><label for="caserneAppartenance" >Caserne : </label></td>
                                     <td><input name="caserneAppartenance" id="caserneAppartenance" class="taille-case-pompierVolontaire" disabled="disabled" value=<% out.println(unPompier.getcNom()); %>></td>
                                 </tr>
                                 <tr>
                                     <td><label for="adresse" >Adresse : </label></td>
-                                    <td><input type="text" name="ztAdresse" id="adresse" class="taille-case-pompierVolontaire" disabled='<% typeModif.toString(); %>' value=<% out.println(unPompier.getpAdresse()); %>/><i  <%maSession.setAttribute("id",1); %> class="fa fa-pencil couleur-icones" aria-hidden="true"></i></td>
+                                    <td><input type="text" name="ztAdresse" id="adresse" class="taille-case-pompierVolontaire" <% typeModif.toString(); %> value=<% out.println(unPompier.getpAdresse()); %>/><i  <%maSession.setAttribute("id",1); %> class="fa fa-pencil couleur-icones" aria-hidden="true"></i></td>
                                     <td><label for="statut" >Statut : </label></td>
                                     <td><input name="statut" id="statut" class="taille-case-pompierVolontaire" disabled="disabled" value=<% out.println(unPompier.getpStatut()); %>></td>
                                 </tr>
@@ -68,7 +76,7 @@
                                 </tr>
                                 <tr>
                                    <td><label for="cp" >Code Postal : </label></td>
-                                   <td><input type="text" name="ztCP" id="cp" class="taille-case-pompierVolontaire" disabled='<% typeModif.toString(); %>' value=<% out.println(unPompier.getpCp()); %>/><i <%maSession.setAttribute("id",1); %> class="fa fa-pencil couleur-icones" aria-hidden="true"></i></td>
+                                   <td><input type="text" name="ztCP" id="cp" class="taille-case-pompierVolontaire" <% typeModif.toString(); %> value=<% out.println(unPompier.getpCp()); %>/><i <%maSession.setAttribute("id",1); %> class="fa fa-pencil couleur-icones" aria-hidden="true"></i></td>
                                    <td><label for="noBip" >Numéro Bip : </label></td>
                                    <td><input type="text" name="noBip" id="noBip" class="taille-case-pompierVolontaire" disabled="disabled" value=<% out.println(unPompier.getpBip()); %>/></td>
                                 </tr>
@@ -111,11 +119,5 @@
                 </div><br>
             </form>
         </div>
-        
-        <!--<%
-            if(leControle != null){
-                out.println(leControle.getResultat());
-            }
-        %>-->
     </body>
 </html>
