@@ -10,6 +10,7 @@
 .bordure-authentif-champ{
     color : white ;
     background-color: #999999;
+
 }
 
 /* Fond d'écran pour la page d'authentification */
@@ -156,4 +157,8 @@ label{
 
 .align-icones-tableau{
     text-align: center;
+}
+
+.couleur-mdp{
+    color: #02A6FF;
 }

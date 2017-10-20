@@ -15,33 +15,35 @@
     </head>
     <body class="fond-authentif">
         <div class="container">
-            <div class="row">
-                <div class="col-md-push-4 col-md-4 ">
-                    <div class="marge-logo"><img src="images/logo-sdis.png"></div>
-                        <div class="align-right">
-                            <form action="authentification" method="POST">
-                                <div>
-                                    <label for="login" class="bordure-authentif-titre">Nom d'utilisateur </label>
-                                    <input type="text" name="ztLogin" id="login" class="bordure-authentif-champ"/>
-                                </div><br>
-                                <div>
-                                    <label for="mdp" class="bordure-authentif-titre">Mot de passe </label>
-                                    <input type="password" name="ztMDP" id="mdp" class="bordure-authentif-champ"/>
-                                </div><br>
-                                
-                            
-                        
-                        <div>
-                            <label for="btConnexion"></label>
-                            <input type="submit" value="Se connecter" id="btConnexion" class="btn bordure-authentif-titre"/>
-                        </div>
-                    </form>
+            <form action="authentification" method="POST">
+                <div class="row">
+                    <div class="col-xs-push-3 col-xs-5 text-center">
+                        <div class="col-xs-push-2">
+                            <div class=""><img src="images/logo-sdis.png"></div>
+                        </div><br>
+                        <div class="text-center">
+                            <div class="text-right">
+                                <label for="login" class="bordure-authentif-titre">Nom d'utilisateur </label>
+                                <input type="text" name="ztLogin" id="login" class="bordure-authentif-champ"/>
                             </div><br>
-                        <div>
-                            <p href=""> J'ai oublié mon mot de passe </p>
+                            <div class="text-right">
+                                <label for="mdp" class="bordure-authentif-titre">Mot de passe </label>
+                                <input type="password" name="ztMDP" id="mdp" class="bordure-authentif-champ"/>
+                            </div><br>
+                            <div class="text-center">
+                                <div>
+                                    <label for="btConnexion"></label>
+                                    <input type="submit" value="Se connecter" id="btConnexion" class="btn bordure-authentif-titre"/>
+                                </div>
+                                <div>
+                                    <p href="" class="couleur-mdp"> J'ai oublié mon mot de passe </p>
+                                </div>
+                            </div>
                         </div>
+                    </div>
+                    
                 </div>
-            </div>
+            </form>
         </div>
     </body>
 </html>
