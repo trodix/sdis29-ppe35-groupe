@@ -22,7 +22,7 @@
         <title>Charte d'utilisation</title>
     </head>
         <%@include file="navbar.jspf"%>
-        <div class="container">
+        <div class="container titre-profil">
             <div class='row'>
                 <h3 class='titre-profil text-center'>Charte d'utilisation de l'application du Service Départemental d'Incendie et de Secours du Finistère</h3>
                 <div class='col-md-push-1 col-md-10'>
