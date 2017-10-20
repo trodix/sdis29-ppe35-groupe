@@ -118,7 +118,7 @@ public class pompierServlet extends HttpServlet {
                 int cp = 0;
                 Pompier test = null;
                 System.out.println(request.getParameter("ztCP"));
-                if(request.getParameter("ztCP") != null){
+                if(request.getParameter("ztCP") == null){
                     cp = Integer.parseInt(request.getParameter("ztCP"));
                 }
                 

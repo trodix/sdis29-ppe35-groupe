@@ -28,6 +28,13 @@
                 typeModif = "disabled='disabled'";
             }
         }
+        if(request.getParameter("idCaserne") != null && request.getParameter("idPompier") != null){
+            PompierMYSQL unPompierMYSQL = new PompierMYSQL();
+                unPompier = unPompierMYSQL.read(Integer.parseInt(request.getParameter("idCaserne")),Integer.parseInt(request.getParameter("idPompier")));
+                maSession.setAttribute("unPompier",unPompier);
+            
+        }else{
+            
             AuthentifForm leControle = new AuthentifForm();
             leControle = (AuthentifForm)maSession.getAttribute("controleForm");
             PompierMYSQL unPompierMYSQL = new PompierMYSQL();
@@ -35,6 +42,7 @@
                 unPompier = unPompierMYSQL.read(leControle.getnCaserne(), leControle.getpId());
                 maSession.setAttribute("unPompier",unPompier);
             }
+        }
             
         %>
         <div class="container">
@@ -111,11 +119,5 @@
                 </div><br>
             </form>
         </div>
-        
-        <!--<%
-            if(leControle != null){
-                out.println(leControle.getResultat());
-            }
-        %>-->
     </body>
 </html>
