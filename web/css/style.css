@@ -1,9 +1,20 @@
 /*Feuille de style*/
 
+@font-face {
+
+    font-family: 'roboto';
+
+    src: url('../fonts/OpenSans-Regular.ttf');
+
+}
+
+body{
+    font-family: 'roboto';
+}
 /* Bordures et style pour les élements "Nom d'utilisateur" et "Mot de passe" */
 .bordure-authentif-titre{
     color : white ;
-    background-color: #FF0000;
+    background-color: #ca0000;
 }
 
 /* Bordures et style pour les champs de l'utilisateur et du mdp */
@@ -13,6 +24,13 @@
 
 }
 
+#login,#mdp{
+    border-style: solid;
+    border-radius: 5px 5px 5px 5px;
+    color : black;
+    height: 4%;
+    background-color: white;
+}
 /* Fond d'écran pour la page d'authentification */
 .fond-authentif{
     background-color: #333333;
