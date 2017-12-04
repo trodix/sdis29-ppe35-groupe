@@ -1,10 +1,9 @@
-package com.test.filter;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package com.test.filter;
 
 import java.io.IOException;
 import java.io.PrintStream;
@@ -21,7 +20,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author sebastien.vallet
+ * @author Dominique_2
  */
 public class AuthentifFilter implements Filter {
     
@@ -101,22 +100,23 @@ public class AuthentifFilter implements Filter {
             FilterChain chain)
             throws IOException, ServletException {
         
-        HttpServletRequest requete = (HttpServletRequest)request;
-        String chemin = requete.getRequestURI().substring(requete.getContextPath().length());
-        if(chemin.startsWith("/css") || chemin.startsWith("/images")){
-            chain.doFilter(request, response);
-            return;
-        }
+        HttpServletRequest requete = (HttpServletRequest) request;
+        
+        String chemin = requete.getRequestURI().substring(requete.getContextPath().length());        
+                
         HttpSession maSession = requete.getSession();
-        boolean authentificationOK = false;
-        if(maSession.getAttribute("isAuthentified") != null){
-            authentificationOK = (boolean)maSession.getAttribute("isAuthentified");
-        }
-        if(authentificationOK){
+        boolean authentifOk = (maSession.getAttribute("pompier") != null);
+        if (authentifOk)   {
             chain.doFilter(request, response);
-        }else{
-            requete.getRequestDispatcher("/authentification").forward(request, response);
+        } else {
+            if (chemin.startsWith("/css") || chemin.startsWith("/images") || 
+                chemin.startsWith("/fonts") || chemin.startsWith("/js")) {
+                chain.doFilter(request, response);
+            } else {
+                requete.getRequestDispatcher("authentification").forward(request, response);
+            }
         }
+        
     }
 
     /**
