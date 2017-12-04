@@ -9,6 +9,7 @@
 <%@page import="javax.servlet.http.HttpSession"%>
 <%@page import="com.test.form.AuthentifForm"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" title="Bootstrap" href="css/bootstrap.css"/>
 <link rel="stylesheet" type="text/css" title="Font Awesome" href="css/font-awesome.css"/>
 <link rel="stylesheet" type="text/css" href="css/style.css"/>

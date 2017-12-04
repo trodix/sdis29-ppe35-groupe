@@ -73,9 +73,9 @@ public class authentifServlet extends HttpServlet {
             System.out.println(msg);
             co = Integer.parseInt(msg);
             if(co == 0){
-                maSession.setAttribute("pompier", false);
-                maSession.setAttribute("chefDeCentre", false);
-                maSession.setAttribute("responsableDesAlertes", false);
+                maSession.setAttribute("pompier", null);
+                maSession.setAttribute("chefDeCentre", null);
+                maSession.setAttribute("responsableDesAlertes", null);
                 //maSession.invalidate();
             } 
         }
@@ -127,7 +127,7 @@ public class authentifServlet extends HttpServlet {
                         break;
                     case 3:
                         responsableDesAlertes = true;
-                        maSession.setAttribute("pompier", responsableDesAlertes);
+                        maSession.setAttribute("responsableA", responsableDesAlertes);
                         break;
         }       
             getServletContext().getRequestDispatcher("/WEB-INF/pompierJSP.jsp").forward(request, response);
