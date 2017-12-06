@@ -73,9 +73,12 @@ public class authentifServlet extends HttpServlet {
             System.out.println(msg);
             co = Integer.parseInt(msg);
             if(co == 0){
-                maSession.setAttribute("pompier", null);
-                maSession.setAttribute("chefDeCentre", null);
-                maSession.setAttribute("responsableA", null);
+//              maSession.setAttribute("pompier", null);
+//              maSession.setAttribute("chefDeCentre", null);
+//              maSession.setAttribute("responsableA", null);
+                maSession.invalidate();
+                
+                
                 //maSession.invalidate();
             } 
         }
