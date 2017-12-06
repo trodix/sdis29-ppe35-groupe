@@ -75,7 +75,7 @@ public class authentifServlet extends HttpServlet {
             if(co == 0){
                 maSession.setAttribute("pompier", null);
                 maSession.setAttribute("chefDeCentre", null);
-                maSession.setAttribute("responsableDesAlertes", null);
+                maSession.setAttribute("responsableA", null);
                 //maSession.invalidate();
             } 
         }
