@@ -30,12 +30,12 @@ public class GardesMySQL {
         //ArrayList <Pompier> lesPompiers = new ArrayList();
         //for(Pompier unPompier : lesPompiers){
         PreparedStatement prepStmt = null;
-        String sql = "SELECT idCis, idPompier, dteJour, horaires.idHoraires, horaires.libelle, disponibilite.libelle FROM feuillegarde" +
-                       "INNER JOIN pompier ON pompier.pCis = idCis AND pompier.pId = idPompier" +
-                        "INNER JOIN horaires ON horaires.idHoraires = feuillegarde.idHoraires" +
-                        "INNER JOIN disponibilite ON disponibilite.idDisponibilite = feuillegarde.idDispo" +
+        String sql = "SELECT idCis, idPompier, dteJour, horaires.idHoraires, horaires.libelle, disponibilite.libelle FROM feuillegarde " +
+                       "INNER JOIN pompier ON pompier.pCis = idCis AND pompier.pId = idPompier " +
+                        "INNER JOIN horaires ON horaires.idHoraires = feuillegarde.idHoraires " +
+                        "INNER JOIN disponibilite ON disponibilite.idDisponibilite = feuillegarde.idDispo " +
                         "WHERE idCis = ?" +
-                        "ORDER BY idCis,idPompier,dteJour,idHoraires";
+                        " ORDER BY idCis,idPompier,dteJour,feuillegarde.idHoraires";
         prepStmt = laConnection.prepareStatement(sql);
         prepStmt.setInt(1, nCaserne);
         ResultSet resultat = prepStmt.executeQuery();
