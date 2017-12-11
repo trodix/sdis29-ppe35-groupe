@@ -4,10 +4,8 @@
     Author     : sebastien.vallet
 --%>
 
-<<<<<<< HEAD
+
 <%@page import="com.personnelTP.util.TrmtDate"%>
-=======
->>>>>>> db4ffec71444d061a2beefde78cc06189132e7ac
 <%@page import="com.test.beans.Gardes"%>
 <%@page import="java.util.Calendar"%>
 <%@page import="java.util.ArrayList"%>
