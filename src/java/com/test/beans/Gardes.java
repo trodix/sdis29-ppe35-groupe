@@ -13,14 +13,14 @@ import java.util.Objects;
  * @author aurelien.thazet
  */
 public class Gardes {
-    Calendar jourVentil;
+    Calendar jourGarde;
     int horaires;
     Pompier pompier;
     int activite;
     Boolean isInBdd;
     
-    public Gardes(Calendar jourVentil, int horaires, Pompier pompier, int activite) {
-        this.jourVentil = jourVentil;
+    public Gardes(Calendar jourGarde, int horaires, Pompier pompier, int activite) {
+        this.jourGarde = jourGarde;
         this.horaires = horaires;
         this.pompier = pompier;
         this.activite = activite;
@@ -30,7 +30,7 @@ public class Gardes {
         return jourGarde;
     }
 
-    public void setJourGarde(Calendar jourVentil) {
+    public void setJourGarde(Calendar jourGarde) {
         this.jourGarde = jourGarde;
     }
 
@@ -69,7 +69,7 @@ public class Gardes {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 71 * hash + Objects.hashCode(this.jourVentil);
+        hash = 71 * hash + Objects.hashCode(this.jourGarde);
         hash = 71 * hash + Objects.hashCode(this.horaires);
         hash = 71 * hash + Objects.hashCode(this.pompier);
         hash = 71 * hash + this.activite;
@@ -105,6 +105,6 @@ public class Gardes {
 
     @Override
     public String toString() {
-        return "ventil{" + "jourVentil=" + jourVentil.getTime() + ", periode=" + horaires + ", pompier=" + pompier + ", activite=" + activite + ", isInBdd=" + isInBdd + '}';
+        return "ventil{" + "jourGarde=" + jourGarde.getTime() + ", periode=" + horaires + ", pompier=" + pompier + ", activite=" + activite + ", isInBdd=" + isInBdd + '}';
     }
 }
