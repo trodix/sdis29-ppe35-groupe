@@ -4,7 +4,10 @@
     Author     : sebastien.vallet
 --%>
 
+<<<<<<< HEAD
 <%@page import="com.personnelTP.util.TrmtDate"%>
+=======
+>>>>>>> db4ffec71444d061a2beefde78cc06189132e7ac
 <%@page import="com.test.beans.Gardes"%>
 <%@page import="java.util.Calendar"%>
 <%@page import="java.util.ArrayList"%>
@@ -29,7 +32,7 @@
             String[] lesCouleurs = {"vert", "orange", "rouge"};
             ArrayList <Gardes> lesGardes = (ArrayList)maSession.getAttribute("lesGardes");
             
-            //int idPompier = 0;
+            int idPompier = 0;
             /**Calendar[] dates = (Calendar[])maSession.getAttribute("dates");
             String[] periodes = (String[])maSession.getAttribute("periodes");**/
         %>
@@ -41,18 +44,18 @@
                         <tr colspan = 2></tr>
                         <tr>
                             <% 
-                            for(Calendar date : dates){
-                                out.println("<th colspan = 4>" + TrmtDate.getDateAAfficher(date) + "</th>");
-                            } 
+                            //for(Calendar date : dates){
+                             //   out.println("<th colspan = 4>" + TrmtDate.getDateAAfficher(date) + "</th>");
+                            //} 
                             %>
                         </tr>
                         <tr>
                             <%
-                                for(Calendar date : dates){
-                                    for(String periode : periodes){
-                                        out.println("<td>" + periode + "</td>");
-                                    }
-                                }
+                                //for(Calendar date : dates){
+                                   // for(String periode : periodes){
+                                   //     out.println("<td>" + periode + "</td>");
+                                   // }
+                                //}
                             %>
                         </tr>
                     </thead>
@@ -68,7 +71,7 @@
                                     idPompier = uneGarde.getPompier().getpId();
                                     out.println("<td>" + uneGarde.getPompier().getpId() + "</td>");
                                     
-                                    out.println("<td>" + uneGarde.getPompier().getNom() + " " + uneGarde.getPompier().getNom + uneGarde.getPompier().getPrenom() + "</td>");
+                                    out.println("<td>" + uneGarde.getPompier().getpNom() + " " + uneGarde.getPompier().getpNom() + uneGarde.getPompier().getpPrenom() + "</td>");
                                     out.println("<td>" + zoneInput + "</td>");
                                 }else{
                                     out.println("<td>" + zoneInput + "</td>");
