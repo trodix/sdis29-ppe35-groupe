@@ -5,12 +5,19 @@
  */
 package com.test.servlets;
 
+import com.personnelTP.util.TrmtDate;
+import com.test.bdd.GardesMySQL;
+import com.test.beans.Gardes;
+import com.test.beans.Pompier;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Calendar;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -57,6 +64,28 @@ public class gardesServ extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //processRequest(request, response);
+        Pompier unPompier = null;
+        HttpSession maSession = request.getSession();
+        if(maSession.getAttribute("unPompier") != null){
+            unPompier = (Pompier)maSession.getAttribute("unPompier");
+        }
+        int nbDate = 5;
+        Calendar[] dates = new Calendar[nbDate];
+        dates[0] = TrmtDate.getDateDebutSemaine();
+        for(int i=1; i<nbDate; i++){
+            dates[i] = TrmtDate.addDays(dates[0], i);
+        }
+        for(int i=0; i<5; i++){
+             System.out.println(dates[i].getTime());   
+        }
+        maSession.setAttribute("dates", dates);
+        GardesMySQL uneGardeMySQL = new GardesMySQL();
+        ArrayList <Gardes> lesGardesInit = uneGardeMySQL.getLesGardes(unPompier.getcId());
+        for(Gardes uneGarde : lesGardesInit){
+            System.out.println(uneGarde);
+        }
+        maSession.setAttribute("lesGardesInit", lesGardesInit);
+        getServletContext().getRequestDispatcher("/WEB-INF/gardes.jsp").forward(request, response);
         
     }
 
