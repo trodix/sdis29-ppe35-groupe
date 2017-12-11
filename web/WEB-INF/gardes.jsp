@@ -4,6 +4,7 @@
     Author     : sebastien.vallet
 --%>
 
+<%@page import="com.test.beans.Gardes"%>
 <%@page import="java.util.Calendar"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.test.beans.Pompier"%>
@@ -25,10 +26,11 @@
         <%@include file="navbar.jspf"%>
         <% 
             String[] lesCouleurs = {"vert", "orange", "rouge"};
+            
             ArrayList <Gardes> lesGardesInit = (ArrayList)maSession.getAttribute("lesGardesInit");
             int idPompier = 0;
-            Calendar[] dates = (Calendar[])maSession.getAttribute("dates");
-            String[] periodes = (String[])maSession.getAttribute("periodes");
+            //Calendar[] dates = (Calendar[])maSession.getAttribute("dates");
+            //String[] periodes = (String[])maSession.getAttribute("periodes");
         %>
         <div class="container">
             <h1>Liste des gardes</h1>
@@ -38,18 +40,18 @@
                         <tr colspan = 2></tr>
                         <tr>
                             <% 
-                            for(Calendar date : dates){
-                                out.println("<th colspan = 4>" + TrmtDate.getDateAAfficher(date) + "</th>");
-                            } 
+                            //for(Calendar date : dates){
+                             //   out.println("<th colspan = 4>" + TrmtDate.getDateAAfficher(date) + "</th>");
+                            //} 
                             %>
                         </tr>
                         <tr>
                             <%
-                                for(Calendar date : dates){
-                                    for(String periode : periodes){
-                                        out.println("<td>" + periode + "</td>");
-                                    }
-                                }
+                                //for(Calendar date : dates){
+                                   // for(String periode : periodes){
+                                   //     out.println("<td>" + periode + "</td>");
+                                   // }
+                                //}
                             %>
                         </tr>
                     </thead>
