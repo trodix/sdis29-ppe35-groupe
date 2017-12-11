@@ -28,12 +28,11 @@
         <%@include file="navbar.jspf"%>
         <% 
             String[] lesCouleurs = {"vert", "orange", "rouge"};
-            
             ArrayList <Gardes> lesGardes = (ArrayList)maSession.getAttribute("lesGardes");
             int idPompier = 0;
-            
-            //Calendar[] dates = (Calendar[])maSession.getAttribute("dates");
-            //String[] periodes = (String[])maSession.getAttribute("periodes");
+           
+            /**Calendar[] dates = (Calendar[])maSession.getAttribute("dates");
+            String[] periodes = (String[])maSession.getAttribute("periodes");**/
         %>
         <div class="container">
             <h1>Liste des gardes</h1>
@@ -61,21 +60,22 @@
                     <tbody>
                         <tr>
                         <%
-                            //for(Gardes uneGarde : lesGardes){
-                               // int affect = uneGarde.getActivite();
-                              //  String zoneInput = "<input type='number' min=0 max=2 readonly='readonly' class='ztCodeV centrer " + lesCouleurs[affect] + "' name ='tabGardes' value=" + affect + " />";
-     //
-                              //  if(uneGarde.getPompier().getpId() != idPompier){
-                               //     out.println("</tr><tr>");
-                             //       idPompier = uneGarde.getPompier().getpId();
-                               //     out.println("<td>" + uneGarde.getPompier().getpId() + "</td>");
+                 for(Gardes uneGarde : lesGardes){
+                                int affect = uneGarde.getActivite();
+                                String zoneInput = "<input type='number' min=0 max=2 readonly='readonly' class='ztCodeV centrer " + lesCouleurs[affect] + "' name ='tabGardes' value=" + affect + " />";
+     
+                                if(uneGarde.getPompier().getpId() != idPompier){
+                                    out.println("</tr><tr>");
+                                    idPompier = uneGarde.getPompier().getpId();
+                                    out.println("<td>" + uneGarde.getPompier().getpId() + "</td>");
                                     
-                              //      out.println("<td>" + uneGarde.getPompier().getNom() + " " + uneGarde.getPompier().getNom + uneGarde.getPompier().getPrenom() + "</td>");
-                               //     out.println("<td>" + zoneInput + "</td>");
-                              //  }else{
-                               //     out.println("<td>" + zoneInput + "</td>");
-                              //  }    
-                           // }
+                                    out.println("<td>" + uneGarde.getPompier().getpNom() + " " + uneGarde.getPompier().getpNom() + uneGarde.getPompier().getpPrenom() + "</td>");
+                                    out.println("<td>" + zoneInput + "</td>");
+                                }else{
+                                    out.println("<td>" + zoneInput + "</td>");
+                                }    
+                            }
+
                         %>
                         </tr>                    
                     </tbody>
