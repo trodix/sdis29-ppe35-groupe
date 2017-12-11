@@ -4,6 +4,8 @@
     Author     : sebastien.vallet
 --%>
 
+<%@page import="com.personnelTP.util.TrmtDate"%>
+<%@page import="com.test.beans.Gardes"%>
 <%@page import="java.util.Calendar"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.test.beans.Pompier"%>
@@ -25,10 +27,11 @@
         <%@include file="navbar.jspf"%>
         <% 
             String[] lesCouleurs = {"vert", "orange", "rouge"};
-            ArrayList <Gardes> lesGardesInit = (ArrayList)maSession.getAttribute("lesGardesInit");
-            int idPompier = 0;
-            Calendar[] dates = (Calendar[])maSession.getAttribute("dates");
-            String[] periodes = (String[])maSession.getAttribute("periodes");
+            ArrayList <Gardes> lesGardes = (ArrayList)maSession.getAttribute("lesGardes");
+            
+            //int idPompier = 0;
+            /**Calendar[] dates = (Calendar[])maSession.getAttribute("dates");
+            String[] periodes = (String[])maSession.getAttribute("periodes");**/
         %>
         <div class="container">
             <h1>Liste des gardes</h1>
@@ -56,7 +59,7 @@
                     <tbody>
                         <tr>
                         <%
-                            for(Gardes uneGarde : lesGardesInit){
+                            for(Gardes uneGarde : lesGardes){
                                 int affect = uneGarde.getActivite();
                                 String zoneInput = "<input type='number' min=0 max=2 readonly='readonly' class='ztCodeV centrer " + lesCouleurs[affect] + "' name ='tabGardes' value=" + affect + " />";
      
