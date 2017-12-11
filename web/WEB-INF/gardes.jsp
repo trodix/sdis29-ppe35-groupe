@@ -4,6 +4,8 @@
     Author     : sebastien.vallet
 --%>
 
+<%@page import="com.personnelTP.util.TrmtDate"%>
+<%@page import="com.personnelTP.util.TrmtDate"%>
 <%@page import="com.test.beans.Gardes"%>
 <%@page import="java.util.Calendar"%>
 <%@page import="java.util.ArrayList"%>
@@ -26,11 +28,11 @@
         <%@include file="navbar.jspf"%>
         <% 
             String[] lesCouleurs = {"vert", "orange", "rouge"};
-            
-            ArrayList <Gardes> lesGardesInit = (ArrayList)maSession.getAttribute("lesGardesInit");
+            ArrayList <Gardes> lesGardes = (ArrayList)maSession.getAttribute("lesGardes");
             int idPompier = 0;
-            //Calendar[] dates = (Calendar[])maSession.getAttribute("dates");
-            //String[] periodes = (String[])maSession.getAttribute("periodes");
+           
+            /**Calendar[] dates = (Calendar[])maSession.getAttribute("dates");
+            String[] periodes = (String[])maSession.getAttribute("periodes");**/
         %>
         <div class="container">
             <h1>Liste des gardes</h1>
@@ -40,9 +42,9 @@
                         <tr colspan = 2></tr>
                         <tr>
                             <% 
-                            //for(Calendar date : dates){
-                             //   out.println("<th colspan = 4>" + TrmtDate.getDateAAfficher(date) + "</th>");
-                            //} 
+                            for(Gardes uneGarde : lesGardes){
+                               out.println("<th colspan = 4>" + TrmtDate.getDateAAfficher(uneGarde.getJourGarde()) + "</th>");
+                            } 
                             %>
                         </tr>
                         <tr>
@@ -58,7 +60,7 @@
                     <tbody>
                         <tr>
                         <%
-                            for(Gardes uneGarde : lesGardesInit){
+                 for(Gardes uneGarde : lesGardes){
                                 int affect = uneGarde.getActivite();
                                 String zoneInput = "<input type='number' min=0 max=2 readonly='readonly' class='ztCodeV centrer " + lesCouleurs[affect] + "' name ='tabGardes' value=" + affect + " />";
      
@@ -67,12 +69,13 @@
                                     idPompier = uneGarde.getPompier().getpId();
                                     out.println("<td>" + uneGarde.getPompier().getpId() + "</td>");
                                     
-                                    out.println("<td>" + uneGarde.getPompier().getNom() + " " + uneGarde.getPompier().getNom + uneGarde.getPompier().getPrenom() + "</td>");
+                                    out.println("<td>" + uneGarde.getPompier().getpNom() + " " + uneGarde.getPompier().getpNom() + uneGarde.getPompier().getpPrenom() + "</td>");
                                     out.println("<td>" + zoneInput + "</td>");
                                 }else{
                                     out.println("<td>" + zoneInput + "</td>");
                                 }    
                             }
+
                         %>
                         </tr>                    
                     </tbody>

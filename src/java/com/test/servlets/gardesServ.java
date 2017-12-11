@@ -77,6 +77,7 @@ public class gardesServ extends HttpServlet {
         ArrayList <Gardes> lesGardes = new ArrayList();
         try {
             lesGardes = uneGardeMySQL.getLesGardes(unPompier.getcId());
+            System.out.println(lesGardes);
         } catch (SQLException ex) {
             Logger.getLogger(gardesServ.class.getName()).log(Level.SEVERE, null, ex);
         }
