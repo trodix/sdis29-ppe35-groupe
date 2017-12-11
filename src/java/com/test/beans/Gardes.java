@@ -13,15 +13,15 @@ import java.util.Objects;
  * @author aurelien.thazet
  */
 public class Gardes {
-    Calendar jourGarde;
-    String periode;
+    Calendar jourVentil;
+    int horaires;
     Pompier pompier;
     int activite;
     Boolean isInBdd;
     
-    public Gardes(Calendar jourGarde, String periode, Pompier pompier, int activite) {
-        this.jourGarde = jourGarde;
-        this.periode = periode;
+    public Gardes(Calendar jourVentil, int horaires, Pompier pompier, int activite) {
+        this.jourVentil = jourVentil;
+        this.horaires = horaires;
         this.pompier = pompier;
         this.activite = activite;
     }
@@ -34,12 +34,12 @@ public class Gardes {
         this.jourGarde = jourGarde;
     }
 
-    public String getPeriode() {
-        return periode;
+    public int getHoraires() {
+        return horaires;
     }
 
-    public void setPeriode(String periode) {
-        this.periode = periode;
+    public void setHoraires(int horaires) {
+        this.horaires = horaires;
     }
 
     public Pompier getPompier() {
@@ -69,8 +69,8 @@ public class Gardes {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 71 * hash + Objects.hashCode(this.jourGarde);
-        hash = 71 * hash + Objects.hashCode(this.periode);
+        hash = 71 * hash + Objects.hashCode(this.jourVentil);
+        hash = 71 * hash + Objects.hashCode(this.horaires);
         hash = 71 * hash + Objects.hashCode(this.pompier);
         hash = 71 * hash + this.activite;
         hash = 71 * hash + (this.isInBdd ? 1 : 0);
@@ -89,7 +89,7 @@ public class Gardes {
             return false;
         }
         final Gardes other = (Gardes) obj;
-        if (!Objects.equals(this.periode, other.periode)) {
+        if (!Objects.equals(this.horaires, other.horaires)) {
             return false;
         }
         if (!Objects.equals(this.jourGarde, other.jourGarde)) {
@@ -105,6 +105,6 @@ public class Gardes {
 
     @Override
     public String toString() {
-        return "ventil{" + "jourVentil=" + jourGarde.getTime() + ", periode=" + periode + ", pompier=" + pompier + ", activite=" + activite + ", isInBdd=" + isInBdd + '}';
+        return "ventil{" + "jourVentil=" + jourVentil.getTime() + ", periode=" + horaires + ", pompier=" + pompier + ", activite=" + activite + ", isInBdd=" + isInBdd + '}';
     }
 }
