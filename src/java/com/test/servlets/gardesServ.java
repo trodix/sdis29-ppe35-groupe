@@ -11,8 +11,11 @@ import com.test.beans.Gardes;
 import com.test.beans.Pompier;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -69,22 +72,18 @@ public class gardesServ extends HttpServlet {
         if(maSession.getAttribute("unPompier") != null){
             unPompier = (Pompier)maSession.getAttribute("unPompier");
         }
-        int nbDate = 5;
-        Calendar[] dates = new Calendar[nbDate];
-        dates[0] = TrmtDate.getDateDebutSemaine();
-        for(int i=1; i<nbDate; i++){
-            dates[i] = TrmtDate.addDays(dates[0], i);
-        }
-        for(int i=0; i<5; i++){
-             System.out.println(dates[i].getTime());   
-        }
-        maSession.setAttribute("dates", dates);
+        
         GardesMySQL uneGardeMySQL = new GardesMySQL();
-        ArrayList <Gardes> lesGardesInit = uneGardeMySQL.getLesGardes(unPompier.getcId());
-        for(Gardes uneGarde : lesGardesInit){
+        ArrayList <Gardes> lesGardes = new ArrayList();
+        try {
+            lesGardes = uneGardeMySQL.getLesGardes(unPompier.getcId());
+        } catch (SQLException ex) {
+            Logger.getLogger(gardesServ.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        for(Gardes uneGarde : lesGardes){
             System.out.println(uneGarde);
         }
-        maSession.setAttribute("lesGardesInit", lesGardesInit);
+        maSession.setAttribute("lesGardes", lesGardes);
         getServletContext().getRequestDispatcher("/WEB-INF/gardes.jsp").forward(request, response);
         
     }
