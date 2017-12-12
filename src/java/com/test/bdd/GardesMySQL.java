@@ -48,6 +48,7 @@ public class GardesMySQL {
         lesPompiers = unPompierMysql.readAll(nCaserne);
         Calendar dateDebut = lesDates.get(0);
         Calendar dateFin = lesDates.get(lesDates.size()-1);
+        System.out.println(lesPompiers);
         for(Pompier unPompier1 : lesPompiers){
             dateTraitee = TrmtDate.getClone(dateDebut);
             int i = 0;
@@ -96,7 +97,6 @@ public class GardesMySQL {
         PreparedStatement prepStmt = null;
         String sql = "SELECT dteJour FROM feuilleGarde WHERE WEEK(dteJour) = ?";
         prepStmt = laConnection.prepareStatement(sql);
-        System.out.println("Semaine : "+TrmtDate.getDateDuJour().getWeekYear());
         prepStmt.setInt(1,TrmtDate.getDateDuJour().getWeeksInWeekYear());
         ResultSet resultat = prepStmt.executeQuery();
         while(resultat.next()){

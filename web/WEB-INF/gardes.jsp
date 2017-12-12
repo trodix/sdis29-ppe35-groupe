@@ -44,7 +44,7 @@
         <div class="container">
             <h1 class="charte">Liste des gardes</h1>
 		<div class="table-responsive table-gardes">
-		<table  class="table table-bordered">
+		<table  class="table table-bordered table-collapse">
 			<thead class="charte">
                             <tr class="enteteTableau">
 			        <th rowspan="2">Volontaire</th>
@@ -76,7 +76,7 @@
                                                             "value=" + garde + " />";
                                         
                                         for (Gardes uneGarde : lesGardes) { 
-
+                                            System.out.println(idPompier);
                                             if(idPompier != uneGarde.getPompier().getpId()){
                                                 idPompier = uneGarde.getPompier().getpId();
                                                 out.println("</tr><tr><td>"+uneGarde.getPompier().getpNom()+" "+uneGarde.getPompier().getpPrenom()+"</td>");

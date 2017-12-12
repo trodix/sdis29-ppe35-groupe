@@ -200,8 +200,8 @@ label{
 }
 
 .inputDispo{
-	width: 20px;
-        height: 20px;
+	width: 17px;
+        height: 17px;
 	border-style: none;
 	text-align: center;
 /*  	height:2.8em;
@@ -215,8 +215,8 @@ input[type=number] {
 
 .noir{
     color: black;
-    height: 20px;
-    width: 20px;
+    height: 17px;
+    width: 17px;
     margin: 0;
 }
 
