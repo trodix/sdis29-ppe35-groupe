@@ -20,6 +20,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Page Pompier Volontaire</title>
     </head>
+        
         <%@include file="navbar.jspf" %>
         <%  String typeModif = "";
         if(request.getParameter("readonly")!= null){
