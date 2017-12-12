@@ -43,7 +43,7 @@
         %>
         <div class="container">
             <h1 class="charte">Liste des gardes</h1>
-		<div class="table-responsive">
+		<div class="table-responsive table-gardes">
 		<table  class="table table-bordered">
 			<thead class="charte">
                             <tr class="enteteTableau">
@@ -59,7 +59,7 @@
 			    <tr>
 				<%
                                     for (Calendar uneDate : lesDates) { 
-                                        out.println("<th>Nuit</th><th>Mat.</th><th>ApMi</th><th>Soir</th>");
+                                        out.println("<th>1</th><th>2</th><th>3</th><th>4</th>");
                                     }  
                                 %>
 						
