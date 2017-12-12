@@ -27,7 +27,7 @@
     </head>
         <%@include file="navbar.jspf"%>
         <% 
-            String[] lesCouleurs = {"vert", "orange", "rouge"};
+            String[] lesCouleurs = {"vert", "orange", "rouge", "bleu"};
             ArrayList <Gardes> lesGardes = (ArrayList)maSession.getAttribute("lesGardes");
             ArrayList <Calendar> lesDates = new ArrayList();
            
@@ -71,7 +71,7 @@
                                     <%
                                         idPompier = 0;
                                         int garde = 0;
-                                        String zoneInput = "<input type='number' min=0 max=2 readonly='readonly'"+
+                                        String zoneInput = "<input type='number' min=0 max=3 readonly='readonly'"+
                                                             "class='inputDispo ztGarde " + lesCouleurs[garde] + "' name='tabVentil'"+
                                                             "value=" + garde + " />";
                                         
@@ -86,8 +86,8 @@
                                                 //}else{
                                                     garde = uneGarde.getActivite();
                                                 //}
-                                                zoneInput = "<input type='number' min=0 max=2 readonly='readonly'"+
-                                                            "class='inputDispo ztGarde " + lesCouleurs[garde] + "' name='tabVentil'"+
+                                                zoneInput = "<input type='number' min=0 max=3 readonly='readonly'"+
+                                                            "class='inputDispo ztGarde " + lesCouleurs[garde] + "' name='tabVentil' " + "id='" + uneGarde.getPompier().getcId() + uneGarde.getPompier().getpId() + "' " +
                                                             "value=" + garde + " />";
                                                 out.println("<td class='noir'>"+zoneInput+"</td>");
                                             }else{
@@ -96,11 +96,11 @@
                                                 //}else{
                                                     garde = uneGarde.getActivite();
                                                 //}
-                                                zoneInput = "<input type='number' min=0 max=2 readonly='readonly'"+
-                                                            "class='inputDispo ztGarde " + lesCouleurs[garde] + "' name='tabVentil'"+
+                                                zoneInput = "<input type='number' min=0 max=3 readonly='readonly'"+
+                                                            "class='inputDispo ztGarde " + lesCouleurs[garde] + "' name='tabVentil' " + "id='" + uneGarde.getPompier().getcId() + uneGarde.getPompier().getpId() + "'  " +
                                                             "value=" + garde + " />";
                                                 out.println("<td class='noir'>"+zoneInput+"</td>");
-                                        }
+                                            }
                                         
                                         }
                                     %>
@@ -115,25 +115,31 @@
         </div>
 		<script src="js/jquery.min.js"> </script>
 		<script>
-			var couleur = ["verte","orange","rouge"];
-			// Gestion des evenements
-			$(document).ready(function() {
-				$(".ztGarde").mouseover(function() {
-				$(this).addClass("survol");
-				});
+                        
+                        //*******************************
+                        var couleur = ["verte","orange","rouge","bleu"];  
+                        // Gestion des evenements
+                        $(document).ready(function() {
+                            $(".ztGarde").mouseover(function() {
+                                $(this).addClass("survol");
+                            });
 
-				$(".ztGarde").mouseout(function() {
-					$(this).removeClass("survol");
-				});
+                            $(".ztGarde").mouseout(function() {
+                                $(this).removeClass("survol");
+                            });
 
-				$(".ztGarde").click(function() {
-					v = $(this).val(); // Ancienne valeur
-					nv = (v+1) % 3; // Nouvelle Valeur
-					$(this).addClass(couleur[nv]);
-					$(this).removeClass(couleur[v]);
-					$(this).val(nv);
-					});
-				});
+                            $(".ztGarde").click(function() {
+                                //if($(".ztGarde").attr("id").val() === unPompier.getcId() + unPompier.getpId();){
+                                    v = $(this).val();
+                                    nv = (v+1) % 3;
+
+                                    $(this).addClass(couleur[nv]);    
+                                    $(this).removeClass(couleur[v]);
+                                    $(this).val(nv);
+                                //}
+                            });
+                        });
+                        //*******************************
 		</script>
         </div>     
     </body>
