@@ -74,6 +74,7 @@
                                         String zoneInput = "<input type='number' min=0 max=2 readonly='readonly'"+
                                                             "class='inputDispo ztGarde " + lesCouleurs[garde] + "' name='tabVentil'"+
                                                             "value=" + garde + " />";
+                                        
                                         for (Gardes uneGarde : lesGardes) { 
 
                                             if(idPompier != uneGarde.getPompier().getpId()){
@@ -85,7 +86,9 @@
                                                 //}else{
                                                     garde = uneGarde.getActivite();
                                                 //}
-                                                
+                                                zoneInput = "<input type='number' min=0 max=2 readonly='readonly'"+
+                                                            "class='inputDispo ztGarde " + lesCouleurs[garde] + "' name='tabVentil'"+
+                                                            "value=" + garde + " />";
                                                 out.println("<td class='noir'>"+zoneInput+"</td>");
                                             }else{
                                                 //if(uneGarde.getIsInInBdd() == false){
@@ -93,7 +96,9 @@
                                                 //}else{
                                                     garde = uneGarde.getActivite();
                                                 //}
-
+                                                zoneInput = "<input type='number' min=0 max=2 readonly='readonly'"+
+                                                            "class='inputDispo ztGarde " + lesCouleurs[garde] + "' name='tabVentil'"+
+                                                            "value=" + garde + " />";
                                                 out.println("<td class='noir'>"+zoneInput+"</td>");
                                         }
                                         

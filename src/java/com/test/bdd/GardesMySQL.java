@@ -11,7 +11,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.sql.Date;
 
 /**
  *
@@ -23,7 +22,7 @@ public class GardesMySQL {
                                                                 "adminBDsdis", 
                                                                 "mdpBDsdis");
     
-    public ArrayList getLesGardes(int nCaserne) throws SQLException{
+    public ArrayList<Gardes> getLesGardes(int nCaserne) throws SQLException{
         
         ArrayList <Gardes> lesGardes = new ArrayList();
         PompierMYSQL unPompierMysql = new PompierMYSQL();
@@ -39,11 +38,11 @@ public class GardesMySQL {
         prepStmt = laConnection.prepareStatement(sql);
         prepStmt.setInt(1, nCaserne);
         ResultSet resultat = prepStmt.executeQuery();
+        Calendar c = TrmtDate.getDateDebutSemaine();
         while(resultat.next()){
             Pompier unPompier = unPompierMysql.read(resultat.getInt("idCis"), resultat.getInt("idPompier"));
-            Calendar c = TrmtDate.getCalDate(resultat.getDate("dteJour"));
             Gardes uneGarde = new Gardes(c, resultat.getInt("idHoraires"), unPompier, resultat.getInt("idDispo"));
-            
+            c = TrmtDate.getCalDate(resultat.getDate("dteJour"));
             lesGardes.add(uneGarde);
         }
 
