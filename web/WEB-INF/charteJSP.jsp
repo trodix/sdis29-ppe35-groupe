@@ -75,7 +75,7 @@
                         <p class='margin-charte-article'>
                             Afin de valider votre enregistrement, les informations suivantes vous seront demandées :
                             nom, prénom ainsi que l'adresse, la ville et le code postal de votre domicile.
-                            Si vous êtes salarié d'une entreprise, les informations suivantes concernant cette dernoère 
+                            Si vous êtes salarié d'une entreprise, les informations suivantes concernant cette dernière 
                             sont également demandées : dénomination sociale et adresse.
                         </p>
                     </div>
