@@ -43,72 +43,77 @@
         %>
         <div class="container">
             <h1 class="charte">Liste des gardes</h1>
-		<div class="table-responsive table-gardes">
-		<table  class="table table-bordered table-collapse">
-			<thead class="charte">
-                            <tr class="enteteTableau">
-			        <th rowspan="2">Volontaire</th>
-				<th rowspan="2">N° Bip</th>
-				<%
-                                    
-                                    for(Calendar uneDate : lesDates){
-                                        out.println("<th colspan='4'>"+TrmtDate.getDateAAfficher(uneDate)+"</th>");
+            <div>
+                <h3 class="charte">Légende</h3>
+                <!-- Légende bouton 3 : zoomer page web a 230% -->
+                <a><img id="logo" src="images/legende-0.png"></a>
+            </div>
+            <div class="table-responsive table-gardes">
+            <table  class="table table-bordered table-collapse">
+                    <thead class="charte">
+                        <tr class="enteteTableau">
+                            <th rowspan="2">Volontaire</th>
+                            <th rowspan="2">N° Bip</th>
+                            <%
+
+                                for(Calendar uneDate : lesDates){
+                                    out.println("<th colspan='4'>"+TrmtDate.getDateAAfficher(uneDate)+"</th>");
+                                }
+                            %>
+                        </tr>
+                        <tr>
+                            <%
+                                for (Calendar uneDate : lesDates) { 
+                                    out.println("<th>1</th><th>2</th><th>3</th><th>4</th>");
+                                }  
+                            %>
+
+                        </tr>
+                    </thead>
+                    <tbody class="charte">
+                    <form action="jesaispas" method="POST">
+                            <tr>
+                                <%
+                                    idPompier = 0;
+                                    int garde = 0;
+                                    String zoneInput = "<input type='number' min=0 max=2 readonly='readonly'"+
+                                                        "class='inputDispo ztGarde " + lesCouleurs[garde] + "' name='tabVentil'"+
+                                                        "value=" + garde + " />";
+
+                                    for (Gardes uneGarde : lesGardes) { 
+                                        System.out.println(idPompier);
+                                        if(idPompier != uneGarde.getPompier().getpId()){
+                                            idPompier = uneGarde.getPompier().getpId();
+                                            out.println("</tr><tr><td>"+uneGarde.getPompier().getpNom()+" "+uneGarde.getPompier().getpPrenom()+"</td>");
+                                            out.println("<td>"+uneGarde.getPompier().getpBip()+"</td>");
+                                            //if(uneGarde.getIsInInBdd() == false){
+                                            //   garde = 0;
+                                            //}else{
+                                                garde = uneGarde.getActivite();
+                                            //}
+                                            zoneInput = "<input type='number' min=0 max=2 readonly='readonly'"+
+                                                        "class='inputDispo ztGarde " + lesCouleurs[garde] + "' name='tabVentil'"+
+                                                        "value=" + garde + " />";
+                                            out.println("<td class='noir'>"+zoneInput+"</td>");
+                                        }else{
+                                            //if(uneGarde.getIsInInBdd() == false){
+                                             //   garde = 0;
+                                            //}else{
+                                                garde = uneGarde.getActivite();
+                                            //}
+                                            zoneInput = "<input type='number' min=0 max=2 readonly='readonly'"+
+                                                        "class='inputDispo ztGarde " + lesCouleurs[garde] + "' name='tabVentil'"+
+                                                        "value=" + garde + " />";
+                                            out.println("<td class='noir'>"+zoneInput+"</td>");
+                                    }
+
                                     }
                                 %>
-			    </tr>
-			    <tr>
-				<%
-                                    for (Calendar uneDate : lesDates) { 
-                                        out.println("<th>1</th><th>2</th><th>3</th><th>4</th>");
-                                    }  
-                                %>
-						
                             </tr>
-                        </thead>
-			<tbody class="charte">
-                        <form action="jesaispas" method="POST">
-				<tr>
-                                    <%
-                                        idPompier = 0;
-                                        int garde = 0;
-                                        String zoneInput = "<input type='number' min=0 max=2 readonly='readonly'"+
-                                                            "class='inputDispo ztGarde " + lesCouleurs[garde] + "' name='tabVentil'"+
-                                                            "value=" + garde + " />";
-                                        
-                                        for (Gardes uneGarde : lesGardes) { 
-                                            System.out.println(idPompier);
-                                            if(idPompier != uneGarde.getPompier().getpId()){
-                                                idPompier = uneGarde.getPompier().getpId();
-                                                out.println("</tr><tr><td>"+uneGarde.getPompier().getpNom()+" "+uneGarde.getPompier().getpPrenom()+"</td>");
-                                                out.println("<td>"+uneGarde.getPompier().getpBip()+"</td>");
-                                                //if(uneGarde.getIsInInBdd() == false){
-                                                //   garde = 0;
-                                                //}else{
-                                                    garde = uneGarde.getActivite();
-                                                //}
-                                                zoneInput = "<input type='number' min=0 max=2 readonly='readonly'"+
-                                                            "class='inputDispo ztGarde " + lesCouleurs[garde] + "' name='tabVentil'"+
-                                                            "value=" + garde + " />";
-                                                out.println("<td class='noir'>"+zoneInput+"</td>");
-                                            }else{
-                                                //if(uneGarde.getIsInInBdd() == false){
-                                                 //   garde = 0;
-                                                //}else{
-                                                    garde = uneGarde.getActivite();
-                                                //}
-                                                zoneInput = "<input type='number' min=0 max=2 readonly='readonly'"+
-                                                            "class='inputDispo ztGarde " + lesCouleurs[garde] + "' name='tabVentil'"+
-                                                            "value=" + garde + " />";
-                                                out.println("<td class='noir'>"+zoneInput+"</td>");
-                                        }
-                                        
-                                        }
-                                    %>
-				</tr>
-                            </form>
-                        </tbody>
-			</table>
-		</div>
+                        </form>
+                    </tbody>
+                    </table>
+            </div>
         </div>
 		<script src="js/jquery.min.js"> </script>
 		<script>
