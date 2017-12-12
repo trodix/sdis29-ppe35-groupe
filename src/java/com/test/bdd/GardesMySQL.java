@@ -30,12 +30,12 @@ public class GardesMySQL {
         //ArrayList <Pompier> lesPompiers = new ArrayList();
         //for(Pompier unPompier : lesPompiers){
         PreparedStatement prepStmt = null;
-        String sql = "SELECT idCis, idPompier, dteJour, horaires.idHoraires, horaires.libelle, idDispo,disponibilite.libelle FROM feuillegarde " +
+        String sql = "SELECT idCis, idPompier, dteJour, horaires.idHoraires, horaires.libelle, idDispo,disponibilite.libelle FROM feuilleGarde " +
                        "INNER JOIN pompier ON pompier.pCis = idCis AND pompier.pId = idPompier " +
-                        "INNER JOIN horaires ON horaires.idHoraires = feuillegarde.idHoraires " +
-                        "INNER JOIN disponibilite ON disponibilite.idDisponibilite = feuillegarde.idDispo " +
+                        "INNER JOIN horaires ON horaires.idHoraires = feuilleGarde.idHoraires " +
+                        "INNER JOIN disponibilite ON disponibilite.idDisponibilite = feuilleGarde.idDispo " +
                         "WHERE idCis = ?" +
-                        " ORDER BY idCis,idPompier,dteJour,feuillegarde.idHoraires";
+                        " ORDER BY idCis,idPompier,dteJour,feuilleGarde.idHoraires";
         prepStmt = laConnection.prepareStatement(sql);
         prepStmt.setInt(1, nCaserne);
         ResultSet resultat = prepStmt.executeQuery();
@@ -56,7 +56,7 @@ public class GardesMySQL {
         ArrayList <Calendar> lesDates = new ArrayList();
         PompierMYSQL unPompierMysql = new PompierMYSQL();
         PreparedStatement prepStmt = null;
-        String sql = "SELECT dteJour FROM feuillegarde WHERE WEEK(dteJour) = ?";
+        String sql = "SELECT dteJour FROM feuilleGarde WHERE WEEK(dteJour) = ?";
         prepStmt = laConnection.prepareStatement(sql);
         System.out.println("Semaine : "+TrmtDate.getDateDuJour().getWeekYear());
         prepStmt.setInt(1,TrmtDate.getDateDuJour().getWeeksInWeekYear());

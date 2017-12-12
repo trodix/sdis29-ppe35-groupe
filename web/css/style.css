@@ -200,11 +200,12 @@ label{
 }
 
 .inputDispo{
-	width: 80%;
+	width: 20px;
+        height: 20px;
 	border-style: none;
 	text-align: center;
-  	height:2.6em;
-  	width: 2.3em;
+/*  	height:2.8em;
+  	width: 2.8em;*/
   	
 }
 /* Firefox */
@@ -214,6 +215,9 @@ input[type=number] {
 
 .noir{
     color: black;
+    height: 20px;
+    width: 20px;
+    margin: 0;
 }
 
 /* Chrome */
