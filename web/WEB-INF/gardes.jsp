@@ -118,7 +118,7 @@
         </div>
 		<script src="js/jquery.min.js"> </script>
 		<script>
-			var couleur = ["verte","orange","rouge"];
+			var couleur = ["rouge","orange","vert"];
 			// Gestion des evenements
 			$(document).ready(function() {
 				$(".ztGarde").mouseover(function() {

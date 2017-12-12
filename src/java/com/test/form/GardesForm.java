@@ -5,10 +5,16 @@
  */
 package com.test.form;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  *
  * @author fabien.ladouce
  */
 public class GardesForm {
     
+    public void verifGardes(HttpServletRequest request){
+        
+        
+    }
 }
