@@ -5,6 +5,7 @@
  */
 package com.test.beans;
 
+import com.personnelTP.util.TrmtDate;
 import java.util.Calendar;
 import java.util.Objects;
 
@@ -105,6 +106,6 @@ public class Gardes {
 
     @Override
     public String toString() {
-        return "ventil{" + "jourGarde=" + jourGarde.getTime() + ", periode=" + horaires + ", pompier=" + pompier + ", activite=" + activite + ", isInBdd=" + isInBdd + '}';
+        return "Garde : " + "jourGarde=" + TrmtDate.getDateAAfficher(jourGarde) + ", periode=" + horaires + ", pompier=" + pompier.getpNom() + ", activite=" + activite + ", isInBdd=" + isInBdd + '}';
     }
 }

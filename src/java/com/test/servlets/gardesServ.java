@@ -75,7 +75,9 @@ public class gardesServ extends HttpServlet {
         
         GardesMySQL uneGardeMySQL = new GardesMySQL();
         ArrayList <Gardes> lesGardes = new ArrayList();
+        //ArrayList <Calendar> lesDates = new ArrayList();
         try {
+            //lesDates = uneGardeMySQL.getLesDates();
             lesGardes = uneGardeMySQL.getLesGardes(unPompier.getcId());
             System.out.println(lesGardes);
         } catch (SQLException ex) {
@@ -84,6 +86,7 @@ public class gardesServ extends HttpServlet {
         for(Gardes uneGarde : lesGardes){
             System.out.println(uneGarde);
         }
+        //maSession.setAttribute("lesDates", lesDates);
         maSession.setAttribute("lesGardes", lesGardes);
         getServletContext().getRequestDispatcher("/WEB-INF/gardes.jsp").forward(request, response);
         

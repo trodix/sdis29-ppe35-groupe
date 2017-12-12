@@ -180,3 +180,52 @@ label{
 .couleur-mdp{
     color: #02A6FF;
 }
+
+
+.enteteTableau{
+	background-color: #ca0000;
+	color: white;
+}
+
+.verte{
+	background-color: #32d360;
+}
+
+.orange{
+	background-color: #de8f14;
+}
+
+.rouge{
+	background-color: #e54c2b;
+}
+
+.inputDispo{
+	width: 80%;
+	border-style: none;
+	text-align: center;
+  	height:2.6em;
+  	width: 2.3em;
+  	
+}
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.noir{
+    color: black;
+}
+
+/* Chrome */
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button { 
+	-webkit-appearance: none;
+	margin:0;
+}
+
+/* Opéra*/
+input::-o-inner-spin-button,
+input::-o-outer-spin-button { 
+	-o-appearance: none;
+	margin:0
+}
