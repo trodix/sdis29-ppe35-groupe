@@ -9,6 +9,7 @@ import com.personnelTP.util.TrmtDate;
 import com.test.bdd.GardesMySQL;
 import com.test.beans.Gardes;
 import com.test.beans.Pompier;
+import com.test.form.GardesForm;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -106,7 +107,10 @@ public class gardesServ extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        //processRequest(request, response);
+        GardesForm uneGardesForm = new GardesForm();
+        uneGardesForm.verifGardes(request);
+        getServletContext().getRequestDispatcher("/WEB-INF/gardes.jsp").forward(request, response);
     }
 
     /**

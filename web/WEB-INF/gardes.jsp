@@ -27,7 +27,11 @@
     </head>
         <%@include file="navbar.jspf"%>
         <% 
+<<<<<<< HEAD
             String[] lesCouleurs = {"vert", "orange", "rouge", "bleu"};
+=======
+            String[] lesCouleurs = {"rouge","orange", "vert"};
+>>>>>>> 190e635ef609e59bdacd3ee19f7047fc3e8dcedb
             ArrayList <Gardes> lesGardes = (ArrayList)maSession.getAttribute("lesGardes");
             ArrayList <Calendar> lesDates = new ArrayList();
            
@@ -42,29 +46,40 @@
         %>
         <div class="container">
             <h1 class="charte">Liste des gardes</h1>
-            <form action="/gardes" method="POST">
-		<div class="table-responsive table-gardes">
-		<table  class="table table-bordered table-collapse">
-			<thead class="charte">
+            <div class="table-responsive table-gardes">
+                <table class="titre-profil">
+                    <thead>
+                        <th><h3>Légende</h3></th> 
+                    </thead>
+                    <tbody>
+                        <!-- Légende bouton 3 : zoomer page web a 230% -->
+                        <tr><td><img src="images/legende-0.png"></td><td>Indisponible</td></tr>
+                        <tr><td><img src="images/legende-1.png"></td><td>Disponible</td></tr>
+                        <tr><td><img src="images/legende-2.png"></td><td>Au travail</td></tr>
+                    </tbody>
+                </table>
+                <table  class="table table-bordered table-collapse">
+                        <thead class="charte">
                             <tr class="enteteTableau">
-			        <th rowspan="2">Volontaire</th>
-				<th rowspan="2">N° Bip</th>
-				<%
-                                    
+                                <th rowspan="2">Volontaire</th>
+                                <th rowspan="2">N° Bip</th>
+                                <%
+
                                     for(Calendar uneDate : lesDates){
                                         out.println("<th colspan='4'>"+TrmtDate.getDateAAfficher(uneDate)+"</th>");
                                     }
                                 %>
-			    </tr>
-			    <tr>
-				<%
+                            </tr>
+                            <tr>
+                                <%
                                     for (Calendar uneDate : lesDates) { 
                                         out.println("<th>1</th><th>2</th><th>3</th><th>4</th>");
                                     }  
                                 %>
-						
+
                             </tr>
                         </thead>
+<<<<<<< HEAD
 			<tbody class="charte">
                         
 				<tr>
@@ -106,15 +121,58 @@
                                     %>
 				</tr>
                             
+=======
+                        <tbody class="charte">
+                        <form action="jesaispas" method="POST">                   
+                            <tr>
+                                <%
+                                    idPompier = 0;
+                                    int garde = 0;
+                                    String zoneInput = "<input type='number' min=0 max=2 readonly='readonly'"+
+                                                        "class='inputDispo ztGarde " + lesCouleurs[garde] + "' name='tabVentil'"+
+                                                        "value=" + garde + " />";
+
+                                    for (Gardes uneGarde : lesGardes) { 
+                                        System.out.println(idPompier);
+                                        if(idPompier != uneGarde.getPompier().getpId()){
+                                            idPompier = uneGarde.getPompier().getpId();
+                                            out.println("</tr><tr><td>"+uneGarde.getPompier().getpNom()+" "+uneGarde.getPompier().getpPrenom()+"</td>");
+                                            out.println("<td>"+uneGarde.getPompier().getpBip()+"</td>");
+                                            //if(uneGarde.getIsInInBdd() == false){
+                                            //   garde = 0;
+                                            //}else{
+                                                garde = uneGarde.getActivite();
+                                            //}
+                                            zoneInput = "<input type='number' min=0 max=2 readonly='readonly'"+
+                                                        "class='inputDispo ztGarde " + lesCouleurs[garde] + "' name='tabVentil'"+
+                                                        "value=" + garde + " />";
+                                            out.println("<td class='noir'>"+zoneInput+"</td>");
+                                        }else{
+                                            //if(uneGarde.getIsInInBdd() == false){
+                                             //   garde = 0;
+                                            //}else{
+                                                garde = uneGarde.getActivite();
+                                            //}
+                                            zoneInput = "<input type='number' min=0 max=2 readonly='readonly'"+
+                                                        "class='inputDispo ztGarde " + lesCouleurs[garde] + "' name='tabVentil'"+
+                                                        "value=" + garde + " />";
+                                            out.println("<td class='noir'>"+zoneInput+"</td>");
+                                    }
+
+                                    }
+                                %>
+                            </tr>
+
+>>>>>>> 190e635ef609e59bdacd3ee19f7047fc3e8dcedb
                         </tbody>
-			</table>
-                    
-		</div>
+                </table>             
+            </div>
                 <input type="submit" value="Valider les modifications"/>
             </form>
         </div>
 		<script src="js/jquery.min.js"> </script>
 		<script>
+<<<<<<< HEAD
                         
                         //*******************************
                         var couleur = ["verte","orange","rouge","bleu"];  
@@ -127,6 +185,14 @@
                             $(".ztGarde").mouseout(function() {
                                 $(this).removeClass("survol");
                             });
+=======
+			var couleur = ["rouge","orange","vert"];
+			// Gestion des evenements
+			$(document).ready(function() {
+				$(".ztGarde").mouseover(function() {
+				$(this).addClass("survol");
+				});
+>>>>>>> 190e635ef609e59bdacd3ee19f7047fc3e8dcedb
 
                             $(".ztGarde").click(function() {
                                 //if($(".ztGarde").attr("id").val() === unPompier.getcId() + unPompier.getpId();){
