@@ -229,3 +229,7 @@ input::-o-outer-spin-button {
 	-o-appearance: none;
 	margin:0
 }
+
+.table-responsive.table-gardes>* {
+    font-size: 0.8em !important;
+}
