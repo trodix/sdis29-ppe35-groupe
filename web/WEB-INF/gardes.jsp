@@ -27,8 +27,7 @@
     </head>
         <%@include file="navbar.jspf"%>
         <% 
-            String[] lesCouleurs = {"vert", "orange", "rouge"};
-            String[] horaire = {"Nuit","Mat","ApMi","Soir"};
+            String[] lesCouleurs = {"rouge","orange", "vert"};
             ArrayList <Gardes> lesGardes = (ArrayList)maSession.getAttribute("lesGardes");
             ArrayList <Calendar> lesDates = new ArrayList();
            
@@ -71,49 +70,51 @@
                         </tr>
                     </thead>
                     <tbody class="charte">
-                    <form action="jesaispas" method="POST">
-                            <tr>
-                                <%
-                                    idPompier = 0;
-                                    int garde = 0;
-                                    String zoneInput = "<input type='number' min=0 max=2 readonly='readonly'"+
-                                                        "class='inputDispo ztGarde " + lesCouleurs[garde] + "' name='tabVentil'"+
-                                                        "value=" + garde + " />";
+                    <form action="jesaispas" method="POST">                   
+                        <tr>
+                            <%
+                                idPompier = 0;
+                                int garde = 0;
+                                String zoneInput = "<input type='number' min=0 max=2 readonly='readonly'"+
+                                                    "class='inputDispo ztGarde " + lesCouleurs[garde] + "' name='tabVentil'"+
+                                                    "value=" + garde + " />";
 
-                                    for (Gardes uneGarde : lesGardes) { 
-                                        System.out.println(idPompier);
-                                        if(idPompier != uneGarde.getPompier().getpId()){
-                                            idPompier = uneGarde.getPompier().getpId();
-                                            out.println("</tr><tr><td>"+uneGarde.getPompier().getpNom()+" "+uneGarde.getPompier().getpPrenom()+"</td>");
-                                            out.println("<td>"+uneGarde.getPompier().getpBip()+"</td>");
-                                            //if(uneGarde.getIsInInBdd() == false){
-                                            //   garde = 0;
-                                            //}else{
-                                                garde = uneGarde.getActivite();
-                                            //}
-                                            zoneInput = "<input type='number' min=0 max=2 readonly='readonly'"+
-                                                        "class='inputDispo ztGarde " + lesCouleurs[garde] + "' name='tabVentil'"+
-                                                        "value=" + garde + " />";
-                                            out.println("<td class='noir'>"+zoneInput+"</td>");
-                                        }else{
-                                            //if(uneGarde.getIsInInBdd() == false){
-                                             //   garde = 0;
-                                            //}else{
-                                                garde = uneGarde.getActivite();
-                                            //}
-                                            zoneInput = "<input type='number' min=0 max=2 readonly='readonly'"+
-                                                        "class='inputDispo ztGarde " + lesCouleurs[garde] + "' name='tabVentil'"+
-                                                        "value=" + garde + " />";
-                                            out.println("<td class='noir'>"+zoneInput+"</td>");
-                                    }
+                                for (Gardes uneGarde : lesGardes) { 
+                                    System.out.println(idPompier);
+                                    if(idPompier != uneGarde.getPompier().getpId()){
+                                        idPompier = uneGarde.getPompier().getpId();
+                                        out.println("</tr><tr><td>"+uneGarde.getPompier().getpNom()+" "+uneGarde.getPompier().getpPrenom()+"</td>");
+                                        out.println("<td>"+uneGarde.getPompier().getpBip()+"</td>");
+                                        //if(uneGarde.getIsInInBdd() == false){
+                                        //   garde = 0;
+                                        //}else{
+                                            garde = uneGarde.getActivite();
+                                        //}
+                                        zoneInput = "<input type='number' min=0 max=2 readonly='readonly'"+
+                                                    "class='inputDispo ztGarde " + lesCouleurs[garde] + "' name='tabVentil'"+
+                                                    "value=" + garde + " />";
+                                        out.println("<td class='noir'>"+zoneInput+"</td>");
+                                    }else{
+                                        //if(uneGarde.getIsInInBdd() == false){
+                                         //   garde = 0;
+                                        //}else{
+                                            garde = uneGarde.getActivite();
+                                        //}
+                                        zoneInput = "<input type='number' min=0 max=2 readonly='readonly'"+
+                                                    "class='inputDispo ztGarde " + lesCouleurs[garde] + "' name='tabVentil'"+
+                                                    "value=" + garde + " />";
+                                        out.println("<td class='noir'>"+zoneInput+"</td>");
+                                }
 
-                                    }
-                                %>
-                            </tr>
-                        </form>
+                                }
+                            %>
+                        </tr>
+                            
                     </tbody>
-                    </table>
+            </table>             
             </div>
+                <input type="submit" value="Valider les modifications"/>
+            </form>
         </div>
 		<script src="js/jquery.min.js"> </script>
 		<script>
