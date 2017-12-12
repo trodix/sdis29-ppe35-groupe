@@ -79,7 +79,7 @@
 
                                             if(idPompier != uneGarde.getPompier().getpId()){
                                                 idPompier = uneGarde.getPompier().getpId();
-                                                out.println("<td>"+uneGarde.getPompier().getpNom()+" "+uneGarde.getPompier().getpPrenom()+"</td>");
+                                                out.println("</tr><tr><td>"+uneGarde.getPompier().getpNom()+" "+uneGarde.getPompier().getpPrenom()+"</td>");
                                                 out.println("<td>"+uneGarde.getPompier().getpBip()+"</td>");
                                                 //if(uneGarde.getIsInInBdd() == false){
                                                 //   garde = 0;

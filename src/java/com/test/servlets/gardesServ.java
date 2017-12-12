@@ -12,6 +12,7 @@ import com.test.beans.Pompier;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.logging.Level;
@@ -81,6 +82,8 @@ public class gardesServ extends HttpServlet {
             lesGardes = uneGardeMySQL.getLesGardes(unPompier.getcId());
             System.out.println(lesGardes);
         } catch (SQLException ex) {
+            Logger.getLogger(gardesServ.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParseException ex) {
             Logger.getLogger(gardesServ.class.getName()).log(Level.SEVERE, null, ex);
         }
         for(Gardes uneGarde : lesGardes){

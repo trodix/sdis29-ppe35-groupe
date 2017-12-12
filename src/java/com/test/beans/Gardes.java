@@ -6,7 +6,11 @@
 package com.test.beans;
 
 import com.personnelTP.util.TrmtDate;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 import java.util.Objects;
 
 /**
@@ -20,8 +24,9 @@ public class Gardes {
     int activite;
     Boolean isInBdd;
     
-    public Gardes(Calendar jourGarde, int horaires, Pompier pompier, int activite) {
-        this.jourGarde = jourGarde;
+    public Gardes(Calendar garde, int horaires, Pompier pompier, int activite) throws ParseException {
+       
+        this.jourGarde = TrmtDate.getClone(garde);
         this.horaires = horaires;
         this.pompier = pompier;
         this.activite = activite;
