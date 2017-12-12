@@ -224,8 +224,46 @@ public class Pompier {
             return false;
         }
         final Pompier other = (Pompier) obj;
+        if (this.cId != other.cId) {
+            return false;
+        }
+        if (this.pId != other.pId) {
+            return false;
+        }
+        if (!Objects.equals(this.pNom, other.pNom)) {
+            return false;
+        }
+        if (!Objects.equals(this.pPrenom, other.pPrenom)) {
+            return false;
+        }
+        if (!Objects.equals(this.pAdresse, other.pAdresse)) {
+            return false;
+        }
+        if (!Objects.equals(this.pVille, other.pVille)) {
+            return false;
+        }
+        if (!Objects.equals(this.pCp, other.pCp)) {
+            return false;
+        }
+        if (!Objects.equals(this.pMail, other.pMail)) {
+            return false;
+        }
+        if (!Objects.equals(this.pBip, other.pBip)) {
+            return false;
+        }
+        if (!Objects.equals(this.pUrlPhoto, other.pUrlPhoto)) {
+            return false;
+        }
+        if (!Objects.equals(this.pCommentaire, other.pCommentaire)) {
+            return false;
+        }
+        if (!Objects.equals(this.cNom, other.cNom)) {
+            return false;
+        }
         return true;
     }
+
+    
 
     @Override
     public String toString() {

@@ -28,7 +28,6 @@
         <%@include file="navbar.jspf"%>
         <% 
             String[] lesCouleurs = {"vert", "orange", "rouge"};
-            String[] horaire = {"Nuit","Mat","ApMi","Soir"};
             ArrayList <Gardes> lesGardes = (ArrayList)maSession.getAttribute("lesGardes");
             ArrayList <Calendar> lesDates = new ArrayList();
            
@@ -43,6 +42,7 @@
         %>
         <div class="container">
             <h1 class="charte">Liste des gardes</h1>
+            <form action="/gardes" method="POST">
 		<div class="table-responsive table-gardes">
 		<table  class="table table-bordered table-collapse">
 			<thead class="charte">
@@ -66,7 +66,7 @@
                             </tr>
                         </thead>
 			<tbody class="charte">
-                        <form action="jesaispas" method="POST">
+                        
 				<tr>
                                     <%
                                         idPompier = 0;
@@ -105,10 +105,13 @@
                                         }
                                     %>
 				</tr>
-                            </form>
+                            
                         </tbody>
 			</table>
+                    
 		</div>
+                <input type="submit" value="Valider les modifications"/>
+            </form>
         </div>
 		<script src="js/jquery.min.js"> </script>
 		<script>
