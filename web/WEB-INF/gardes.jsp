@@ -27,7 +27,7 @@
     </head>
         <%@include file="navbar.jspf"%>
         <% 
-            String[] lesCouleurs = {"vert", "orange", "rouge", "bleu"};
+            String[] lesCouleurs = {"rouge", "orange", "vert", "bleu"};
             ArrayList <Gardes> lesGardes = (ArrayList)maSession.getAttribute("lesGardes");
             ArrayList <Calendar> lesDates = new ArrayList();
            
@@ -122,7 +122,7 @@
 		<script>
                         
                         //*******************************
-                        var couleur = ["verte","orange","rouge","bleu"];  
+                        var couleur = ["rouge", "orange", "vert", "bleu"];  
                         // Gestion des evenements
                         $(document).ready(function() {
                             
@@ -135,16 +135,17 @@
                             });
                             
                             $(".ztGarde").click(function() {
-                                var sessionId = '<% out.print(String.valueOf(unPompier.getcId()) + String.valueOf(unPompier.getpId())); %>';
-                                //alert('id cliqué ' + $(this).attr('id') + typeof($(this).attr('id')) + ' id session ' + sessionId + typeof(sessionId));
-                                //if($('.ztGarde').attr('id').toString() == sessionId){
-                                    v = $(this).val();
-                                    nv = (v+1) % 3;
+                                var pompierId = '<% out.print(String.valueOf(unPompier.getcId()) + String.valueOf(unPompier.getpId())); %>';
+                                //alert('id cliqué ' + $(this).attr('id') + typeof($(this).attr('id')) + ' id pompier ' + pompierId + typeof(pompierId));
+                                if($('.ztGarde').attr('id') == pompierId){
+                                    v = parseInt($(this).val());
+                                    nv = (v+1) % 4;
+                                    //alert('val : ' + $(this).val() + ' v: ' + v + ' v+1: ' + (v+1) + ' (v+1) % 4: ' + nv);
 
                                     $(this).addClass(couleur[nv]);    
                                     $(this).removeClass(couleur[v]);
                                     $(this).val(nv);
-                                //}
+                                }
                             });
                         });
 
