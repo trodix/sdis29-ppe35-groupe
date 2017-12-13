@@ -32,6 +32,10 @@
         <servlet-name>gardesServ</servlet-name>
         <servlet-class>com.test.servlets.gardesServ</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>alertesServlet</servlet-name>
+        <servlet-class>com.test.servlets.alertesServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>authentifServlet</servlet-name>
         <url-pattern>/authentification</url-pattern>
@@ -55,6 +59,10 @@
     <servlet-mapping>
         <servlet-name>gardesServ</servlet-name>
         <url-pattern>/gardes</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>alertesServlet</servlet-name>
+        <url-pattern>/alertes</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

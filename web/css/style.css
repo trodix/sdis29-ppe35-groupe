@@ -254,3 +254,15 @@ input::-o-outer-spin-button {
 .legende-bas{
     margin-bottom: 3%;
 }
+
+.pageAlertes{
+    color: white;
+}
+
+.alertesBtn{
+    margin-left: 5%;
+}
+
+.alertesListes{
+    width:200px;
+}

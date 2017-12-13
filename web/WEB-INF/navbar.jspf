@@ -68,7 +68,7 @@
                             if(maSession2.getAttribute("responsableA") != null){
                                 if((boolean) maSession2.getAttribute("responsableA") == true){
                                     out.println("<li class='nav-item'>"+
-                                                "<li class='nav-item'><a class='nav-link' href='gardes'>Gestion des alertes</a></li>");
+                                                "<li class='nav-item'><a class='nav-link' href='alertes'>Gestion des alertes</a></li>");
                                 }
                             }
                         

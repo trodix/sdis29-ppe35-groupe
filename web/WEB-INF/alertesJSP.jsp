@@ -1,9 +1,3 @@
-<%-- 
-    Document   : pompierJSP
-    Created on : 17 oct. 2017, 11:44:29
-    Author     : fabien.ladouce
---%>
-
 <%@page import="com.test.beans.Pompier"%>
 <%@page import="com.test.bdd.PompierMYSQL"%>
 <%@page import="javax.servlet.http.HttpSession"%>
@@ -47,14 +41,14 @@
         }
             
         %>
-        <div class="container">
+        <div class="container pageAlertes">
             <form action="Pompier" method="POST">
                 <div class="table-responsive">
-                    <table class="table tableau-infos-pompier" border="0">
+                    <table class="table tableau-infos-pompier legende" border="0">
                             <tr>
-                                <td><label for="nom" >Casernes : </label></td>
+                                <td><label for="casernes" >Casernes : </label></td>
                                 <td>
-                                    <select name="caserne" size="1">
+                                    <select name="caserne" size="1" class='alertesListes'>
                                         <option>Bannalec</option>
                                         <option>Benodet</option>
                                         <option>Brasparts</option>
@@ -62,7 +56,7 @@
                                     </select>
                                 </td>
                                 <td>
-                                    <select name="caserne" size="1">
+                                    <select name="caserne" size="1" class='alertesListes'>
                                         <option>Bannalec</option>
                                         <option>Benodet</option>
                                         <option>Brasparts</option>
@@ -70,7 +64,7 @@
                                     </select>
                                 </td>
                                 <td>
-                                    <select name="caserne" size="1">
+                                    <select name="caserne" size="1" class='alertesListes'>
                                         <option>Bannalec</option>
                                         <option>Benodet</option>
                                         <option>Brasparts</option>
@@ -78,7 +72,7 @@
                                     </select>
                                 </td>
                                 <td>
-                                    <select name="caserne" size="1">
+                                    <select name="caserne" size="1" class='alertesListes'>
                                         <option>Bannalec</option>
                                         <option>Benodet</option>
                                         <option>Brasparts</option>
@@ -91,8 +85,8 @@
                 <div class="row">
                     <table class="table tableau-infos-pompier" border="0">
                         <tr>
-                            <td>Nombre de Pompiers :</td>
                             <td>
+                                <label for="casernes" >Nombre de Pompiers :</label>                            
                                 <select name="nbPompiers" size="1">
                                     <option>1</option>
                                     <option>2</option>
@@ -100,9 +94,9 @@
                                     <option>4</option>
                                 </select>
                             </td>
-                            <td>Tranche Horaire :</td>
                             <td>
-                                <select name="trancheHoraire" size="1">
+                                <label for="trancheHoraire" >Tranche Horaire :</label>
+                                <select name="trancheHoraire" size="1" class='alertesListes'>
                                     <option>Nuit</option>
                                     <option>Matin</option>
                                     <option>Après-Midi</option>
@@ -115,30 +109,36 @@
                 <div class="row">
                     <table class="table tableau-infos-pompier" border="0">
                         <tr>
-                            <td>Nombre de Pompiers :</td>
                             <td>
-                                <select name="nbPompiers" size="1">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
+                                <label for="choixPompiers">Choix des Pompiers :</label>
+                                <select name="choixPompiers" size="1" class='alertesListes'>
+                                    <option>Pompier 1</option>
+                                    <option>Pompier 2</option>
+                                    <option>Pompier 3</option>
+                                    <option>Pompier 4</option>
                                 </select>
-                            </td>
-                            <td>Tranche Horaire :</td>
-                            <td>
-                                <select name="trancheHoraire" size="1">
-                                    <option>Nuit</option>
-                                    <option>Matin</option>
-                                    <option>Après-Midi</option>
-                                    <option>Soir</option>
-                                </select>
+                                <button class="btn btn-lg bouton-validation alertesBtn">Ajouter</button>
                             </td>
                         </tr>
                     </table>
                 </div>
+                <div class="row">
+                    <table class="table tableau-liste-pompier table-bordered table-striped">
+                        <thead>
+                        <h3 class="titre-profil">Équipe d'Intervention :</h3>
+                            <tr>
+                                <th>Caserne</th>
+                                <th>Pompier</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div>
                 <div>
                     <label for="btModification"></label>
-                    <input class="btn btn-lg bouton-validation" type="submit" value="Valider modifications" id="btModifications"/>
+                    <input class="btn btn-lg bouton-validation" type="submit" value="Lancer l'alerte" id="btModifications"/>
                 </div><br>
             </form>
         </div>
