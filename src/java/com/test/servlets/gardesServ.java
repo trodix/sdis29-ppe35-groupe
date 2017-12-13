@@ -109,7 +109,7 @@ public class gardesServ extends HttpServlet {
             throws ServletException, IOException {
         //processRequest(request, response);
         GardesForm uneGardesForm = new GardesForm();
-        uneGardesForm.verifGarde(request);
+        uneGardesForm.verifGardes(request);
         getServletContext().getRequestDispatcher("/WEB-INF/gardes.jsp").forward(request, response);
     }
 
