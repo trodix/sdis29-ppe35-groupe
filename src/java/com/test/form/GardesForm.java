@@ -24,14 +24,13 @@ public class GardesForm {
         
         
         HttpSession maSession = request.getSession();
-        ArrayList <Gardes> lesGardes = (ArrayList)request.getAttribute("lesGardes");
-        
+        ArrayList <Gardes> lesGardes = (ArrayList<Gardes>)maSession.getAttribute("lesGardes");
         Map<String, String[]> map = request.getParameterMap();
+        System.out.println(map.toString());
         String[]lesNvGardes = map.get("tabGardes");
         
         int activite = 0;
         int i = 0;
-        
         GardesMySQL uneGardeMysql = new GardesMySQL();
         for(Gardes uneGardes : lesGardes){
             activite = Integer.parseInt(lesNvGardes[i]);
@@ -46,6 +45,7 @@ public class GardesForm {
                     uneGardeMysql.create(uneGardes, activite);
                 }
             }
+            
             i ++;
         }
     }

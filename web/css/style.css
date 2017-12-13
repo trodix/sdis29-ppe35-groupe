@@ -242,3 +242,15 @@ input::-o-outer-spin-button {
 .survol{
     border: solid 2px white;
 }
+
+.legende{
+    color:white;
+}
+
+.legende-inter{
+    margin-bottom: 1%;
+}
+
+.legende-bas{
+    margin-bottom: 3%;
+}

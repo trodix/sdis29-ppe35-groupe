@@ -43,17 +43,13 @@
         <div class="container">
             <h1 class="charte">Liste des gardes</h1>
             <div class="table-responsive table-gardes">
-                <table class="titre-profil">
-                    <thead>
-                        <th><h3>Légende</h3></th> 
-                    </thead>
-                    <tbody>
-                        <!-- Légende bouton 3 : zoomer page web a 230% -->
-                        <tr><td><img src="images/legende-0.png"></td><td>Indisponible</td></tr>
-                        <tr><td><img src="images/legende-1.png"></td><td>Disponible</td></tr>
-                        <tr><td><img src="images/legende-2.png"></td><td>Au travail</td></tr>
-                    </tbody>
-                </table>
+                <div class="legende">
+                    <h3>Légende</h3>
+                    <!-- Légende bouton 3 : zoomer page web a 230% -->
+                    <div class="legende-inter"><img src="images/legende-0.png"><h5>Indisponible</h5></div>
+                    <div class="legende-inter"><img src="images/legende-1.png"><h5>Disponible</h5></div>
+                    <div class="legende-inter legende-bas"><img src="images/legende-2.png"><h5>Au travail</h5></div>
+                </div>
                 <table  class="table table-bordered table-collapse">
                         <thead class="charte">
                             <tr class="enteteTableau">
@@ -82,7 +78,7 @@
                                     <%
                                         idPompier = 0;
                                         int garde = 0;
-                                        String zoneInput = "<input type='number' min=0 max=2 readonly='readonly'"+
+                                        String zoneInput = "<input type='number' min=0 max=3 readonly='readonly'"+
                                                             "class='inputDispo ztGarde " + lesCouleurs[garde] + "' name='tabVentil'"+
                                                             "value=" + garde + " />";
                                         
@@ -97,7 +93,7 @@
                                                 //}else{
                                                     garde = uneGarde.getActivite();
                                                 //}
-                                                zoneInput = "<input type='number' min=0 max=2 readonly='readonly'"+
+                                                zoneInput = "<input type='number' min=0 max=3 readonly='readonly'"+
                                                             "class='inputDispo ztGarde " + lesCouleurs[garde] + "' name='tabVentil' " + "id='" + uneGarde.getPompier().getcId() + uneGarde.getPompier().getpId() + "' " +
                                                             "value=" + garde + " />";
                                                 out.println("<td class='noir'>"+zoneInput+"</td>");
@@ -107,7 +103,7 @@
                                                 //}else{
                                                     garde = uneGarde.getActivite();
                                                 //}
-                                                zoneInput = "<input type='number' min=0 max=2 readonly='readonly'"+
+                                                zoneInput = "<input type='number' min=0 max=3 readonly='readonly'"+
                                                             "class='inputDispo ztGarde " + lesCouleurs[garde] + "' name='tabVentil' " + "id='" + uneGarde.getPompier().getcId() + uneGarde.getPompier().getpId() + "'  " +
                                                             "value=" + garde + " />";
                                                 out.println("<td class='noir'>"+zoneInput+"</td>");
