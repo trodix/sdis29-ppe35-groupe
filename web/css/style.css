@@ -237,3 +237,19 @@ input::-o-outer-spin-button {
 .table-responsive.table-gardes>* {
     font-size: 0.8em !important;
 }
+
+.survol{
+    border: solid 2px white;
+}
+
+.legende{
+    color:white;
+}
+
+.legende-inter{
+    margin-bottom: 1%;
+}
+
+.legende-bas{
+    margin-bottom: 3%;
+}
