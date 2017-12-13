@@ -125,7 +125,7 @@
                 <div class="row">
                     <table class="table tableau-liste-pompier table-bordered table-striped">
                         <thead>
-                        <h3 class="titre-profil">Équipe d'Intervention :</h3><!-- -->
+                        <h3 class="titre-profil">Équipe d'Intervention :</h3>
                             <tr>
                                 <th>Caserne</th>
                                 <th>Pompier</th>
