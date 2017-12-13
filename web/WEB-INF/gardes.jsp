@@ -47,8 +47,8 @@
                     <h3>Légende</h3>
                     <!-- Légende bouton 3 : zoomer page web a 230% -->
                     <div class="legende-inter"><img src="images/legende-0.png"><h5>Indisponible</h5></div>
-                    <div class="legende-inter"><img src="images/legende-1.png"><h5>Disponible</h5></div>
-                    <div class="legende-inter legende-bas"><img src="images/legende-2.png"><h5>Au travail</h5></div>
+                    <div class="legende-inter"><img src="images/legende-1.png"><h5>Au travail</h5></div>
+                    <div class="legende-inter legende-bas"><img src="images/legende-2.png"><h5>Disponible</h5></div>
                 </div>
                 <table  class="table table-bordered table-collapse">
                         <thead class="charte">
