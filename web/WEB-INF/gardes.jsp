@@ -27,7 +27,7 @@
     </head>
         <%@include file="navbar.jspf"%>
         <% 
-            String[] lesCouleurs = {"vert", "orange", "rouge", "bleu"};
+            String[] lesCouleurs = {"rouge", "orange", "vert"};
             ArrayList <Gardes> lesGardes = (ArrayList)maSession.getAttribute("lesGardes");
             ArrayList <Calendar> lesDates = new ArrayList();
            
@@ -82,7 +82,7 @@
                                     <%
                                         idPompier = 0;
                                         int garde = 0;
-                                        String zoneInput = "<input type='number' min=0 max=3 readonly='readonly'"+
+                                        String zoneInput = "<input type='number' min=0 max=2 readonly='readonly'"+
                                                             "class='inputDispo ztGarde " + lesCouleurs[garde] + "' name='tabVentil'"+
                                                             "value=" + garde + " />";
                                         
@@ -97,7 +97,7 @@
                                                 //}else{
                                                     garde = uneGarde.getActivite();
                                                 //}
-                                                zoneInput = "<input type='number' min=0 max=3 readonly='readonly'"+
+                                                zoneInput = "<input type='number' min=0 max=2 readonly='readonly'"+
                                                             "class='inputDispo ztGarde " + lesCouleurs[garde] + "' name='tabVentil' " + "id='" + uneGarde.getPompier().getcId() + uneGarde.getPompier().getpId() + "' " +
                                                             "value=" + garde + " />";
                                                 out.println("<td class='noir'>"+zoneInput+"</td>");
@@ -107,7 +107,7 @@
                                                 //}else{
                                                     garde = uneGarde.getActivite();
                                                 //}
-                                                zoneInput = "<input type='number' min=0 max=3 readonly='readonly'"+
+                                                zoneInput = "<input type='number' min=0 max=2 readonly='readonly'"+
                                                             "class='inputDispo ztGarde " + lesCouleurs[garde] + "' name='tabVentil' " + "id='" + uneGarde.getPompier().getcId() + uneGarde.getPompier().getpId() + "'  " +
                                                             "value=" + garde + " />";
                                                 out.println("<td class='noir'>"+zoneInput+"</td>");
@@ -122,11 +122,11 @@
                 <input type="submit" value="Valider les modifications"/>
             </form>
         </div>
-		<script src="js/jquery.min.js"> </script>
+		<script src="js/jquery.min.js"></script>
 		<script>
                         
                         //*******************************
-                        var couleur = ['verte','orange','rouge','bleu'];  
+                        var couleur = ['rouge','orange','vert'];  
                         // Gestion des evenements
                         $(document).ready(function() {
                             
@@ -139,16 +139,16 @@
                             });
                             
                             $('.ztGarde').click(function() {
-                                if($('.ztGarde').attr('id').val === <% out.print(unPompier.getcId() + unPompier.getpId()); %> ){
+                                //alert('id cliqué ' + $(this).attr('id') + ' id session ' + <% //out.print(String.valueOf(unPompier.getcId()) + String.valueOf(unPompier.getpId())); %>);
+                                //if($('.ztGarde').attr('id').toString() === <% //out.print("'" + String.valueOf(unPompier.getcId()) + String.valueOf(unPompier.getpId()) + "'"); %> ){
                                     v = $(this).val();
-                                    nv = (v+1) % 3;
+                                    nv = (v) % 3;
 
                                     $(this).addClass(couleur[nv]);    
                                     $(this).removeClass(couleur[v]);
                                     $(this).val(nv);
-                                }
+                                //}
                             });
-                            )
                         });
 
 		</script>
