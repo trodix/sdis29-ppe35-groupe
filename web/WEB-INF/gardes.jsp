@@ -27,7 +27,7 @@
     </head>
         <%@include file="navbar.jspf"%>
         <% 
-            String[] lesCouleurs = {"rouge","orange", "vert"};
+            String[] lesCouleurs = {"vert", "orange", "rouge", "bleu"};
             ArrayList <Gardes> lesGardes = (ArrayList)maSession.getAttribute("lesGardes");
             ArrayList <Calendar> lesDates = new ArrayList();
            
@@ -75,47 +75,47 @@
 
                             </tr>
                         </thead>
-                        <tbody class="charte">
-                        <form action="jesaispas" method="POST">                   
-                            <tr>
-                                <%
-                                    idPompier = 0;
-                                    int garde = 0;
-                                    String zoneInput = "<input type='number' min=0 max=2 readonly='readonly'"+
-                                                        "class='inputDispo ztGarde " + lesCouleurs[garde] + "' name='tabVentil'"+
-                                                        "value=" + garde + " />";
-
-                                    for (Gardes uneGarde : lesGardes) { 
-                                        System.out.println(idPompier);
-                                        if(idPompier != uneGarde.getPompier().getpId()){
-                                            idPompier = uneGarde.getPompier().getpId();
-                                            out.println("</tr><tr><td>"+uneGarde.getPompier().getpNom()+" "+uneGarde.getPompier().getpPrenom()+"</td>");
-                                            out.println("<td>"+uneGarde.getPompier().getpBip()+"</td>");
-                                            //if(uneGarde.getIsInInBdd() == false){
-                                            //   garde = 0;
-                                            //}else{
-                                                garde = uneGarde.getActivite();
-                                            //}
-                                            zoneInput = "<input type='number' min=0 max=2 readonly='readonly'"+
-                                                        "class='inputDispo ztGarde " + lesCouleurs[garde] + "' name='tabVentil'"+
-                                                        "value=" + garde + " />";
-                                            out.println("<td class='noir'>"+zoneInput+"</td>");
-                                        }else{
-                                            //if(uneGarde.getIsInInBdd() == false){
-                                             //   garde = 0;
-                                            //}else{
-                                                garde = uneGarde.getActivite();
-                                            //}
-                                            zoneInput = "<input type='number' min=0 max=2 readonly='readonly'"+
-                                                        "class='inputDispo ztGarde " + lesCouleurs[garde] + "' name='tabVentil'"+
-                                                        "value=" + garde + " />";
-                                            out.println("<td class='noir'>"+zoneInput+"</td>");
-                                    }
-
-                                    }
-                                %>
-                            </tr>
-
+                        
+			<tbody class="charte">
+                        
+				<tr>
+                                    <%
+                                        idPompier = 0;
+                                        int garde = 0;
+                                        String zoneInput = "<input type='number' min=0 max=3 readonly='readonly'"+
+                                                            "class='inputDispo ztGarde " + lesCouleurs[garde] + "' name='tabVentil'"+
+                                                            "value=" + garde + " />";
+                                        
+                                        for (Gardes uneGarde : lesGardes) { 
+                                            System.out.println(idPompier);
+                                            if(idPompier != uneGarde.getPompier().getpId()){
+                                                idPompier = uneGarde.getPompier().getpId();
+                                                out.println("</tr><tr><td>"+uneGarde.getPompier().getpNom()+" "+uneGarde.getPompier().getpPrenom()+"</td>");
+                                                out.println("<td>"+uneGarde.getPompier().getpBip()+"</td>");
+                                                //if(uneGarde.getIsInInBdd() == false){
+                                                //   garde = 0;
+                                                //}else{
+                                                    garde = uneGarde.getActivite();
+                                                //}
+                                                zoneInput = "<input type='number' min=0 max=3 readonly='readonly'"+
+                                                            "class='inputDispo ztGarde " + lesCouleurs[garde] + "' name='tabVentil' " + "id='" + uneGarde.getPompier().getcId() + uneGarde.getPompier().getpId() + "' " +
+                                                            "value=" + garde + " />";
+                                                out.println("<td class='noir'>"+zoneInput+"</td>");
+                                            }else{
+                                                //if(uneGarde.getIsInInBdd() == false){
+                                                 //   garde = 0;
+                                                //}else{
+                                                    garde = uneGarde.getActivite();
+                                                //}
+                                                zoneInput = "<input type='number' min=0 max=3 readonly='readonly'"+
+                                                            "class='inputDispo ztGarde " + lesCouleurs[garde] + "' name='tabVentil' " + "id='" + uneGarde.getPompier().getcId() + uneGarde.getPompier().getpId() + "'  " +
+                                                            "value=" + garde + " />";
+                                                out.println("<td class='noir'>"+zoneInput+"</td>");
+                                            }
+                                        
+                                        }
+                                    %>
+				</tr>
                         </tbody>
                 </table>             
             </div>
@@ -124,25 +124,32 @@
         </div>
 		<script src="js/jquery.min.js"> </script>
 		<script>
-			var couleur = ["rouge","orange","vert"];
-			// Gestion des evenements
-			$(document).ready(function() {
-				$(".ztGarde").mouseover(function() {
-				$(this).addClass("survol");
-				});
+                        
+                        //*******************************
+                        var couleur = ["verte","orange","rouge","bleu"];  
+                        // Gestion des evenements
+                        $(document).ready(function() {
+                            
+                            $(".ztGarde").mouseover(function() {
+                                $(this).addClass("survol");
+                            });
 
-				$(".ztGarde").mouseout(function() {
-					$(this).removeClass("survol");
-				});
+                            $(".ztGarde").mouseout(function() {
+                                $(this).removeClass("survol");
+                            });
+                            
+                            $(".ztGarde").click(function() {
+                                //if($(".ztGarde").attr("id").val() === unPompier.getcId() + unPompier.getpId();){
+                                    v = $(this).val();
+                                    nv = (v+1) % 3;
 
-				$(".ztGarde").click(function() {
-					v = $(this).val(); // Ancienne valeur
-					nv = (v+1) % 3; // Nouvelle Valeur
-					$(this).addClass(couleur[nv]);
-					$(this).removeClass(couleur[v]);
-					$(this).val(nv);
-					});
-				});
+                                    $(this).addClass(couleur[nv]);    
+                                    $(this).removeClass(couleur[v]);
+                                    $(this).val(nv);
+                                //}
+                            });
+                        });
+
 		</script>
         </div>     
     </body>
