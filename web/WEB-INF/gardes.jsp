@@ -15,19 +15,19 @@
 <%@page import="com.test.form.AuthentifForm"%>
 <%@page import="com.test.form.AuthentifForm"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<link rel="stylesheet" type="text/css" title="Bootstrap" href="css/bootstrap.css"/>
+<link rel="stylesheet" type="text/css" title="Font Awesome" href="css/font-awesome.css"/>
+<link rel="stylesheet" type="text/css" href="css/style.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" type="text/css" title="Bootstrap" href="css/bootstrap.css"/>
-        <link rel="stylesheet" type="text/css" title="Font Awesome" href="css/font-awesome.css"/>
-        <link rel="stylesheet" type="text/css" href="css/style.css"/>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <title>Liste des gardes</title>
     </head>
         <%@include file="navbar.jspf"%>
         <% 
-            String[] lesCouleurs = {"rouge", "orange", "vert"};
+            String[] lesCouleurs = {"vert", "orange", "rouge", "bleu"};
             ArrayList <Gardes> lesGardes = (ArrayList)maSession.getAttribute("lesGardes");
             ArrayList <Calendar> lesDates = new ArrayList();
            
@@ -42,7 +42,6 @@
         %>
         <div class="container">
             <h1 class="charte">Liste des gardes</h1>
-            <form>
             <div class="table-responsive table-gardes">
                 <div class="legende">
                     <h3>Légende</h3>
@@ -79,7 +78,7 @@
                                     <%
                                         idPompier = 0;
                                         int garde = 0;
-                                        String zoneInput = "<input type='number' min=0 max=3 readonly='readonly' "+
+                                        String zoneInput = "<input type='number' min=0 max=3 readonly='readonly'"+
                                                             "class='inputDispo ztGarde " + lesCouleurs[garde] + "' name='tabVentil'"+
                                                             "value=" + garde + " />";
                                         
@@ -94,7 +93,7 @@
                                                 //}else{
                                                     garde = uneGarde.getActivite();
                                                 //}
-                                                zoneInput = "<input type='number' min=0 max=3 readonly='readonly' "+
+                                                zoneInput = "<input type='number' min=0 max=3 readonly='readonly'"+
                                                             "class='inputDispo ztGarde " + lesCouleurs[garde] + "' name='tabVentil' " + "id='" + uneGarde.getPompier().getcId() + uneGarde.getPompier().getpId() + "' " +
                                                             "value=" + garde + " />";
                                                 out.println("<td class='noir'>"+zoneInput+"</td>");
@@ -104,7 +103,7 @@
                                                 //}else{
                                                     garde = uneGarde.getActivite();
                                                 //}
-                                                zoneInput = "<input type='number' min=0 max=3 readonly='readonly' "+
+                                                zoneInput = "<input type='number' min=0 max=3 readonly='readonly'"+
                                                             "class='inputDispo ztGarde " + lesCouleurs[garde] + "' name='tabVentil' " + "id='" + uneGarde.getPompier().getcId() + uneGarde.getPompier().getpId() + "'  " +
                                                             "value=" + garde + " />";
                                                 out.println("<td class='noir'>"+zoneInput+"</td>");
@@ -116,30 +115,29 @@
                         </tbody>
                 </table>             
             </div>
-                <input type="submit" value="Valider les modifications"/>
+                <input type="submit" class="btn btn-lg bouton-validation" value="Valider les modifications"/>
             </form>
         </div>
-		<script src="js/jquery.min.js"></script>
+		<script src="js/jquery.min.js"> </script>
 		<script>
                         
                         //*******************************
-                        var couleur = ['rouge','orange','vert'];  
+                        var couleur = ["verte","orange","rouge","bleu"];  
                         // Gestion des evenements
                         $(document).ready(function() {
                             
-                            $('.ztGarde').mouseover(function() {
-                                $(this).addClass('survol');
+                            $(".ztGarde").mouseover(function() {
+                                $(this).addClass("survol");
                             });
 
-                            $('.ztGarde').mouseout(function() {
-                                $(this).removeClass('survol');
+                            $(".ztGarde").mouseout(function() {
+                                $(this).removeClass("survol");
                             });
                             
-                            $('.ztGarde').click(function() {
-                                //alert('id cliqué ' + $(this).attr('id') + ' id session ' + <% //out.print(String.valueOf(unPompier.getcId()) + String.valueOf(unPompier.getpId())); %>);
-                                //if($('.ztGarde').attr('id').toString() === <% //out.print("'" + String.valueOf(unPompier.getcId()) + String.valueOf(unPompier.getpId()) + "'"); %> ){
+                            $(".ztGarde").click(function() {
+                                //if($(".ztGarde").attr("id").val() === unPompier.getcId() + unPompier.getpId();){
                                     v = $(this).val();
-                                    nv = (v) % 3;
+                                    nv = (v+1) % 3;
 
                                     $(this).addClass(couleur[nv]);    
                                     $(this).removeClass(couleur[v]);
