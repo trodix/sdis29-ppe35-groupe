@@ -79,10 +79,10 @@ public class GardesMySQL {
                 if (indice > -1 ) {
                     uneGarde = lesGardes.get(indice);
                 } 
-                uneGarde.setActivite(resultat.getInt("idDispo"));
-                uneGarde.setIsInBdd(true);
-                if (indice==-1) {
-                    lesGardes.add(uneGarde);
+            uneGarde.setActivite(resultat.getInt("idDispo"));
+            uneGarde.setIsInBdd(true);
+            if (indice==-1) {
+                lesGardes.add(uneGarde);
                 }
         }
 
@@ -95,7 +95,7 @@ public class GardesMySQL {
         try {           
             PreparedStatement stmt;
             String sql = "UPDATE feuilleGarde SET idDispo = ? WHERE "
-                    + "dtJour=? AND idHoraires=? AND idPompier=? AND idCis=?";
+                    + "dteJour=? AND idHoraires=? AND idPompier=? AND idCis=?";
             stmt = laConnection.prepareStatement(sql);
             stmt.setInt(1, act);
             stmt.setDate(2, TrmtDate.getSQLDate(uneGarde.getJourGarde()));
@@ -121,12 +121,15 @@ public class GardesMySQL {
         
         try {           
             PreparedStatement stmt;
-            String sql = "INSERT INTO ventilation VALUES (?,?,?,?);";
+            String sql = "INSERT INTO feuilleGarde VALUES (?,?,?,?,?,?);";
             stmt = laConnection.prepareStatement(sql);
-            stmt.setDate(1, TrmtDate.getSQLDate(uneVentil.getJourVentil()));
-            stmt.setString(2, uneVentil.getPeriode());
-            stmt.setInt(3, uneVentil.getSalarie().getId());
-            stmt.setInt(4, act);
+            stmt.setDate(1, TrmtDate.getSQLDate(uneGarde.getJourGarde()));
+            stmt.setInt(2, uneGarde.getHoraires());
+            stmt.setInt(3, uneGarde.getPompier().getcId());
+            stmt.setInt(4, uneGarde.getPompier().getpId());
+            stmt.setInt(5, uneGarde.getActivite());
+            stmt.setBoolean(6, false);
+            
             // System.out.println("Requete : " + stmt.toString());
             int statut = stmt.executeUpdate();            
             if (statut <= 0) {
@@ -135,21 +138,21 @@ public class GardesMySQL {
             }
             stmt.close();  
         } catch(SQLException ex){
-            System.out.println("SQLExecption : " + ex.getMessage());
+            System.out.println("SQLExeception : " + ex.getMessage());
             System.out.println("SQLState : " + ex.getSQLState());
             System.out.println("CodeErreur : " + ex.getErrorCode());
         }
     }
     public void delete(Gardes uneGarde) {
-        System.out.println("uneVentil à supprimer : "+ uneVentil);
         try {           
             PreparedStatement stmt;
-            String sql = "DELETE FROM ventilation WHERE "
-                    + "jourVentil=? AND periode=? AND idSalarie=?;";
+            String sql = "DELETE FROM feuilleGarde WHERE "
+                    + "dteJour=? AND idHoraires=? AND idPompier=? AND idCis=?";
             stmt = laConnection.prepareStatement(sql);
-            stmt.setDate(1, TrmtDate.getSQLDate(uneVentil.getJourVentil()));
-            stmt.setString(2, uneVentil.getPeriode());
-            stmt.setInt(3, uneVentil.getSalarie().getId());
+            stmt.setDate(1, TrmtDate.getSQLDate(uneGarde.getJourGarde()));
+            stmt.setInt(2, uneGarde.getHoraires());
+            stmt.setInt(3, uneGarde.getPompier().getpId());
+            stmt.setInt(4, uneGarde.getPompier().getcId());
             // System.out.println("Requete : " + stmt.toString());
             int statut = stmt.executeUpdate();            
             if (statut <= 0) {
