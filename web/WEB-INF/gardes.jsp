@@ -43,17 +43,13 @@
         <div class="container">
             <h1 class="charte">Liste des gardes</h1>
             <div class="table-responsive table-gardes">
-                <table class="titre-profil">
-                    <thead>
-                        <th><h3>Légende</h3></th> 
-                    </thead>
-                    <tbody>
-                        <!-- Légende bouton 3 : zoomer page web a 230% -->
-                        <tr><td><img src="images/legende-0.png"></td><td>Indisponible</td></tr>
-                        <tr><td><img src="images/legende-1.png"></td><td>Disponible</td></tr>
-                        <tr><td><img src="images/legende-2.png"></td><td>Au travail</td></tr>
-                    </tbody>
-                </table>
+                <div class="legende">
+                    <h3>Légende</h3>
+                    <!-- Légende bouton 3 : zoomer page web a 230% -->
+                    <div class="legende-inter"><img src="images/legende-0.png"><h5>Indisponible</h5></div>
+                    <div class="legende-inter"><img src="images/legende-1.png"><h5>Disponible</h5></div>
+                    <div class="legende-inter legende-bas"><img src="images/legende-2.png"><h5>Au travail</h5></div>
+                </div>
                 <table  class="table table-bordered table-collapse">
                         <thead class="charte">
                             <tr class="enteteTableau">
@@ -119,7 +115,7 @@
                         </tbody>
                 </table>             
             </div>
-                <input type="submit" value="Valider les modifications"/>
+                <input type="submit" class="btn btn-lg bouton-validation" value="Valider les modifications"/>
             </form>
         </div>
 		<script src="js/jquery.min.js"> </script>
