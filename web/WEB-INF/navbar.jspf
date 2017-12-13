@@ -52,6 +52,11 @@
                         </li>
                         <%
                             HttpSession maSession2 = request.getSession();
+                            if(maSession2.getAttribute("pompier") != null){
+                                if((boolean) maSession2.getAttribute("pompier") == true){
+                                    out.println("<li class='nav-item'><a class='nav-link' href='gardes'>Gestion des gardes</a></li>");
+                                }
+                            }
                             if(maSession2.getAttribute("chefDeCentre") != null){
                                 if((boolean) maSession2.getAttribute("chefDeCentre") == true){
                                     out.println("<li class='nav-item'>"+
@@ -62,8 +67,7 @@
                             }
                             if(maSession2.getAttribute("responsableA") != null){
                                 if((boolean) maSession2.getAttribute("responsableA") == true){
-                                    out.println("<li class='nav-item'>"+
-                                                "<a class='nav-link' href='Gardes'>Gardes</a></li>");
+                                    
                                 }
                             }
                         

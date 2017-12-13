@@ -90,6 +90,80 @@ public class GardesMySQL {
         return lesGardes;
         }
     
+    public void update(Gardes uneGarde, int act) {
+
+        try {           
+            PreparedStatement stmt;
+            String sql = "UPDATE feuilleGarde SET idDispo = ? WHERE "
+                    + "dtJour=? AND idHoraires=? AND idPompier=? AND idCis=?";
+            stmt = laConnection.prepareStatement(sql);
+            stmt.setInt(1, act);
+            stmt.setDate(2, TrmtDate.getSQLDate(uneGarde.getJourGarde()));
+            stmt.setInt(3, uneGarde.getHoraires());
+            stmt.setInt(4, uneGarde.getPompier().getpId());
+            stmt.setInt(5, uneGarde.getPompier().getcId());
+            
+            // System.out.println("Requete : " + stmt.toString());
+            int statut = stmt.executeUpdate();            
+            if (statut <= 0) {
+                System.out.println("Pb lors de la maj dans feuilleGarde");
+                System.out.println("Requete : " + stmt.toString());
+            }
+            stmt.close();  
+        } catch(SQLException ex){
+            System.out.println("SQLExecption : " + ex.getMessage());
+            System.out.println("SQLState : " + ex.getSQLState());
+            System.out.println("CodeErreur : " + ex.getErrorCode());
+        }
+        
+    }
+    public void create(Gardes uneGarde, int act) {
+        
+        try {           
+            PreparedStatement stmt;
+            String sql = "INSERT INTO ventilation VALUES (?,?,?,?);";
+            stmt = laConnection.prepareStatement(sql);
+            stmt.setDate(1, TrmtDate.getSQLDate(uneVentil.getJourVentil()));
+            stmt.setString(2, uneVentil.getPeriode());
+            stmt.setInt(3, uneVentil.getSalarie().getId());
+            stmt.setInt(4, act);
+            // System.out.println("Requete : " + stmt.toString());
+            int statut = stmt.executeUpdate();            
+            if (statut <= 0) {
+                System.out.println("Pas d'insertion dans ventilation");
+                System.out.println("Requete : " + stmt.toString());
+            }
+            stmt.close();  
+        } catch(SQLException ex){
+            System.out.println("SQLExecption : " + ex.getMessage());
+            System.out.println("SQLState : " + ex.getSQLState());
+            System.out.println("CodeErreur : " + ex.getErrorCode());
+        }
+    }
+    public void delete(Gardes uneGarde) {
+        System.out.println("uneVentil à supprimer : "+ uneVentil);
+        try {           
+            PreparedStatement stmt;
+            String sql = "DELETE FROM ventilation WHERE "
+                    + "jourVentil=? AND periode=? AND idSalarie=?;";
+            stmt = laConnection.prepareStatement(sql);
+            stmt.setDate(1, TrmtDate.getSQLDate(uneVentil.getJourVentil()));
+            stmt.setString(2, uneVentil.getPeriode());
+            stmt.setInt(3, uneVentil.getSalarie().getId());
+            // System.out.println("Requete : " + stmt.toString());
+            int statut = stmt.executeUpdate();            
+            if (statut <= 0) {
+                System.out.println("Suppression non effectuée");
+                System.out.println("Requete : " + stmt.toString());
+            }
+            stmt.close();  
+        } catch(SQLException ex){
+            System.out.println("SQLExecption : " + ex.getMessage());
+            System.out.println("SQLState : " + ex.getSQLState());
+            System.out.println("CodeErreur : " + ex.getErrorCode());
+        }
+    }
+    
     public ArrayList<Calendar> getLesDates() throws SQLException{
         
         ArrayList <Calendar> lesDates = new ArrayList();
