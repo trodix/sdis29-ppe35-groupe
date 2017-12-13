@@ -78,7 +78,7 @@
                                     <%
                                         idPompier = 0;
                                         int garde = 0;
-                                        String zoneInput = "<input type='number' min=0 max=3 readonly='readonly'"+
+                                        String zoneInput = "<input type='number' min=0 max=3 readonly='readonly' "+
                                                             "class='inputDispo ztGarde " + lesCouleurs[garde] + "' name='tabVentil'"+
                                                             "value=" + garde + " />";
                                         
@@ -93,7 +93,7 @@
                                                 //}else{
                                                     garde = uneGarde.getActivite();
                                                 //}
-                                                zoneInput = "<input type='number' min=0 max=3 readonly='readonly'"+
+                                                zoneInput = "<input type='number' min=0 max=3 readonly='readonly' "+
                                                             "class='inputDispo ztGarde " + lesCouleurs[garde] + "' name='tabVentil' " + "id='" + uneGarde.getPompier().getcId() + uneGarde.getPompier().getpId() + "' " +
                                                             "value=" + garde + " />";
                                                 out.println("<td class='noir'>"+zoneInput+"</td>");
@@ -103,7 +103,7 @@
                                                 //}else{
                                                     garde = uneGarde.getActivite();
                                                 //}
-                                                zoneInput = "<input type='number' min=0 max=3 readonly='readonly'"+
+                                                zoneInput = "<input type='number' min=0 max=3 readonly='readonly' "+
                                                             "class='inputDispo ztGarde " + lesCouleurs[garde] + "' name='tabVentil' " + "id='" + uneGarde.getPompier().getcId() + uneGarde.getPompier().getpId() + "'  " +
                                                             "value=" + garde + " />";
                                                 out.println("<td class='noir'>"+zoneInput+"</td>");
@@ -135,8 +135,9 @@
                             });
                             
                             $(".ztGarde").click(function() {
-                                //alert('id cliqué ' + $(this).attr('id') + ' id session ' + <% //out.print(String.valueOf(unPompier.getcId()) + String.valueOf(unPompier.getpId())); %>);
-                                //if($('.ztGarde').attr('id').toString() === <% //out.print("'" + String.valueOf(unPompier.getcId()) + String.valueOf(unPompier.getpId()) + "'"); %> ){
+                                var sessionId = '<% out.print(String.valueOf(unPompier.getcId()) + String.valueOf(unPompier.getpId())); %>';
+                                //alert('id cliqué ' + $(this).attr('id') + typeof($(this).attr('id')) + ' id session ' + sessionId + typeof(sessionId));
+                                //if($('.ztGarde').attr('id').toString() == sessionId){
                                     v = $(this).val();
                                     nv = (v+1) % 3;
 
