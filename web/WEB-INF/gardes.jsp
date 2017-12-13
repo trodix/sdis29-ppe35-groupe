@@ -15,14 +15,15 @@
 <%@page import="com.test.form.AuthentifForm"%>
 <%@page import="com.test.form.AuthentifForm"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<link rel="stylesheet" type="text/css" title="Bootstrap" href="css/bootstrap.css"/>
-<link rel="stylesheet" type="text/css" title="Font Awesome" href="css/font-awesome.css"/>
-<link rel="stylesheet" type="text/css" href="css/style.css"/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" title="Bootstrap" href="css/bootstrap.css"/>
+        <link rel="stylesheet" type="text/css" title="Font Awesome" href="css/font-awesome.css"/>
+        <link rel="stylesheet" type="text/css" href="css/style.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <title>Liste des gardes</title>
     </head>
         <%@include file="navbar.jspf"%>
@@ -122,7 +123,9 @@
 		<script>
                         
                         //*******************************
-                        var couleur = ["rouge", "orange", "vert", "bleu"];  
+                        var pompierStatut = '<% out.print(String.valueOf(unPompier.getiStatut())); %>';
+                        pompierStatut == '2' ? couleur = ["rouge", "bleu"] : couleur = ["rouge", "orange", "vert", "bleu"];
+                        //alert(pompierStatut + ' ' + typeof(pompierStatut));
                         // Gestion des evenements
                         $(document).ready(function() {
                             
@@ -136,10 +139,11 @@
                             
                             $(".ztGarde").click(function() {
                                 var pompierId = '<% out.print(String.valueOf(unPompier.getcId()) + String.valueOf(unPompier.getpId())); %>';
+                                
                                 //alert('id cliqué ' + $(this).attr('id') + typeof($(this).attr('id')) + ' id pompier ' + pompierId + typeof(pompierId));
-                                if($('.ztGarde').attr('id') == pompierId){
+                                if(($('.ztGarde').attr('id') == pompierId) || (pompierStatut == '2')){
                                     v = parseInt($(this).val());
-                                    nv = (v+1) % 4;
+                                    pompierStatut == '2' ? nv = (v+1) % 2 : nv = (v+1) % 4;
                                     //alert('val : ' + $(this).val() + ' v: ' + v + ' v+1: ' + (v+1) + ' (v+1) % 4: ' + nv);
 
                                     $(this).addClass(couleur[nv]);    
