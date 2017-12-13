@@ -27,11 +27,7 @@
     </head>
         <%@include file="navbar.jspf"%>
         <% 
-<<<<<<< HEAD
             String[] lesCouleurs = {"vert", "orange", "rouge", "bleu"};
-=======
-            String[] lesCouleurs = {"rouge","orange", "vert"};
->>>>>>> 190e635ef609e59bdacd3ee19f7047fc3e8dcedb
             ArrayList <Gardes> lesGardes = (ArrayList)maSession.getAttribute("lesGardes");
             ArrayList <Calendar> lesDates = new ArrayList();
            
@@ -79,7 +75,7 @@
 
                             </tr>
                         </thead>
-<<<<<<< HEAD
+                        
 			<tbody class="charte">
                         
 				<tr>
@@ -120,50 +116,6 @@
                                         }
                                     %>
 				</tr>
-                            
-=======
-                        <tbody class="charte">
-                        <form action="jesaispas" method="POST">                   
-                            <tr>
-                                <%
-                                    idPompier = 0;
-                                    int garde = 0;
-                                    String zoneInput = "<input type='number' min=0 max=2 readonly='readonly'"+
-                                                        "class='inputDispo ztGarde " + lesCouleurs[garde] + "' name='tabVentil'"+
-                                                        "value=" + garde + " />";
-
-                                    for (Gardes uneGarde : lesGardes) { 
-                                        System.out.println(idPompier);
-                                        if(idPompier != uneGarde.getPompier().getpId()){
-                                            idPompier = uneGarde.getPompier().getpId();
-                                            out.println("</tr><tr><td>"+uneGarde.getPompier().getpNom()+" "+uneGarde.getPompier().getpPrenom()+"</td>");
-                                            out.println("<td>"+uneGarde.getPompier().getpBip()+"</td>");
-                                            //if(uneGarde.getIsInInBdd() == false){
-                                            //   garde = 0;
-                                            //}else{
-                                                garde = uneGarde.getActivite();
-                                            //}
-                                            zoneInput = "<input type='number' min=0 max=2 readonly='readonly'"+
-                                                        "class='inputDispo ztGarde " + lesCouleurs[garde] + "' name='tabVentil'"+
-                                                        "value=" + garde + " />";
-                                            out.println("<td class='noir'>"+zoneInput+"</td>");
-                                        }else{
-                                            //if(uneGarde.getIsInInBdd() == false){
-                                             //   garde = 0;
-                                            //}else{
-                                                garde = uneGarde.getActivite();
-                                            //}
-                                            zoneInput = "<input type='number' min=0 max=2 readonly='readonly'"+
-                                                        "class='inputDispo ztGarde " + lesCouleurs[garde] + "' name='tabVentil'"+
-                                                        "value=" + garde + " />";
-                                            out.println("<td class='noir'>"+zoneInput+"</td>");
-                                    }
-
-                                    }
-                                %>
-                            </tr>
-
->>>>>>> 190e635ef609e59bdacd3ee19f7047fc3e8dcedb
                         </tbody>
                 </table>             
             </div>
@@ -172,12 +124,12 @@
         </div>
 		<script src="js/jquery.min.js"> </script>
 		<script>
-<<<<<<< HEAD
                         
                         //*******************************
                         var couleur = ["verte","orange","rouge","bleu"];  
                         // Gestion des evenements
                         $(document).ready(function() {
+                            
                             $(".ztGarde").mouseover(function() {
                                 $(this).addClass("survol");
                             });
@@ -185,15 +137,7 @@
                             $(".ztGarde").mouseout(function() {
                                 $(this).removeClass("survol");
                             });
-=======
-			var couleur = ["rouge","orange","vert"];
-			// Gestion des evenements
-			$(document).ready(function() {
-				$(".ztGarde").mouseover(function() {
-				$(this).addClass("survol");
-				});
->>>>>>> 190e635ef609e59bdacd3ee19f7047fc3e8dcedb
-
+                            
                             $(".ztGarde").click(function() {
                                 //if($(".ztGarde").attr("id").val() === unPompier.getcId() + unPompier.getpId();){
                                     v = $(this).val();
@@ -205,7 +149,7 @@
                                 //}
                             });
                         });
-                        //*******************************
+
 		</script>
         </div>     
     </body>
