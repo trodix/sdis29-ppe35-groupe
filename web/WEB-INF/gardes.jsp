@@ -126,28 +126,29 @@
 		<script>
                         
                         //*******************************
-                        var couleur = ["verte","orange","rouge","bleu"];  
+                        var couleur = ['verte','orange','rouge','bleu'];  
                         // Gestion des evenements
                         $(document).ready(function() {
                             
-                            $(".ztGarde").mouseover(function() {
-                                $(this).addClass("survol");
+                            $('.ztGarde').mouseover(function() {
+                                $(this).addClass('survol');
                             });
 
-                            $(".ztGarde").mouseout(function() {
-                                $(this).removeClass("survol");
+                            $('.ztGarde').mouseout(function() {
+                                $(this).removeClass('survol');
                             });
                             
-                            $(".ztGarde").click(function() {
-                                //if($(".ztGarde").attr("id").val() === unPompier.getcId() + unPompier.getpId();){
+                            $('.ztGarde').click(function() {
+                                if($('.ztGarde').attr('id').val === <% out.print(unPompier.getcId() + unPompier.getpId()); %> ){
                                     v = $(this).val();
                                     nv = (v+1) % 3;
 
                                     $(this).addClass(couleur[nv]);    
                                     $(this).removeClass(couleur[v]);
                                     $(this).val(nv);
-                                //}
+                                }
                             });
+                            )
                         });
 
 		</script>
