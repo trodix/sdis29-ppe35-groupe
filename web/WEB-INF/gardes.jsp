@@ -135,7 +135,8 @@
                             });
                             
                             $(".ztGarde").click(function() {
-                                //if($(".ztGarde").attr("id").val() === unPompier.getcId() + unPompier.getpId();){
+                                //alert('id cliqué ' + $(this).attr('id') + ' id session ' + <% //out.print(String.valueOf(unPompier.getcId()) + String.valueOf(unPompier.getpId())); %>);
+                                //if($('.ztGarde').attr('id').toString() === <% //out.print("'" + String.valueOf(unPompier.getcId()) + String.valueOf(unPompier.getpId()) + "'"); %> ){
                                     v = $(this).val();
                                     nv = (v+1) % 3;
 

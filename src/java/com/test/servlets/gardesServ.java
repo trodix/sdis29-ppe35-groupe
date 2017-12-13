@@ -110,7 +110,7 @@ public class gardesServ extends HttpServlet {
         //processRequest(request, response);
         GardesForm uneGardesForm = new GardesForm();
         uneGardesForm.verifGardes(request);
-        getServletContext().getRequestDispatcher("/WEB-INF/gardes.jsp").forward(request, response);
+        getServletContext().getRequestDispatcher("/WEB-INF/pompierJSP.jsp").forward(request, response);
     }
 
     /**
