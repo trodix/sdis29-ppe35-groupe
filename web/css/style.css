@@ -199,6 +199,10 @@ label{
 	background-color: #e54c2b;
 }
 
+.bleu{
+        background-color: #2980b9;
+}
+
 .inputDispo{
 	width: 17px;
         height: 17px;
@@ -271,4 +275,26 @@ h5{
 
 .alertesListes{
     width:200px;
+}
+
+.alertesCase{
+    color: black;
+}
+
+.titre-legende{
+    color: white;
+    border-bottom: solid #ca0000 5px; 
+}
+
+.taille-case-description{
+    width: 1150px;
+    height: 150px;
+}
+
+.margin-div{
+    margin-bottom: 3%;
+}
+
+.align-div{
+    text-align: center;
 }

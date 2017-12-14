@@ -15,19 +15,20 @@
 <%@page import="com.test.form.AuthentifForm"%>
 <%@page import="com.test.form.AuthentifForm"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<link rel="stylesheet" type="text/css" title="Bootstrap" href="css/bootstrap.css"/>
-<link rel="stylesheet" type="text/css" title="Font Awesome" href="css/font-awesome.css"/>
-<link rel="stylesheet" type="text/css" href="css/style.css"/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" title="Bootstrap" href="css/bootstrap.css"/>
+        <link rel="stylesheet" type="text/css" title="Font Awesome" href="css/font-awesome.css"/>
+        <link rel="stylesheet" type="text/css" href="css/style.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <title>Liste des gardes</title>
     </head>
         <%@include file="navbar.jspf"%>
         <% 
-            String[] lesCouleurs = {"vert", "orange", "rouge", "bleu"};
+            String[] lesCouleurs = {"rouge", "orange", "vert", "bleu"};
             ArrayList <Gardes> lesGardes = (ArrayList)maSession.getAttribute("lesGardes");
             ArrayList <Calendar> lesDates = new ArrayList();
            
@@ -41,6 +42,7 @@
             String[] periodes = (String[])maSession.getAttribute("periodes");**/
         %>
         <div class="container">
+            <form action="gardes" method="POST">
             <h1 class="charte">Liste des gardes</h1>
             <div class="table-responsive table-gardes">
                 <!--<table class="legende">
@@ -96,8 +98,8 @@
                                     <%
                                         idPompier = 0;
                                         int garde = 0;
-                                        String zoneInput = "<input type='number' min=0 max=3 readonly='readonly'"+
-                                                            "class='inputDispo ztGarde " + lesCouleurs[garde] + "' name='tabVentil'"+
+                                        String zoneInput = "<input type='number' min=0 max=3 readonly='readonly' "+
+                                                            "class='inputDispo ztGarde " + lesCouleurs[garde] + "' name='tabGardes'"+
                                                             "value=" + garde + " />";
                                         
                                         for (Gardes uneGarde : lesGardes) { 
@@ -111,8 +113,8 @@
                                                 //}else{
                                                     garde = uneGarde.getActivite();
                                                 //}
-                                                zoneInput = "<input type='number' min=0 max=3 readonly='readonly'"+
-                                                            "class='inputDispo ztGarde " + lesCouleurs[garde] + "' name='tabVentil' " + "id='" + uneGarde.getPompier().getcId() + uneGarde.getPompier().getpId() + "' " +
+                                                zoneInput = "<input type='number' min=0 max=3 readonly='readonly' "+
+                                                            "class='inputDispo ztGarde " + lesCouleurs[garde] + "' name='tabGardes' " + "id='" + uneGarde.getPompier().getcId() + uneGarde.getPompier().getpId() + "' " +
                                                             "value=" + garde + " />";
                                                 out.println("<td class='noir'>"+zoneInput+"</td>");
                                             }else{
@@ -121,8 +123,8 @@
                                                 //}else{
                                                     garde = uneGarde.getActivite();
                                                 //}
-                                                zoneInput = "<input type='number' min=0 max=3 readonly='readonly'"+
-                                                            "class='inputDispo ztGarde " + lesCouleurs[garde] + "' name='tabVentil' " + "id='" + uneGarde.getPompier().getcId() + uneGarde.getPompier().getpId() + "'  " +
+                                                zoneInput = "<input type='number' min=0 max=3 readonly='readonly' "+
+                                                            "class='inputDispo ztGarde " + lesCouleurs[garde] + "' name='tabGardes' " + "id='" + uneGarde.getPompier().getcId() + uneGarde.getPompier().getpId() + "'  " +
                                                             "value=" + garde + " />";
                                                 out.println("<td class='noir'>"+zoneInput+"</td>");
                                             }
@@ -140,7 +142,9 @@
 		<script>
                         
                         //*******************************
-                        var couleur = ["rouge","orange","verte","bleu"];  
+                        var pompierStatut = '<% out.print(String.valueOf(unPompier.getiStatut())); %>';
+                        pompierStatut == '2' ? couleur = ["rouge", "bleu"] : couleur = ["rouge", "orange", "vert", "bleu"];
+                        //alert(pompierStatut + ' ' + typeof(pompierStatut));
                         // Gestion des evenements
                         $(document).ready(function() {
                             
@@ -153,15 +157,18 @@
                             });
                             
                             $(".ztGarde").click(function() {
-                                //alert('id cliqué ' + $(this).attr('id') + ' id session ' + <% //out.print(String.valueOf(unPompier.getcId()) + String.valueOf(unPompier.getpId())); %>);
-                                //if($('.ztGarde').attr('id').toString() === <% //out.print("'" + String.valueOf(unPompier.getcId()) + String.valueOf(unPompier.getpId()) + "'"); %> ){
-                                    v = $(this).val();
-                                    nv = (v+1) % 3;
+                                var pompierId = '<% out.print(String.valueOf(unPompier.getcId()) + String.valueOf(unPompier.getpId())); %>';
+                                
+                                //alert('id cliqué ' + $(this).attr('id') + typeof($(this).attr('id')) + ' id pompier ' + pompierId + typeof(pompierId));
+                                if(($('.ztGarde').attr('id') == pompierId) || (pompierStatut == '2')){
+                                    v = parseInt($(this).val());
+                                    pompierStatut == '2' ? nv = (v+1) % 2 : nv = (v+1) % 4;
+                                    //alert('val : ' + $(this).val() + ' v: ' + v + ' v+1: ' + (v+1) + ' (v+1) % 4: ' + nv);
 
                                     $(this).addClass(couleur[nv]);    
                                     $(this).removeClass(couleur[v]);
                                     $(this).val(nv);
-                                //}
+                                }
                             });
                         });
 
