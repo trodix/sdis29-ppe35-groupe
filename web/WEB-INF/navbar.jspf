@@ -35,7 +35,7 @@
                     <div class="col-xs-push-2 col-md-10">
                         <h1 class="text-right titre-profil marge-titre-profil">
                             <% 
-                                out.println("Caserne " + unPompier.getcNom() + " : " + unPompier.getpNom() + " " + unPompier.getpPrenom()); 
+                                out.println("Caserne " + unPompier.getcNom() + " : " + unPompier.getpNom() + " " + unPompier.getpPrenom() + " <br>[ " + unPompier.getpStatut() + " ]"); 
                             %>
                         </h1>
                     </div>

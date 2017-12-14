@@ -44,7 +44,7 @@
         <div class="container">
             <form action="gardes" method="POST">
             <h1 class="charte">Liste des gardes</h1>
-            <div class="table-responsive table-gardes">
+            <div class="table-responsive table-gardes div-size">
                 <!--<table class="legende">
                     <thead>
                         <th><h3>Légende</h3></th>
@@ -63,12 +63,14 @@
                             <div class="legende-inter"><img src="images/legende-0.png"><h5>Indisponible</h5></div>
                         </div>
                         <div class="col-xs-2">
-                            <div class="legende-inter"><img src="images/legende-1.png"><h5>Au travail</h5></div>
+                            <div class="legende-inter"><img src="images/legende-1.png"><h5>Travail</h5></div>
                         </div>
                         <div class="col-xs-2">
                             <div class="legende-inter"><img src="images/legende-2.png"><h5>Disponible</h5></div>
                         </div>
-                        
+                        <div class="col-xs-2">
+                            <div class="legende-inter"><img src="images/legende-3.png"><h5>Garde</h5></div>
+                        </div>
                     </div>
                 <table  class="table table-bordered table-collapse">
                         <thead class="charte">
@@ -159,26 +161,29 @@
                             $(".ztGarde").click(function() {
                                 var pompierId = '<% out.print(String.valueOf(unPompier.getcId()) + String.valueOf(unPompier.getpId())); %>';
                                 
+                             
                                 //alert('id cliqué ' + $(this).attr('id') + typeof($(this).attr('id')) + ' id pompier ' + pompierId + typeof(pompierId));
                                 if(($('.ztGarde').attr('id') == pompierId) || (pompierStatut == '2')){
                                     //alert(pompierStatut + typeof(pompierStatut));
                                     v = parseInt($(this).val());
                                     pompierStatut == '2' ? nv = ((v+1)%2)*3 : nv = (v+1) % 3;
-                                    alert(nv);
+                                    //alert(nv);
                                     //alert('pompierStatut : ' + pompierStatut  + typeof(pompierStatut) + ' c0: ' + couleur[0] + ' c1: ' + couleur[1] + "pompierStatut == '2'" + pompierStatut == '2');
                                     //alert(pompierStatut == '2');
                                     //alert(couleur[1]);
                                     if(pompierStatut != '2'){
-                                        $(this).addClass(couleur[nv]);    
-                                        $(this).removeClass(couleur[v]);
-                                        $(this).val(nv);
+                                        if(v != '3'){
+                                            $(this).addClass(couleur[nv]);    
+                                            $(this).removeClass(couleur[v]);
+                                            $(this).val(nv);
+                                        }
                                     }else{
                                         //alert("else");
                                         nv > 0 ? $(this).addClass(couleur[1]) : $(this).addClass(couleur[0]);   
                                         //alert(couleur[0]);
                                         //alert(nv > 0 ? true : false);
                                         nv <= 0 ? $(this).removeClass(couleur[1]) : $(this).removeClass(couleur[0]);
-                                        alert(nv);
+                                        //alert(nv);
                                         $(this).val(nv);
                                     }
                                 }
