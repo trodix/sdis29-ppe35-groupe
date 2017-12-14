@@ -161,26 +161,29 @@
                             $(".ztGarde").click(function() {
                                 var pompierId = '<% out.print(String.valueOf(unPompier.getcId()) + String.valueOf(unPompier.getpId())); %>';
                                 
+                             
                                 //alert('id cliqué ' + $(this).attr('id') + typeof($(this).attr('id')) + ' id pompier ' + pompierId + typeof(pompierId));
                                 if(($('.ztGarde').attr('id') == pompierId) || (pompierStatut == '2')){
                                     //alert(pompierStatut + typeof(pompierStatut));
                                     v = parseInt($(this).val());
                                     pompierStatut == '2' ? nv = ((v+1)%2)*3 : nv = (v+1) % 3;
-                                    alert(nv);
+                                    //alert(nv);
                                     //alert('pompierStatut : ' + pompierStatut  + typeof(pompierStatut) + ' c0: ' + couleur[0] + ' c1: ' + couleur[1] + "pompierStatut == '2'" + pompierStatut == '2');
                                     //alert(pompierStatut == '2');
                                     //alert(couleur[1]);
                                     if(pompierStatut != '2'){
-                                        $(this).addClass(couleur[nv]);    
-                                        $(this).removeClass(couleur[v]);
-                                        $(this).val(nv);
+                                        if(v != '3'){
+                                            $(this).addClass(couleur[nv]);    
+                                            $(this).removeClass(couleur[v]);
+                                            $(this).val(nv);
+                                        }
                                     }else{
                                         //alert("else");
                                         nv > 0 ? $(this).addClass(couleur[1]) : $(this).addClass(couleur[0]);   
                                         //alert(couleur[0]);
                                         //alert(nv > 0 ? true : false);
                                         nv <= 0 ? $(this).removeClass(couleur[1]) : $(this).removeClass(couleur[0]);
-                                        alert(nv);
+                                        //alert(nv);
                                         $(this).val(nv);
                                     }
                                 }
