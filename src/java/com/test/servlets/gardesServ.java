@@ -90,8 +90,18 @@ public class gardesServ extends HttpServlet {
         for(Gardes uneGarde : lesGardes){
             System.out.println(uneGarde);
         }
+        
+        GardesMySQL uneGardeMySQLhoraires = new GardesMySQL();
+        ArrayList<String> lesHoraires = null;
+        try {
+            lesHoraires = uneGardeMySQLhoraires.getLesHorairesLib();
+        } catch (SQLException ex) {
+            Logger.getLogger(gardesServ.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
         //maSession.setAttribute("lesDates", lesDates);
         maSession.setAttribute("lesGardes", lesGardes);
+        maSession.setAttribute("lesHoraires", lesHoraires);
         getServletContext().getRequestDispatcher("/WEB-INF/gardes.jsp").forward(request, response);
         
     }

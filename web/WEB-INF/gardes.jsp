@@ -31,6 +31,7 @@
             String[] lesCouleurs = {"rouge", "orange", "vert", "bleu"};
             ArrayList <Gardes> lesGardes = (ArrayList)maSession.getAttribute("lesGardes");
             ArrayList <Calendar> lesDates = new ArrayList();
+            ArrayList <String> lesHoraires = (ArrayList)maSession.getAttribute("lesHoraires");
            
             for(int i = 0; i<7; i++){
                 Calendar c = TrmtDate.addDays(TrmtDate.getDateDebutSemaine(), i);
@@ -71,6 +72,15 @@
                         <div class="col-xs-2">
                             <div class="legende-inter"><img src="images/legende-3.png"><h5>Garde</h5></div>
                         </div>
+                    </div>
+                    <div class="row">
+                        <div>Tranches horaires</div>
+                        <%
+                            
+                            for(String unHoraire : lesHoraires){
+                                out.println("<div class='col-xs-2'>" + unHoraire + "</div>");
+                            }
+                        %>
                     </div>
                 <table  class="table table-bordered table-collapse">
                         <thead class="charte">
