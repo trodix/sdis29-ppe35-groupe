@@ -215,11 +215,6 @@
                                                 $(this).removeClass(couleur[1]);
                                                 $(this).val('0');
                                                 break;
-                                                
-                                            default:
-                                                alert("default case");
-                                                alert(typeof(v));
-                                                alert(v == '2');
                                         }
                                         
                                     }
