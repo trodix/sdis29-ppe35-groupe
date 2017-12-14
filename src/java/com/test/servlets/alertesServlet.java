@@ -5,9 +5,15 @@
  */
 package com.test.servlets;
 
+import com.test.bdd.InterventionMySQL;
+import com.test.bdd.PompierMYSQL;
 import com.test.beans.Pompier;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -59,10 +65,20 @@ public class alertesServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         Pompier unPompier = null;
+        InterventionMySQL uneInterventionMysql = new InterventionMySQL();
+        ArrayList <String> lesCasernes = new ArrayList();
+        ArrayList <String> lesPompiers = new ArrayList();
+        try {
+            lesCasernes = uneInterventionMysql.readLesCasernes();
+        } catch (SQLException ex) {
+            Logger.getLogger(alertesServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
         HttpSession maSession = request.getSession();
         if(maSession.getAttribute("unPompier") != null){
             unPompier = (Pompier)maSession.getAttribute("unPompier");
         }
+        PompierMYSQL unPompierMysql = new PompierMYSQL();
+        maSession.setAttribute("lesCasernes", lesCasernes);
         getServletContext().getRequestDispatcher("/WEB-INF/alertesJSP.jsp").forward(request, response);
     }
 

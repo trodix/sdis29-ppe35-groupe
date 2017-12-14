@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="com.test.beans.Pompier"%>
 <%@page import="com.test.bdd.PompierMYSQL"%>
 <%@page import="javax.servlet.http.HttpSession"%>
@@ -8,6 +9,8 @@
 <link rel="stylesheet" type="text/css" title="Font Awesome" href="css/font-awesome.css"/>
 <link rel="stylesheet" type="text/css" href="css/style.css"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="js/jquery.min.js"></script>
+<script src="js/accesProduits.js"></script>
 <!DOCTYPE html>
 <html>
     <head>
@@ -70,43 +73,28 @@
                             <h2 class="titre-legende">Gestion Incident</h2>
                             <tr>
                                 <td><label for="casernes" >Casernes : </label></td>
-                                <td>
-                                    <select name="caserne" size="1" class='alertesListes'>
-                                        <option>Bannalec</option>
-                                        <option>Benodet</option>
-                                        <option>Brasparts</option>
-                                        <option>Brest</option>
-                                    </select>
-                                </td>
-                                <td>
-                                    <select name="caserne" size="1" class='alertesListes'>
-                                        <option>Bannalec</option>
-                                        <option>Benodet</option>
-                                        <option>Brasparts</option>
-                                        <option>Brest</option>
-                                    </select>
-                                </td>
-                                <td>
-                                    <select name="caserne" size="1" class='alertesListes'>
-                                        <option>Bannalec</option>
-                                        <option>Benodet</option>
-                                        <option>Brasparts</option>
-                                        <option>Brest</option>
-                                    </select>
-                                </td>
-                                <td>
-                                    <select name="caserne" size="1" class='alertesListes'>
-                                        <option>Bannalec</option>
-                                        <option>Benodet</option>
-                                        <option>Brasparts</option>
-                                        <option>Brest</option>
-                                    </select>
-                                </td>
+                          
+                                    <%
+                                        ArrayList <String> lesCasernes = (ArrayList)maSession.getAttribute("lesCasernes");
+                                        
+                                        for(int i = 0; i < 4; i++){
+                                            out.println("<td><select name='caserne' size='1' class='alertesListes' onclick='getPompiers(this.value);'>");
+                                            for(int a = 0; a < lesCasernes.size()-1;a++){
+                                                out.println("<option id='"+lesCasernes.get(a)+"'>" + lesCasernes.get(a));
+                                            }
+                                            out.println("</select</td>");
+                                        }
+                                        
+                                    
+                                    %>
+ 
                             </tr>
+                           
                         </table> 
                     </div>
                 </div>
                 <div class="row">
+                     <p class="noir" id="test"></p>
                     <table class="table tableau-infos-pompier" border="0">
                         <tr>
                             <td>
