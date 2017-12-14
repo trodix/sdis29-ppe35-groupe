@@ -302,3 +302,7 @@ h5{
 .alert-warning{
     font-weight: bold !important;
 }
+
+.div-size{
+    size: 500px;
+}
