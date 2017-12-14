@@ -60,78 +60,40 @@ public class InterventionMySQL {
         return unPompier;
     }
     
-    public ArrayList <Pompier> readAll(int nCaserne){
-        ArrayList <Pompier> lesPompiers = new ArrayList();
-        Pompier unPompier = null;
+    
+    public ArrayList<Pompier> getLesPompiersDispo(String nomCaserne){
         
+        ArrayList <Pompier> lesPompiersDispo = new ArrayList();
         try{
             PreparedStatement prepStmt = null;
-            String sql = "SELECT * FROM pompier INNER JOIN caserne ON caserne.cId = pCis WHERE pCis = ? AND pType = 2";
-            
+            String sql = "SELECT * FROM pompier " +
+                            "INNER JOIN caserne ON caserne.cId = pompier.pCis " +
+                            "INNER JOIN feuillegarde ON feuillegarde.idCis = pompier.pCis AND feuillegarde.idPompier " +
+                            "WHERE cNom=? AND feuillegarde.idDispo IN(0,1,2) AND pType = 2" +
+                            "GROUP BY pompier.pId";
             prepStmt = laConnection.prepareStatement(sql);
-            prepStmt.setInt(1, nCaserne);
+            prepStmt.setString(1,nomCaserne);
             ResultSet resultat = prepStmt.executeQuery();
+            Pompier unPompier = null;
             while(resultat.next()){
                 unPompier = new Pompier(
                         resultat.getInt("pCis"), resultat.getInt("pId"), resultat.getString("pNom"),
                         resultat.getString("pPrenom"), resultat.getString("pAdresse"), 
                         resultat.getString("pVille"), resultat.getString("pCp"),
                         resultat.getString("pMail"), resultat.getString("pBip"),
-                        getGrade(resultat.getString("pGrade")),
-                        getStatut(resultat.getString("pStatut")),
+                        resultat.getString("pGrade"),
+                        resultat.getString("pStatut"),
                         resultat.getInt("pStatut"),
                         resultat.getString("pUrlPhoto"), resultat.getString("pCommentaire"),
-                        resultat.getString("cNom"),resultat.getString("EmpRaisonSoc"), resultat.getString("EmpAdresse")
-                );
-                lesPompiers.add(unPompier);     
-                idStatut = Integer.parseInt(resultat.getString("pStatut"));
+                        resultat.getString("cNom"),resultat.getString("EmpRaisonSoc"), resultat.getString("EmpAdresse"));
+                lesPompiersDispo.add(unPompier);
             }
         }catch (SQLException ex){
             System.out.println("SQLException : " + ex.getMessage());
             System.out.println("SQLException : " + ex.getSQLState());
             System.out.println("SQLException : " + ex.getErrorCode());
         }
-        return lesPompiers;
-    }
-    
-    public String getGrade(String pGrade){
-        
-        String grade = "";
-        try{
-            PreparedStatement prepStmt = null;
-            String sql = "SELECT pLibelle FROM parametre WHERE pType ='grade' AND pIndice = ?";
-            prepStmt = laConnection.prepareStatement(sql);
-            prepStmt.setInt(1, Integer.parseInt(pGrade));
-            ResultSet resultat = prepStmt.executeQuery();
-            if(resultat.first()){
-                grade = resultat.getString("pLibelle");
-            }
-        }catch (SQLException ex){
-            System.out.println("SQLException : " + ex.getMessage());
-            System.out.println("SQLException : " + ex.getSQLState());
-            System.out.println("SQLException : " + ex.getErrorCode());
-        }
-        return grade;
-    }
-    
-    public String getStatut(String pStatut){
-        
-        String statut = "";
-        try{
-            PreparedStatement prepStmt = null;
-            String sql = "SELECT pLibelle FROM parametre WHERE pType ='typePer' AND pIndice = ?";
-            prepStmt = laConnection.prepareStatement(sql);
-            prepStmt.setInt(1, Integer.parseInt(pStatut));
-            ResultSet resultat = prepStmt.executeQuery();
-            if(resultat.first()){
-                statut = resultat.getString("pLibelle");
-            }
-        }catch (SQLException ex){
-            System.out.println("SQLException : " + ex.getMessage());
-            System.out.println("SQLException : " + ex.getSQLState());
-            System.out.println("SQLException : " + ex.getErrorCode());
-        }
-        return statut;
+        return lesPompiersDispo;
     }
     
     public int getIsResponsable(String pStatut){
