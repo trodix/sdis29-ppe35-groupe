@@ -127,7 +127,7 @@ public class GardesMySQL {
             stmt.setInt(2, uneGarde.getHoraires());
             stmt.setInt(3, uneGarde.getPompier().getcId());
             stmt.setInt(4, uneGarde.getPompier().getpId());
-            stmt.setInt(5, uneGarde.getActivite());
+            stmt.setInt(5, act);
             stmt.setBoolean(6, false);
             
             // System.out.println("Requete : " + stmt.toString());

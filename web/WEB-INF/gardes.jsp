@@ -42,6 +42,7 @@
             String[] periodes = (String[])maSession.getAttribute("periodes");**/
         %>
         <div class="container">
+            <form action="gardes" method="POST">
             <h1 class="charte">Liste des gardes</h1>
             <div class="table-responsive table-gardes">
                 <div class="legende">
@@ -80,7 +81,7 @@
                                         idPompier = 0;
                                         int garde = 0;
                                         String zoneInput = "<input type='number' min=0 max=3 readonly='readonly' "+
-                                                            "class='inputDispo ztGarde " + lesCouleurs[garde] + "' name='tabVentil'"+
+                                                            "class='inputDispo ztGarde " + lesCouleurs[garde] + "' name='tabGardes'"+
                                                             "value=" + garde + " />";
                                         
                                         for (Gardes uneGarde : lesGardes) { 
@@ -95,7 +96,7 @@
                                                     garde = uneGarde.getActivite();
                                                 //}
                                                 zoneInput = "<input type='number' min=0 max=3 readonly='readonly' "+
-                                                            "class='inputDispo ztGarde " + lesCouleurs[garde] + "' name='tabVentil' " + "id='" + uneGarde.getPompier().getcId() + uneGarde.getPompier().getpId() + "' " +
+                                                            "class='inputDispo ztGarde " + lesCouleurs[garde] + "' name='tabGardes' " + "id='" + uneGarde.getPompier().getcId() + uneGarde.getPompier().getpId() + "' " +
                                                             "value=" + garde + " />";
                                                 out.println("<td class='noir'>"+zoneInput+"</td>");
                                             }else{
@@ -105,7 +106,7 @@
                                                     garde = uneGarde.getActivite();
                                                 //}
                                                 zoneInput = "<input type='number' min=0 max=3 readonly='readonly' "+
-                                                            "class='inputDispo ztGarde " + lesCouleurs[garde] + "' name='tabVentil' " + "id='" + uneGarde.getPompier().getcId() + uneGarde.getPompier().getpId() + "'  " +
+                                                            "class='inputDispo ztGarde " + lesCouleurs[garde] + "' name='tabGardes' " + "id='" + uneGarde.getPompier().getcId() + uneGarde.getPompier().getpId() + "'  " +
                                                             "value=" + garde + " />";
                                                 out.println("<td class='noir'>"+zoneInput+"</td>");
                                             }
