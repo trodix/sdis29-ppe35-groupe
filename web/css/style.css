@@ -298,3 +298,7 @@ h5{
 .align-div{
     text-align: center;
 }
+
+.alert-warning{
+    font-weight: bold !important;
+}
