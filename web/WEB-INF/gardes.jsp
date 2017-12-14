@@ -43,13 +43,31 @@
         <div class="container">
             <h1 class="charte">Liste des gardes</h1>
             <div class="table-responsive table-gardes">
-                <div class="legende">
-                    <h3>Légende</h3>
+                <!--<table class="legende">
+                    <thead>
+                        <th><h3>Légende</h3></th>
+                    </thead>
+                    <tbody>
                     <!-- Légende bouton 3 : zoomer page web a 230% -->
-                    <div class="legende-inter"><img src="images/legende-0.png"><h5>Indisponible</h5></div>
-                    <div class="legende-inter"><img src="images/legende-1.png"><h5>Au travail</h5></div>
-                    <div class="legende-inter legende-bas"><img src="images/legende-2.png"><h5>Disponible</h5></div>
-                </div>
+                    <!--<tr>
+                        <td class="legende-inter"><img src="images/legende-0.png"><h5>Indisponible</h5></td>
+                        <td class="legende-inter"><img src="images/legende-1.png"><h5>Au travail</h5></td>
+                        <td class="legende-inter"><img src="images/legende-2.png"><h5>Disponible</h5></td>
+                    </tr>
+                    </tbody>
+                </table>-->
+                    <div class="row">
+                        <div class="col-xs-2">
+                            <div class="legende-inter"><img src="images/legende-0.png"><h5>Indisponible</h5></div>
+                        </div>
+                        <div class="col-xs-2">
+                            <div class="legende-inter"><img src="images/legende-1.png"><h5>Au travail</h5></div>
+                        </div>
+                        <div class="col-xs-2">
+                            <div class="legende-inter"><img src="images/legende-2.png"><h5>Disponible</h5></div>
+                        </div>
+                        
+                    </div>
                 <table  class="table table-bordered table-collapse">
                         <thead class="charte">
                             <tr class="enteteTableau">
@@ -122,7 +140,7 @@
 		<script>
                         
                         //*******************************
-                        var couleur = ["verte","orange","rouge","bleu"];  
+                        var couleur = ["rouge","orange","verte","bleu"];  
                         // Gestion des evenements
                         $(document).ready(function() {
                             

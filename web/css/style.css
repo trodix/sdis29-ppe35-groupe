@@ -247,11 +247,17 @@ input::-o-outer-spin-button {
     color:white;
 }
 
-.legende-inter{
-    margin-bottom: 1%;
+/*.legende-inter{
+    text-align: center;
+    padding-right: 10%;
+}*/
+
+h5{
+    color: white;
 }
 
 .legende-bas{
+    margin-top: 50px;
     margin-bottom: 3%;
 }
 
