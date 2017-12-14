@@ -45,7 +45,6 @@
             
         %>
         <div class="container pageAlertes">
-            <form action="Pompier" method="POST">
                 <div>
                     <div class="row">
                         <table class="table tableau-infos-pompier legende" border="0">
@@ -72,29 +71,25 @@
                         <table class="table tableau-infos-pompier legende" border="0">
                             <h2 class="titre-legende">Gestion Incident</h2>
                             <tr>
-                                <td><label for="casernes" >Casernes : </label></td>
-                          
+                                <td><label for="casernes" >Casernes : </label>
+                                
+                                    <select name='casernes' class='alertesCase'>
                                     <%
                                         ArrayList <String> lesCasernes = (ArrayList)maSession.getAttribute("lesCasernes");
-                                        
-                                        for(int i = 0; i < 4; i++){
-                                            out.println("<td><select name='caserne' size='1' class='alertesListes' onclick='getPompiers(this.value);'>");
+  
                                             for(int a = 0; a < lesCasernes.size()-1;a++){
-                                                out.println("<option id='"+lesCasernes.get(a)+"'>" + lesCasernes.get(a));
+                                                out.println("<option class='alertesCases' onclick='getPompiers(this.value);' id='"+lesCasernes.get(a)+"'>" + lesCasernes.get(a) + "</option>");
                                             }
-                                            out.println("</select</td>");
-                                        }
-                                        
                                     
                                     %>
- 
+                                    </select>
+                                </td>
                             </tr>
                            
                         </table> 
                     </div>
                 </div>
                 <div class="row">
-                     <p class="noir" id="test"></p>
                     <table class="table tableau-infos-pompier" border="0">
                         <tr>
                             <td>
@@ -123,13 +118,10 @@
                         <tr>
                             <td>
                                 <label for="choixPompiers">Choix des Pompiers :</label>
-                                <select name="choixPompiers" size="1" class='alertesListes'>
-                                    <option>Pompier 1</option>
-                                    <option>Pompier 2</option>
-                                    <option>Pompier 3</option>
-                                    <option>Pompier 4</option>
+                                <select name="choixPompiers" id="listePompiers" class='alertesListes'>
+
                                 </select>
-                                <button class="btn btn-lg bouton-validation alertesBtn">Ajouter</button>
+                                <button id="ajouter" class="btn btn-lg bouton-validation alertesBtn">Ajouter</button>
                             </td>
                         </tr>
                     </table>
@@ -143,8 +135,8 @@
                                 <th>Pompier</th>
                             </tr>
                         </thead>
-                        <tbody>
-
+                        <tbody id="tableauPompier">
+                            
                         </tbody>
                     </table>
                 </div>
@@ -152,7 +144,14 @@
                     <label for="btModification"></label>
                     <input class="btn btn-lg bouton-validation" type="submit" value="Lancer l'alerte" id="btModifications"/>
                 </div><br>
-            </form>
         </div>
     </body>
+    <script>
+        
+       function ajouter(id, idCaserne, nom, prenom){
+        
+            $('#tableauPompier').append("<tr><td>"+idCaserne+"</td><td>"+nom + " " + prenom+"("+id+")</td></tr>");
+        }
+        
+    </script>
 </html>

@@ -40,15 +40,30 @@ public class alertesServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet alertesServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet alertesServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            InterventionMySQL unInterventionMysql = new InterventionMySQL();
+            ArrayList <Pompier> lesPompiersDispo = new ArrayList();
+            lesPompiersDispo = unInterventionMysql.getLesPompiersDispo((String)request.getParameter("nCaserne"));
+            String option = null;
+            int i = 0;
+            for(Pompier unPompier : lesPompiersDispo){
+                String parametres = "onclick=ajouter(" + unPompier.getpId() + "," + unPompier.getcId() + ",'" + unPompier.getpNom() + "','" + unPompier.getpPrenom() + "');";
+                option += "<option " + parametres + " id='pompier" + i + "'>" + unPompier.getpNom() + " " + unPompier.getpPrenom() + "</option>";
+                i++;
+            }
+            out.println(option);
+
+        }
+    }
+    
+        protected void processRequest2(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            PompierMYSQL unPompierMySQL = new PompierMYSQL();
+            //Pompier unPompier = unPompierMySQL.
+            out.println("<tr><td></td><td>"+request.getParameter("selectPompier")+"</td></tr>");
+
         }
     }
 
@@ -93,7 +108,13 @@ public class alertesServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        if(request.getParameter("nCaserne") != null){
+            processRequest(request, response);
+        }
+        if(request.getParameter("selectPompier") != null){
+            processRequest2(request, response);
+        }
+        
     }
 
     /**

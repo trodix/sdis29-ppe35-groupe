@@ -69,7 +69,7 @@ public class InterventionMySQL {
             String sql = "SELECT * FROM pompier " +
                             "INNER JOIN caserne ON caserne.cId = pompier.pCis " +
                             "INNER JOIN feuillegarde ON feuillegarde.idCis = pompier.pCis AND feuillegarde.idPompier " +
-                            "WHERE cNom=? AND feuillegarde.idDispo IN(0,1,2) AND pType = 2" +
+                            "WHERE cNom=? AND feuillegarde.idDispo IN(1,2,3) AND pType = 2 " +
                             "GROUP BY pompier.pId";
             prepStmt = laConnection.prepareStatement(sql);
             prepStmt.setString(1,nomCaserne);
