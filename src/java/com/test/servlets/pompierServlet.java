@@ -80,7 +80,7 @@ public class pompierServlet extends HttpServlet {
             }
         }else if(maSession.getAttribute("responsableA")  != null){
             if((boolean) maSession.getAttribute("responsableA") == true){
-                processRequest(request, response);
+                getServletContext().getRequestDispatcher("/WEB-INF/pompierJSP.jsp").forward(request, response);
             }
         }
    
