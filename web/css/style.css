@@ -306,3 +306,8 @@ h5{
 .div-size{
     size: 500px;
 }
+
+.bold{
+    font-weight: bold;
+    font-size: 1.5em;
+}

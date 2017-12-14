@@ -28,8 +28,8 @@ CREATE TABLE feuilleGarde(
 );
 
 INSERT INTO horaires(idHoraires,libelle) VALUES(1,"Nuit (0 à 6 heures)"),
-										 (2,"Matinée (6 à 12 heures"),
-										 (3,"Après-Midi (12 à 18 heures"),
+										 (2,"Matinée (6 à 12 heures)"),
+										 (3,"Après-Midi (12 à 18 heures)"),
 										 (4,"Soirée (18 à 0 heures)");
 
 INSERT INTO disponibilite(idDisponibilite,libelle) VALUES(0,"Indisponible"),
