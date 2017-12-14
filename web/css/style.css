@@ -298,3 +298,7 @@ h5{
 .align-div{
     text-align: center;
 }
+
+.div-size{
+    size: 500px;
+}

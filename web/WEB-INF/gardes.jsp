@@ -44,7 +44,7 @@
         <div class="container">
             <form action="gardes" method="POST">
             <h1 class="charte">Liste des gardes</h1>
-            <div class="table-responsive table-gardes">
+            <div class="table-responsive table-gardes div-size">
                 <!--<table class="legende">
                     <thead>
                         <th><h3>Légende</h3></th>
@@ -63,12 +63,14 @@
                             <div class="legende-inter"><img src="images/legende-0.png"><h5>Indisponible</h5></div>
                         </div>
                         <div class="col-xs-2">
-                            <div class="legende-inter"><img src="images/legende-1.png"><h5>Au travail</h5></div>
+                            <div class="legende-inter"><img src="images/legende-1.png"><h5>Travail</h5></div>
                         </div>
                         <div class="col-xs-2">
                             <div class="legende-inter"><img src="images/legende-2.png"><h5>Disponible</h5></div>
                         </div>
-                        
+                        <div class="col-xs-2">
+                            <div class="legende-inter"><img src="images/legende-3.png"><h5>Garde</h5></div>
+                        </div>
                     </div>
                 <table  class="table table-bordered table-collapse">
                         <thead class="charte">
