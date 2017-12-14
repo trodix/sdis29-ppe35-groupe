@@ -251,11 +251,17 @@ input::-o-outer-spin-button {
     color:white;
 }
 
-.legende-inter{
-    margin-bottom: 1%;
+/*.legende-inter{
+    text-align: center;
+    padding-right: 10%;
+}*/
+
+h5{
+    color: white;
 }
 
 .legende-bas{
+    margin-top: 50px;
     margin-bottom: 3%;
 }
 
@@ -269,4 +275,26 @@ input::-o-outer-spin-button {
 
 .alertesListes{
     width:200px;
+}
+
+.alertesCase{
+    color: black;
+}
+
+.titre-legende{
+    color: white;
+    border-bottom: solid #ca0000 5px; 
+}
+
+.taille-case-description{
+    width: 1150px;
+    height: 150px;
+}
+
+.margin-div{
+    margin-bottom: 3%;
+}
+
+.align-div{
+    text-align: center;
 }

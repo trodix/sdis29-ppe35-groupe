@@ -42,15 +42,34 @@
             String[] periodes = (String[])maSession.getAttribute("periodes");**/
         %>
         <div class="container">
+            <form action="gardes" method="POST">
             <h1 class="charte">Liste des gardes</h1>
             <div class="table-responsive table-gardes">
-                <div class="legende">
-                    <h3>Légende</h3>
+                <!--<table class="legende">
+                    <thead>
+                        <th><h3>Légende</h3></th>
+                    </thead>
+                    <tbody>
                     <!-- Légende bouton 3 : zoomer page web a 230% -->
-                    <div class="legende-inter"><img src="images/legende-0.png"><h5>Indisponible</h5></div>
-                    <div class="legende-inter"><img src="images/legende-1.png"><h5>Au travail</h5></div>
-                    <div class="legende-inter legende-bas"><img src="images/legende-2.png"><h5>Disponible</h5></div>
-                </div>
+                    <!--<tr>
+                        <td class="legende-inter"><img src="images/legende-0.png"><h5>Indisponible</h5></td>
+                        <td class="legende-inter"><img src="images/legende-1.png"><h5>Au travail</h5></td>
+                        <td class="legende-inter"><img src="images/legende-2.png"><h5>Disponible</h5></td>
+                    </tr>
+                    </tbody>
+                </table>-->
+                    <div class="row">
+                        <div class="col-xs-2">
+                            <div class="legende-inter"><img src="images/legende-0.png"><h5>Indisponible</h5></div>
+                        </div>
+                        <div class="col-xs-2">
+                            <div class="legende-inter"><img src="images/legende-1.png"><h5>Au travail</h5></div>
+                        </div>
+                        <div class="col-xs-2">
+                            <div class="legende-inter"><img src="images/legende-2.png"><h5>Disponible</h5></div>
+                        </div>
+                        
+                    </div>
                 <table  class="table table-bordered table-collapse">
                         <thead class="charte">
                             <tr class="enteteTableau">
@@ -80,7 +99,7 @@
                                         idPompier = 0;
                                         int garde = 0;
                                         String zoneInput = "<input type='number' min=0 max=3 readonly='readonly' "+
-                                                            "class='inputDispo ztGarde " + lesCouleurs[garde] + "' name='tabVentil'"+
+                                                            "class='inputDispo ztGarde " + lesCouleurs[garde] + "' name='tabGardes'"+
                                                             "value=" + garde + " />";
                                         
                                         for (Gardes uneGarde : lesGardes) { 
@@ -95,7 +114,7 @@
                                                     garde = uneGarde.getActivite();
                                                 //}
                                                 zoneInput = "<input type='number' min=0 max=3 readonly='readonly' "+
-                                                            "class='inputDispo ztGarde " + lesCouleurs[garde] + "' name='tabVentil' " + "id='" + uneGarde.getPompier().getcId() + uneGarde.getPompier().getpId() + "' " +
+                                                            "class='inputDispo ztGarde " + lesCouleurs[garde] + "' name='tabGardes' " + "id='" + uneGarde.getPompier().getcId() + uneGarde.getPompier().getpId() + "' " +
                                                             "value=" + garde + " />";
                                                 out.println("<td class='noir'>"+zoneInput+"</td>");
                                             }else{
@@ -105,7 +124,7 @@
                                                     garde = uneGarde.getActivite();
                                                 //}
                                                 zoneInput = "<input type='number' min=0 max=3 readonly='readonly' "+
-                                                            "class='inputDispo ztGarde " + lesCouleurs[garde] + "' name='tabVentil' " + "id='" + uneGarde.getPompier().getcId() + uneGarde.getPompier().getpId() + "'  " +
+                                                            "class='inputDispo ztGarde " + lesCouleurs[garde] + "' name='tabGardes' " + "id='" + uneGarde.getPompier().getcId() + uneGarde.getPompier().getpId() + "'  " +
                                                             "value=" + garde + " />";
                                                 out.println("<td class='noir'>"+zoneInput+"</td>");
                                             }

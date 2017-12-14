@@ -43,8 +43,31 @@
         %>
         <div class="container pageAlertes">
             <form action="Pompier" method="POST">
-                <div class="table-responsive">
-                    <table class="table tableau-infos-pompier legende" border="0">
+                <div>
+                    <div class="row">
+                        <table class="table tableau-infos-pompier legende" border="0">
+                                <h2 class="titre-legende">Lieu Incident</h2>
+                                <tr>
+                                    <td><label for="adresse" >Libelle : </label></td>
+                                    <td><input type="text" name="ztLibelle" id="libelle" class="alertesCase"/></td>
+                                    <td><label for="adresse" >Adresse : </label></td>
+                                    <td><input type="text" name="ztAdresse" id="adresse" class="alertesCase"/></td>
+                                </tr>
+                                <tr>
+                                    <td><label for="ville" >Ville : </label></td>
+                                    <td><input type="text" name="ztVille" id="ville" class="alertesCase"/></td>
+                                    <td><label for="cp" >Code Postal : </label></td>
+                                    <td><input type="text" name="ztCP" id="cp" class="alertesCase"/></td>
+                                </tr>
+                        </table> 
+                    </div>
+                    <div class="row margin-div">
+                        <h3 class="titre-profil">Description :</h3>
+                        <textarea name="ztDesc" class="taille-case-description"></textarea>
+                    </div>
+                    <div class="row">
+                        <table class="table tableau-infos-pompier legende" border="0">
+                            <h2 class="titre-legende">Gestion Incident</h2>
                             <tr>
                                 <td><label for="casernes" >Casernes : </label></td>
                                 <td>
@@ -80,7 +103,8 @@
                                     </select>
                                 </td>
                             </tr>
-                    </table>              
+                        </table> 
+                    </div>
                 </div>
                 <div class="row">
                     <table class="table tableau-infos-pompier" border="0">
@@ -106,7 +130,7 @@
                         </tr>
                     </table>
                 </div>
-                <div class="row">
+                <div class="row margin-div">
                     <table class="table tableau-infos-pompier" border="0">
                         <tr>
                             <td>
@@ -125,7 +149,7 @@
                 <div class="row">
                     <table class="table tableau-liste-pompier table-bordered table-striped">
                         <thead>
-                        <h3 class="titre-profil">Équipe d'Intervention :</h3>
+                        <h2 class="titre-legende">Équipe d'Intervention :</h2>
                             <tr>
                                 <th>Caserne</th>
                                 <th>Pompier</th>
@@ -136,7 +160,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div>
+                <div class="row align-div">
                     <label for="btModification"></label>
                     <input class="btn btn-lg bouton-validation" type="submit" value="Lancer l'alerte" id="btModifications"/>
                 </div><br>
