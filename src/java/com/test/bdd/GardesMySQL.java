@@ -180,6 +180,21 @@ public class GardesMySQL {
             lesDates.add(TrmtDate.getCalDate(resultat.getDate("dteJour")));
         }
         return lesDates;
-        }
-
     }
+    
+    public ArrayList<String> getLesHorairesLib() throws SQLException{
+        
+        ArrayList <String> lesHorairesLib = new ArrayList();
+        PreparedStatement prepStmt = null;
+        String sql = "SELECT libelle FROM horaires";
+        prepStmt = laConnection.prepareStatement(sql);
+        ResultSet resultat = prepStmt.executeQuery();
+        while(resultat.next()){
+            lesHorairesLib.add(resultat.getString("libelle"));
+        }
+        return lesHorairesLib;
+    }
+
+}
+
+    
