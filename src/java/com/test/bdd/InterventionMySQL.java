@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 
@@ -81,9 +82,10 @@ public class InterventionMySQL {
                         resultat.getString("pPrenom"), resultat.getString("pAdresse"), 
                         resultat.getString("pVille"), resultat.getString("pCp"),
                         resultat.getString("pMail"), resultat.getString("pBip"),
-                        resultat.getString("pGrade"),
-                        resultat.getString("pStatut"),
+                        getGrade(resultat.getString("pGrade")),
                         resultat.getInt("pStatut"),
+                        getStatut(resultat.getInt("pType")),
+                        resultat.getInt("pType"),
                         resultat.getString("pUrlPhoto"), resultat.getString("pCommentaire"),
                         resultat.getString("cNom"),resultat.getString("EmpRaisonSoc"), resultat.getString("EmpAdresse"));
                 lesPompiersDispo.add(unPompier);
@@ -164,4 +166,105 @@ public class InterventionMySQL {
         return unPompier;
     }
     
+    public String getGrade(String pGrade){
+        
+        String grade = "";
+        try{
+            PreparedStatement prepStmt = null;
+            String sql = "SELECT pLibelle FROM parametre WHERE pType ='grade' AND pIndice = ?";
+            prepStmt = laConnection.prepareStatement(sql);
+            prepStmt.setInt(1, Integer.parseInt(pGrade));
+            ResultSet resultat = prepStmt.executeQuery();
+            if(resultat.first()){
+                grade = resultat.getString("pLibelle");
+            }
+        }catch (SQLException ex){
+            System.out.println("SQLException : " + ex.getMessage());
+            System.out.println("SQLException : " + ex.getSQLState());
+            System.out.println("SQLException : " + ex.getErrorCode());
+        }
+        return grade;
+    }
+    
+    public String getStatut(int pStatut){
+        
+        String statut = "";
+        try{
+            System.out.println("test"+pStatut);
+            PreparedStatement prepStmt = null;
+            String sql = "SELECT pLibelle FROM parametre WHERE pType ='typePer' AND pIndice = ?";
+            prepStmt = laConnection.prepareStatement(sql);
+            prepStmt.setInt(1, pStatut);
+            ResultSet resultat = prepStmt.executeQuery();
+            if(resultat.first()){
+                statut = resultat.getString("pLibelle");
+            }
+        }catch (SQLException ex){
+            System.out.println("SQLException : " + ex.getMessage());
+            System.out.println("SQLException : " + ex.getSQLState());
+            System.out.println("SQLException : " + ex.getErrorCode());
+        }
+        return statut;
+    }
+    
+    public String getIsResponsable(int pStatut){
+        
+        String responsable = "";
+        try{
+            PreparedStatement prepStmt = null;
+            String sql = "SELECT pLibelle FROM parametre WHERE pType ='statAgt'";
+            prepStmt = laConnection.prepareStatement(sql);
+            ResultSet resultat = prepStmt.executeQuery();
+            if(resultat.first()){
+                responsable = resultat.getString("pIndice");
+            }
+        }catch (SQLException ex){
+            System.out.println("SQLException : " + ex.getMessage());
+            System.out.println("SQLException : " + ex.getSQLState());
+            System.out.println("SQLException : " + ex.getErrorCode());
+        }
+        return responsable;
+    }
+    
+    public boolean createIntervention(String adresse, String cp, String ville,String description) throws SQLException{
+        Pompier unPompier = null;
+        
+        try{
+            PreparedStatement prepStmt = null;
+            String sql = "INSERT INTO lieu(`id`, `adresse`, `cp`, `ville`) VALUES (NULL,?, ?, ?)";
+            prepStmt = laConnection.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
+            prepStmt.setString(1, adresse);
+            prepStmt.setString(2, cp);
+            prepStmt.setString(3, ville);
+            prepStmt.executeUpdate();
+            ResultSet rs = prepStmt.getGeneratedKeys();
+            
+            int generaredKey = 0;
+            if(rs.next()){
+                generaredKey = rs.getInt(1);
+            }
+            
+            sql = "INSERT INTO equipeVolontaire (id,idPompier, idCis) VALUES (NULL,2902,2)";
+            prepStmt = laConnection.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
+            prepStmt.setString(1, adresse);
+            prepStmt.setString(1, cp);
+            
+            int idEquipe = 0;
+            if(rs.next()){
+                idEquipe = rs.getInt(1);
+            }
+            
+            sql = "INSERT INTO intervention VALUES (?,?,?)";
+            prepStmt = laConnection.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
+            prepStmt.setInt(1, generaredKey);
+            prepStmt.setInt(2, idEquipe);
+            prepStmt.setString(3, description);
+            
+        }catch (SQLException ex){
+            System.out.println("SQLException : " + ex.getMessage());
+            System.out.println("SQLException : " + ex.getSQLState());
+            System.out.println("SQLException : " + ex.getErrorCode());
+        }
+        return true;
+    }
 }

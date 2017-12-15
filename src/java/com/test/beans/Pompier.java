@@ -23,7 +23,8 @@ public class Pompier {
     private String pMail;
     private String pBip;
     private String pGrade;
-    private String pStatut;
+    private int pStatut;
+    private String pType;
     private int iStatut;
     private String pUrlPhoto;
     private String pCommentaire;
@@ -31,7 +32,7 @@ public class Pompier {
     private String EmpRaisonSoc;
     private String EmpAdresse;
 
-    public Pompier(int cId, int pId, String pNom, String pPrenom, String pAdresse, String pVille, String pCp, String pMail, String pBip, String pGrade,String pStatut, int iStatut ,String pUrlPhoto, String pCommentaire, String cNom, String EmpRaisonSoc, String EmpAdresse) {
+    public Pompier(int cId, int pId, String pNom, String pPrenom, String pAdresse, String pVille, String pCp, String pMail, String pBip, String pGrade,int pStatut, String pType,int iStatut ,String pUrlPhoto, String pCommentaire, String cNom, String EmpRaisonSoc, String EmpAdresse) {
         this.cId = cId;
         this.pId = pId;
         this.pNom = pNom;
@@ -42,6 +43,7 @@ public class Pompier {
         this.pMail = pMail;
         this.pGrade = pGrade;
         this.pStatut = pStatut;
+        this.pType = pType;
         this.iStatut = iStatut;
         this.pBip = pBip;
         this.pUrlPhoto = pUrlPhoto;
@@ -62,14 +64,22 @@ public class Pompier {
     public void setiStatut(int iStatut) {
         this.iStatut = iStatut;
     }
+
+    public String getpType() {
+        return pType;
+    }
+
+    public void setpType(String pType) {
+        this.pType = pType;
+    }
     
     
 
-    public String getpStatut() {
+    public int getpStatut() {
         return pStatut;
     }
 
-    public void setpStatut(String pStatut) {
+    public void setpStatut(int pStatut) {
         this.pStatut = pStatut;
     }
     

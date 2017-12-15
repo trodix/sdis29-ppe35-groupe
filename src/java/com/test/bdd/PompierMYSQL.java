@@ -44,8 +44,9 @@ public class PompierMYSQL {
                         resultat.getString("pVille"), resultat.getString("pCp"),
                         resultat.getString("pMail"), resultat.getString("pBip"),
                         getGrade(resultat.getString("pGrade")),
-                        getStatut(resultat.getString("pStatut")),
                         resultat.getInt("pStatut"),
+                        getStatut(resultat.getInt("pType")),
+                        resultat.getInt("pType"),
                         resultat.getString("pUrlPhoto"), resultat.getString("pCommentaire"),
                         resultat.getString("cNom"),resultat.getString("EmpRaisonSoc"), resultat.getString("EmpAdresse")
                 );
@@ -106,8 +107,9 @@ public class PompierMYSQL {
                         resultat.getString("pVille"), resultat.getString("pCp"),
                         resultat.getString("pMail"), resultat.getString("pBip"),
                         getGrade(resultat.getString("pGrade")),
-                        getStatut(resultat.getString("pStatut")),
                         resultat.getInt("pStatut"),
+                        getStatut(resultat.getInt("pType")),
+                        resultat.getInt("pType"),
                         resultat.getString("pUrlPhoto"), resultat.getString("pCommentaire"),
                         resultat.getString("cNom"),resultat.getString("EmpRaisonSoc"), resultat.getString("EmpAdresse")
                 );
@@ -142,14 +144,15 @@ public class PompierMYSQL {
         return grade;
     }
     
-    public String getStatut(String pStatut){
+    public String getStatut(int pStatut){
         
         String statut = "";
         try{
+            System.out.println("test"+pStatut);
             PreparedStatement prepStmt = null;
             String sql = "SELECT pLibelle FROM parametre WHERE pType ='typePer' AND pIndice = ?";
             prepStmt = laConnection.prepareStatement(sql);
-            prepStmt.setInt(1, Integer.parseInt(pStatut));
+            prepStmt.setInt(1, pStatut);
             ResultSet resultat = prepStmt.executeQuery();
             if(resultat.first()){
                 statut = resultat.getString("pLibelle");
@@ -162,16 +165,17 @@ public class PompierMYSQL {
         return statut;
     }
     
-    public int getIsResponsable(String pStatut){
+    public String getIsResponsable(int pStatut){
         
-        int responsable = 0;
+        String responsable = "";
         try{
             PreparedStatement prepStmt = null;
-            String sql = "SELECT pIndice FROM parametre WHERE pType ='statAgt'";
+            String sql = "SELECT pLibelle FROM parametre WHERE pType ='statAgt' AND pIndice = ?";
             prepStmt = laConnection.prepareStatement(sql);
+            prepStmt.setInt(1, pStatut);
             ResultSet resultat = prepStmt.executeQuery();
             if(resultat.first()){
-                responsable = resultat.getInt("pIndice");
+                responsable = resultat.getString("pIndice");
             }
         }catch (SQLException ex){
             System.out.println("SQLException : " + ex.getMessage());

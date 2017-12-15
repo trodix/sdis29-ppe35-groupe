@@ -45,7 +45,9 @@
             
         %>
         <div class="container pageAlertes">
+            <form action="Pompier" method="POST">
                 <div>
+                    
                     <div class="row">
                         <table class="table tableau-infos-pompier legende" border="0">
                                 <h2 class="titre-legende">Lieu Incident</h2>
@@ -121,7 +123,6 @@
                                 <select name="choixPompiers" id="listePompiers" class='alertesListes'>
 
                                 </select>
-                                <button id="ajouter" class="btn btn-lg bouton-validation alertesBtn">Ajouter</button>
                             </td>
                         </tr>
                     </table>
@@ -144,13 +145,14 @@
                     <label for="btModification"></label>
                     <input class="btn btn-lg bouton-validation" type="submit" value="Lancer l'alerte" id="btModifications"/>
                 </div><br>
+            </form>
         </div>
     </body>
     <script>
         
        function ajouter(id, idCaserne, nom, prenom){
         
-            $('#tableauPompier').append("<tr><td>"+idCaserne+"</td><td>"+nom + " " + prenom+"("+id+")</td></tr>");
+            $('#tableauPompier').append("<tr id='"+idCaserne +""+  id+"'><td>"+idCaserne+"</td><td>"+nom + " " + prenom+"("+id+")</td></tr>");
         }
         
     </script>

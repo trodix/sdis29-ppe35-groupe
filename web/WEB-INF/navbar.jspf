@@ -9,6 +9,11 @@
     <%
         Pompier unPompier = null;
         HttpSession maSession = request.getSession();
+        if(maSession.getAttribute("ok") != null){
+            out.println("<div class='alert alert-success' role='alert'>"+
+                    "L'intervention à été bien enregistrée et les pompiers concernés ont été prévenus"+
+               " </div>");
+        }
         if(maSession.getAttribute("unPompier") != null){
             unPompier = (Pompier)maSession.getAttribute("unPompier");
             if(unPompier.getiStatut() == 1){          
@@ -32,10 +37,22 @@
         <div class="container">
             <div class="row">
                 <div>
+                    <a class="navbar-brand" href="Pompier"><img id="logo" src="images/logo-sdis.png"></a>
                     <div class="col-xs-push-2 col-md-10">
+                        
                         <h1 class="text-right titre-profil marge-titre-profil">
-                            <% 
-                                out.println("Caserne " + unPompier.getcNom() + " : " + unPompier.getpNom() + " " + unPompier.getpPrenom() + " <br>[ " + unPompier.getpStatut() + " ]"); 
+                            <%
+                                String statut = "";
+                                if(unPompier.getpStatut()==1){
+                                    statut = "Pompier volontaire";
+                                }else{
+                                    if(unPompier.getpStatut() == 2){
+                                        statut = "Chef de centre";
+                                    }else{
+                                        statut = "Responsable des alertes";
+                                    }
+                                }
+                                out.println("Caserne " + unPompier.getcNom() + " : " + unPompier.getpNom() + " " + unPompier.getpPrenom() + " <br>[ "+ statut +" ]"); 
                             %>
                         </h1>
                     </div>
@@ -45,7 +62,7 @@
         <div class="row">
             <nav class="navbar col-xs-push-1 col-xs-10">
                 <div>
-                    <a class="navbar-brand" href="Pompier"><img id="logo" src="images/logo-sdis.png"></a>
+                   
                     <ul class="nav navbar-nav">
                         <li class="nav-item">
                             <a class="nav-link" href="Pompier"><i class="fa fa-home margin-icone-navbar"></i>Profil</a>
@@ -79,7 +96,7 @@
                     </ul>
                     <ul class='nav navbar-nav navbar-right'>
                         <li class="nav-item">
-                            <a class="nav-link" href="authentification?co=0"><i class="fa fa-power-off margin-icone-navbar"></i>Déconnexion</a>
+                            <a class="nav-link" href="authentification?co=0"><i class="fa fa-power-off margin-icone-navbar"></i></a>
                         </li>
                     </ul>
                 </div>

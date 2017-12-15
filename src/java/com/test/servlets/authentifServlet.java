@@ -119,7 +119,7 @@ public class authentifServlet extends HttpServlet {
                 maSession.setAttribute("isAuthentified",true);
                 unPompier = unPompierMYSQL.read(leControle.getnCaserne(), leControle.getpId());
                 maSession.setAttribute("unPompier",unPompier);              
-                switch(unPompier.getiStatut()){
+                switch(unPompier.getpStatut()){
                     case 1:
                         pompier = true;
                         maSession.setAttribute("pompier", pompier);

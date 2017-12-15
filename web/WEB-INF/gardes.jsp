@@ -46,42 +46,29 @@
             <form action="gardes" method="POST">
             <h1 class="charte">Liste des gardes</h1>
             <div class="table-responsive table-gardes div-size">
-                <!--<table class="legende">
-                    <thead>
-                        <th><h3>Légende</h3></th>
-                    </thead>
-                    <tbody>
-                    <!-- Légende bouton 3 : zoomer page web a 230% -->
-                    <!--<tr>
-                        <td class="legende-inter"><img src="images/legende-0.png"><h5>Indisponible</h5></td>
-                        <td class="legende-inter"><img src="images/legende-1.png"><h5>Au travail</h5></td>
-                        <td class="legende-inter"><img src="images/legende-2.png"><h5>Disponible</h5></td>
-                    </tr>
-                    </tbody>
-                </table>-->
-                    <div class="row">
-                        <div class="col-xs-2">
-                            <div class="legende-inter"><img src="images/legende-0.png"><h5>Indisponible</h5></div>
-                        </div>
-                        <div class="col-xs-2">
-                            <div class="legende-inter"><img src="images/legende-1.png"><h5>Travail</h5></div>
-                        </div>
-                        <div class="col-xs-2">
-                            <div class="legende-inter"><img src="images/legende-2.png"><h5>Disponible</h5></div>
-                        </div>
-                        <div class="col-xs-2">
-                            <div class="legende-inter"><img src="images/legende-3.png"><h5>Garde</h5></div>
-                        </div>
+                <div class="row">
+                    <div class="col-xs-2">
+                        <div class="legende-inter"><img src="images/legende-0.png"><h5>Indisponible</h5></div>
                     </div>
-                    <div class="row">
-                        <div>Tranches horaires</div>
-                        <%
-                            
-                            for(String unHoraire : lesHoraires){
-                                out.println("<div class='col-xs-3 legende bold'>" + (lesHoraires.indexOf(unHoraire) + 1) + " - " + unHoraire + "</div>");
-                            }
-                        %>
+                    <div class="col-xs-2">
+                        <div class="legende-inter"><img src="images/legende-1.png"><h5>Travail</h5></div>
                     </div>
+                    <div class="col-xs-2">
+                        <div class="legende-inter"><img src="images/legende-2.png"><h5>Disponible</h5></div>
+                    </div>
+                    <div class="col-xs-2">
+                        <div class="legende-inter"><img src="images/legende-3.png"><h5>Garde</h5></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div>Tranches horaires</div>
+                    <%
+
+                        for(String unHoraire : lesHoraires){
+                            out.println("<div class='col-xs-3 legende bold'>" + (lesHoraires.indexOf(unHoraire) + 1) + " - " + unHoraire + "</div>");
+                        }
+                    %>
+                </div>
                 <table  class="table table-bordered table-collapse">
                         <thead class="charte">
                             <tr class="enteteTableau">
@@ -154,7 +141,7 @@
 		<script>
                         
                         //*******************************
-                        var pompierStatut = '<% out.print(String.valueOf(unPompier.getiStatut())); %>';
+                        var pompierStatut = '<% out.print(String.valueOf(unPompier.getpStatut())); %>';
                         pompierStatut == '2' ? couleur = ["rouge", "bleu"] : couleur = ["rouge", "orange", "vert"];
                         //alert(pompierStatut + ' ' + typeof(pompierStatut));
                         // Gestion des evenements
@@ -186,12 +173,6 @@
                                         }
                                     }else{
                                         
-                                        /*if(v != '0'){
-                                            
-                                            nv > 0 ? $(this).addClass(couleur[1]) : $(this).addClass(couleur[0]);   
-                                            nv <= 0 ? $(this).removeClass(couleur[1]) : $(this).removeClass(couleur[0]);
-                                            $(this).val(nv);
-                                        }*/
                                         switch(v){
                                             /**case v == '0':
                                                 $(this).addClass(couleur[0]);

@@ -5,6 +5,7 @@
  */
 package com.test.servlets;
 
+import com.test.bdd.InterventionMySQL;
 import com.test.bdd.PompierMYSQL;
 import com.test.beans.Pompier;
 import java.io.IOException;
@@ -107,7 +108,7 @@ public class pompierServlet extends HttpServlet {
             unPompier = (Pompier)maSession.getAttribute("unPompier");
         }
         
-        if(maSession.getAttribute("id") != null){
+        if(maSession.getAttribute("id") != null ){
             if((int)maSession.getAttribute("id") == 1){
                 PompierMYSQL unPompierMYSQL = new PompierMYSQL();
                 String nom = request.getParameter("ztNom");
@@ -132,18 +133,40 @@ public class pompierServlet extends HttpServlet {
                 }
                 getServletContext().getRequestDispatcher("/WEB-INF/pompierJSP.jsp").forward(request, response); 
             }
-            if(maSession.getAttribute("pompier") != null || maSession.getAttribute("chefDeCentre") != null || maSession.getAttribute("pompier")  != null){
+            if(maSession.getAttribute("pompier") != null || maSession.getAttribute("chefDeCentre") != null || maSession.getAttribute("responsableA")  != null){
             
-                if((boolean) maSession.getAttribute("pompier") == true){
+                if(maSession.getAttribute("chefDeCentre") != null){
+                    if((boolean) maSession.getAttribute("chefDeCentre") == true){
                 
-                    PompierMYSQL unPompierMYSQL = new PompierMYSQL();
+                        PompierMYSQL unPompierMYSQL = new PompierMYSQL();
                 
-                    ArrayList <Pompier> lesPompiers = new ArrayList();
+                        ArrayList <Pompier> lesPompiers = new ArrayList();
                 
-                    lesPompiers = unPompierMYSQL.readAll(unPompier.getcId());
-                    maSession.setAttribute("lesPompiers",lesPompiers);
-                    getServletContext().getRequestDispatcher("/WEB-INF/listePompier.jsp").forward(request, response); 
-            }
+                        lesPompiers = unPompierMYSQL.readAll(unPompier.getcId());
+                        maSession.setAttribute("lesPompiers",lesPompiers);
+                        getServletContext().getRequestDispatcher("/WEB-INF/listePompier.jsp").forward(request, response); 
+                    }
+                }
+                
+                if(maSession.getAttribute("responsableA") != null){
+                    if((boolean)maSession.getAttribute("responsableA") == true){
+                        
+                        String adresse = request.getParameter("adresse");
+                        String cp = request.getParameter("ville");
+                        String ville = request.getParameter("cp");
+                        String description = request.getParameter("description");
+                        boolean ok = false;
+                        InterventionMySQL uneIntervetionMysql = new InterventionMySQL();
+                        try {
+                            ok = uneIntervetionMysql.createIntervention(adresse, cp, ville, description);
+                        } catch (SQLException ex) {
+                            Logger.getLogger(pompierServlet.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                        maSession.setAttribute("ok", ok);
+                        
+                        getServletContext().getRequestDispatcher("/WEB-INF/pompierJSP.jsp").forward(request, response); 
+                    }
+                }
             
         }
         
