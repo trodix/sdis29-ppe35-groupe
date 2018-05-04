@@ -34,6 +34,8 @@
             PompierMYSQL unPompierMYSQL = new PompierMYSQL();
                 unPompier = unPompierMYSQL.read(Integer.parseInt(request.getParameter("idCaserne")),Integer.parseInt(request.getParameter("idPompier")));
                 maSession.setAttribute("unPompier",unPompier);
+                
+                
             
         }else{
             
@@ -54,33 +56,33 @@
                             <tbody>
                                 <tr>
                                     <td><label for="nom" >Nom : </label></td>
-                                    <td><input type="text" name="ztNom" id="nom" class="taille-case-pompierVolontaire" <% typeModif.toString(); %> value=<% out.println(unPompier.getpNom()); %>/><i  <%maSession.setAttribute("id",unPompier.getpId()); %> class="fa fa-pencil couleur-icones" aria-hidden="true"></i></td>
+                                    <td><input type="text" name="ztNom" id="nom" class="taille-case-pompierVolontaire" <% typeModif.toString(); %> value="<% out.println(unPompier.getpNom()); %>"/><i  <%maSession.setAttribute("id",unPompier.getpId()); %> class="fa fa-pencil couleur-icones" aria-hidden="true"></i></td>
                                     <td><label for="adresseMail" >Adresse Mail : </label></td>
-                                    <td><input type="email" name="emailAdresse" id="adresseMail" class="taille-case-pompierVolontaire" disabled='<% typeModif.toString(); %>' value=<% out.println(unPompier.getpMail()); %>/><i class="fa fa-pencil couleur-icones" aria-hidden="true"></i></td>
+                                    <td><input type="email" name="emailAdresse" id="adresseMail" class="taille-case-pompierVolontaire" disabled='<% typeModif.toString(); %>' value="<% out.println(unPompier.getpMail()); %>"/></i></td>
                                 </tr>
                                 <tr>
                                     <td><label for="prenom" >Prénom : </label></td>
-                                    <td><input type="text" name="ztPrenom" id="prenom" class="taille-case-pompierVolontaire" <% typeModif.toString(); %> value=<% out.println(unPompier.getpPrenom()); %>/><i class="fa fa-pencil couleur-icones" aria-hidden="true"></i></td>
+                                    <td><input type="text" name="ztPrenom" id="prenom" class="taille-case-pompierVolontaire" <% typeModif.toString(); %> value="<% out.println(unPompier.getpPrenom()); %>"/><i class="fa fa-pencil couleur-icones" aria-hidden="true"></i></td>
                                     <td><label for="caserneAppartenance" >Caserne : </label></td>
-                                    <td><input name="caserneAppartenance" id="caserneAppartenance" class="taille-case-pompierVolontaire" disabled="disabled" value=<% out.println(unPompier.getcNom()); %>></td>
+                                    <td><input name="caserneAppartenance" id="caserneAppartenance" class="taille-case-pompierVolontaire" disabled="disabled" value="<% out.println(unPompier.getcNom()); %>"></td>
                                 </tr>
                                 <tr>
                                     <td><label for="adresse" >Adresse : </label></td>
-                                    <td><input type="text" name="ztAdresse" id="adresse" class="taille-case-pompierVolontaire" <% typeModif.toString(); %> value=<% out.println(unPompier.getpAdresse()); %>/><i  < class="fa fa-pencil couleur-icones" aria-hidden="true"></i></td>
+                                    <td><input type="text" name="ztAdresse" id="adresse" class="taille-case-pompierVolontaire" <% typeModif.toString(); %> value="<% out.println(unPompier.getpAdresse() == null ? "" : unPompier.getpAdresse()); %>"/><i class="fa fa-pencil couleur-icones" aria-hidden="true"></i></td>
                                     <td><label for="statut" >Statut : </label></td>
-                                    <td><input name="statut" id="statut" class="taille-case-pompierVolontaire" disabled="disabled" value=<% /*out.println(unPompier.getpStatut()); */%>></td>
+                                    <td><input name="statut" id="statut" class="taille-case-pompierVolontaire" disabled="disabled" value="<% out.println(statut); %>"></td>
                                 </tr>
                                 <tr>
                                     <td><label for="ville" >Ville : </label></td>
-                                    <td><input type="text" name="ztVille" id="ville" class="taille-case-pompierVolontaire" <% typeModif.toString(); %> value=<% out.println(unPompier.getpVille()); %>/><i  class="fa fa-pencil couleur-icones" aria-hidden="true"></i></td>
+                                    <td><input type="text" name="ztVille" id="ville" class="taille-case-pompierVolontaire" <% typeModif.toString(); %> value="<% out.println(unPompier.getpVille() == null ? "" : unPompier.getpVille()); %>"/><i  class="fa fa-pencil couleur-icones" aria-hidden="true"></i></td>
                                     <td><label for="grade" >Grade : </label></td>
-                                    <td><input name="grade" id="grade" class="taille-case-pompierVolontaire" disabled="disabled" value=<% out.println(unPompier.getpGrade()); %>></td>
+                                    <td><input name="grade" id="grade" class="taille-case-pompierVolontaire" disabled="disabled" value="<% out.println(unPompier.getpGrade()); %>"></td>
                                 </tr>
                                 <tr>
                                    <td><label for="cp" >Code Postal : </label></td>
-                                   <td><input type="text" name="ztCP" id="cp" class="taille-case-pompierVolontaire" <% typeModif.toString(); %> value=<% out.println(unPompier.getpCp()); %>/><i  class="fa fa-pencil couleur-icones" aria-hidden="true"></i></td>
+                                   <td><input type="text" name="ztCP" id="cp" class="taille-case-pompierVolontaire" <% typeModif.toString(); %> value="<% out.println(unPompier.getpCp() == null ? "" : unPompier.getpCp()); %>"/><i  class="fa fa-pencil couleur-icones" aria-hidden="true"></i></td>
                                    <td><label for="noBip" >Numéro Bip : </label></td>
-                                   <td><input type="text" name="noBip" id="noBip" class="taille-case-pompierVolontaire" disabled="disabled" value=<% out.println(unPompier.getpBip()); %>/></td>
+                                   <td><input type="text" name="noBip" id="noBip" class="taille-case-pompierVolontaire" disabled="disabled" value="<% out.println(unPompier.getpBip()); %>"/></td>
                                 </tr>
                             </tbody>
                     </table>              
@@ -94,11 +96,11 @@
                             <tbody>
                                 <tr>
                                     <td><label for="denomination" >Dénomination sociale : </label></td>
-                                    <td><input type="text" name="ztDenomination" id="denomination" class="taille-case-pompierVolontaire" disabled="disabled" value=<% out.println(unPompier.getEmpRaisonSoc()); %>/></td>
+                                    <td><input type="text" name="ztDenomination" id="denomination" class="taille-case-pompierVolontaire" value="<% out.println(unPompier.getEmpRaisonSoc() == null ? "" : unPompier.getEmpRaisonSoc()); %>"/><i  class="fa fa-pencil couleur-icones" aria-hidden="true"></i></td>
                                 </tr>
                                 <tr>
                                     <td><label for="adresseEmployeur" >Adresse : </label></td>
-                                    <td><input type="text" name="ztAdresseEmployeur" id="adresseEmployeur" class="taille-case-pompierVolontaire" disabled="disabled" value=<% out.println(unPompier.getEmpAdresse()); %>/></td>
+                                    <td><input type="text" name="ztAdresseEmployeur" id="adresseEmployeur" class="taille-case-pompierVolontaire" value="<% out.println(unPompier.getEmpAdresse() == null ? "" : unPompier.getEmpAdresse()); %>"/><i  class="fa fa-pencil couleur-icones" aria-hidden="true"></i></td>
                                 </tr>
                             </tbody>
                         </table>
