@@ -58,7 +58,7 @@
                                     <td><label for="nom" >Nom : </label></td>
                                     <td><input type="text" name="ztNom" id="nom" class="taille-case-pompierVolontaire" <% typeModif.toString(); %> value="<% out.println(unPompier.getpNom()); %>"/><i  <%maSession.setAttribute("id",unPompier.getpId()); %> class="fa fa-pencil couleur-icones" aria-hidden="true"></i></td>
                                     <td><label for="adresseMail" >Adresse Mail : </label></td>
-                                    <td><input type="email" name="emailAdresse" id="adresseMail" class="taille-case-pompierVolontaire" disabled='<% typeModif.toString(); %>' value="<% out.println(unPompier.getpMail()); %>"/></i></td>
+                                    <td><input type="email" name="emailAdresse" id="adresseMail" class="taille-case-pompierVolontaire" disabled='<% typeModif.toString(); %>' value="<% out.println(unPompier.getpMail() == null ? "" : unPompier.getpMail()); %>"/></i></td>
                                 </tr>
                                 <tr>
                                     <td><label for="prenom" >Prénom : </label></td>
@@ -80,7 +80,7 @@
                                 </tr>
                                 <tr>
                                    <td><label for="cp" >Code Postal : </label></td>
-                                   <td><input type="text" name="ztCP" id="cp" class="taille-case-pompierVolontaire" <% typeModif.toString(); %> value="<% out.println(unPompier.getpCp() == null ? "" : unPompier.getpCp()); %>"/><i  class="fa fa-pencil couleur-icones" aria-hidden="true"></i></td>
+                                   <td><input type="text" name="ztCP" id="cp" class="taille-case-pompierVolontaire" <% typeModif.toString(); %> value="<% out.println(unPompier.getpCp() == null ? "" : unPompier.getpCp());%>"/><i  class="fa fa-pencil couleur-icones" aria-hidden="true"></i></td>
                                    <td><label for="noBip" >Numéro Bip : </label></td>
                                    <td><input type="text" name="noBip" id="noBip" class="taille-case-pompierVolontaire" disabled="disabled" value="<% out.println(unPompier.getpBip()); %>"/></td>
                                 </tr>
